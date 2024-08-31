@@ -7,6 +7,7 @@ function App() {
       <Register />
     </>
   );
+
 }
 
 export default App;
