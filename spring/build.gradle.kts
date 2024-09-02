@@ -28,6 +28,7 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
