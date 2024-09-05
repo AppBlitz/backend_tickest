@@ -13,7 +13,11 @@ import lombok.ToString;
 @ToString
 public class User {
   @NonNull
-  String Id;
+  String fullName;
+  /*
+   * @NonNull
+   * String Id;
+   */
   @NonNull
   String password;
   @NonNull
