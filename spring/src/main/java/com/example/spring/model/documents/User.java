@@ -1,29 +1,23 @@
-
 package com.example.spring.model.documents;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import com.example.spring.model.enums.State;
 
-@NoArgsConstructor
-@Data
-@RequiredArgsConstructor
-@ToString
+@lombok.NoArgsConstructor
+@lombok.Data
+@lombok.RequiredArgsConstructor
+@lombok.ToString
 public class User {
-  @NonNull
+
+  @lombok.NonNull
   String fullName;
-  /*
-   * @NonNull
-   * String Id;
-   */
-  @NonNull
+  @lombok.NonNull
   String password;
-  @NonNull
+  @lombok.NonNull
   String email;
-  @NonNull
+  @lombok.NonNull
   String addres;
-  @NonNull
+  @lombok.NonNull
   String phoneNumber;
+  @lombok.NonNull
+  State state;
 }
