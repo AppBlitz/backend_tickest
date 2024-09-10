@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,9 +40,10 @@ public class UserController {
    * @param userdto
    * @return
    */
-  @RequestMapping(value = "/user/add/", method = RequestMethod.POST)
-  public User saveUser(UserDto userdto) {
-    return userService.saveUser(userdto);
+  @PostMapping("/user/add")
+  public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) {
+    User user = userService.saveUser((userdto));
+    return ResponseEntity.status(200).body(user);
   }
 
 }

@@ -36,7 +36,7 @@ public class UserService {
    */
   public User saveUser(UserDto userdto) {
 
-    User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.addres(),
+    User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
         userdto.phoneNumber(), userdto.state());
     return userRepository.save(user);
 

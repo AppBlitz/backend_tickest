@@ -1,23 +1,32 @@
 package com.example.spring.model.documents;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.example.spring.model.enums.State;
 
-@lombok.NoArgsConstructor
-@lombok.Data
-@lombok.RequiredArgsConstructor
-@lombok.ToString
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+
+@NoArgsConstructor
+@Data
+@RequiredArgsConstructor
+@ToString
+@Document("User")
 public class User {
 
-  @lombok.NonNull
+  @NonNull
   String fullName;
-  @lombok.NonNull
+  @NonNull
   String password;
-  @lombok.NonNull
+  @NonNull
   String email;
-  @lombok.NonNull
-  String addres;
-  @lombok.NonNull
+  @NonNull
+  String address;
+  @NonNull
   String phoneNumber;
-  @lombok.NonNull
+  @NonNull
   State state;
 }
