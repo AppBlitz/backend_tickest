@@ -1,11 +1,11 @@
 package com.example.spring.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,10 +40,21 @@ public class UserController {
    * @param userdto
    * @return
    */
-  @PostMapping("/user/add")
+  @RequestMapping(value = "/user/add", method = RequestMethod.POST)
   public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) {
     User user = userService.saveUser((userdto));
     return ResponseEntity.status(200).body(user);
+  }
+
+  /**
+   * TODO: Method for obtaining all users
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/user/all", method = RequestMethod.GET)
+  public ResponseEntity<List<User>> getAll() {
+    List<User> users = userService.getAllUser();
+    return ResponseEntity.status(200).body(users);
   }
 
 }
