@@ -12,7 +12,7 @@ import com.example.spring.model.vo.Bill;
 @lombok.RequiredArgsConstructor
 @lombok.ToString
 @Document("User")
-public class User {
+public class User {  
 
   @lombok.NonNull
   String fullName;

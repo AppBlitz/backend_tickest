@@ -1,5 +1,6 @@
 package com.example.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.spring.dto.UserDto;
 import com.example.spring.model.documents.User;
+import com.example.spring.model.vo.Bill;
 import com.example.spring.repository.UserRepository;
 
 @Service
@@ -36,9 +38,9 @@ public class UserService {
    * @return User created
    */
   public User saveUser(UserDto userdto) {
-
+    List<Bill> list = new ArrayList<>();
     User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
-        userdto.phoneNumber(), userdto.state());
+        userdto.phoneNumber(), userdto.state(), list);
     return userRepository.save(user);
 
   }
