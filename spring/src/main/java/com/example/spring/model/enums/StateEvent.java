@@ -1,6 +1,6 @@
 package com.example.spring.model.enums;
 
-public enum State {
+public enum StateEvent {
   ASSET,
   IDLE
 }

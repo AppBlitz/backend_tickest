@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.spring.model.enums.EventType;
 import com.example.spring.model.vo.Comment;
+import com.example.spring.model.enums.StateEvent;
 
 import lombok.NonNull;
 
@@ -14,4 +15,6 @@ public class Event {
   EventType eventType;
   @NonNull
   List<Comment> comments;
+  @NonNull
+  StateEvent stateEvent;
 }

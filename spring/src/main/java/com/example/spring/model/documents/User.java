@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.example.spring.model.enums.State;
+import com.example.spring.model.enums.StateAccount;
 import com.example.spring.model.vo.Bill;
 
 @lombok.NoArgsConstructor
@@ -12,7 +12,7 @@ import com.example.spring.model.vo.Bill;
 @lombok.RequiredArgsConstructor
 @lombok.ToString
 @Document("User")
-public class User {  
+public class User {
 
   @lombok.NonNull
   String fullName;
@@ -25,7 +25,7 @@ public class User {
   @lombok.NonNull
   String phoneNumber;
   @lombok.NonNull
-  State state;
+  StateAccount state;
   @lombok.NonNull
   List<Bill> bills;
 }
