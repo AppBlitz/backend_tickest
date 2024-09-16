@@ -1,5 +1,5 @@
-package com.exmaple.spring.controller;
+package com.example.spring.controller;
 
 public class StoreController {
-  
+
 }
