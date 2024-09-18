@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {

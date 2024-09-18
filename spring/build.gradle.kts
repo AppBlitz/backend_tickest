@@ -25,6 +25,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
   implementation("org.springframework.boot:spring-boot-starter-mail")
+  implementation("org.springframework.boot:spring-boot-starter-mail")
 }
 
 tasks.withType<Test> {

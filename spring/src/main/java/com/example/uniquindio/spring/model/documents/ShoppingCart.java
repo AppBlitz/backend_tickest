@@ -8,8 +8,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.example.uniquindio.spring.model.vo.Items;
 
 @lombok.Data
-@Document("Store")
-public class Store {
+@lombok.NoArgsConstructor
+@lombok.ToString
+@lombok.RequiredArgsConstructor
+@Document("ShoppingCart")
+public class ShoppingCart {
 
   @lombok.NonNull
   String nameUser;
@@ -22,5 +25,11 @@ public class Store {
 
   @lombok.NonNull
   List<Items> items;
+
+  @lombok.NonNull
+  String phoneNumber;
+
+  @lombok.NonNull
+  String identificationNumber;
 
 }
