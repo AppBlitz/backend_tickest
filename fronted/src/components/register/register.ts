@@ -1,6 +1,6 @@
 import { User } from "../../interface/UserInterface.ts";
 
-import { api } from "../../interface/api.ts";
+import { api } from "../../api/api.ts";
 export const registerUser = (user: User) => {
   api
     .post("/account/add", {
