@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { User } from "../../interface/UserInterface.ts";
+import { User } from "../../interface/User/UserInterface.ts";
 import { registerUser } from "./register.ts";
 
 export function Register() {

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.UserDto;
 import com.example.uniquindio.spring.model.documents.User;
+import com.example.uniquindio.spring.model.enums.StateAccount;
 import com.example.uniquindio.spring.model.vo.Bill;
 import com.example.uniquindio.spring.repository.UserRepository;
 
@@ -38,9 +39,8 @@ public class UserService {
    * @return User created
    */
   public User saveUser(UserDto userdto) {
-    List<Bill> bill = new ArrayList<>();
     User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
-        userdto.phoneNumber(), userdto.state(), bill);
+        userdto.phoneNumber(), StateAccount.ASSET, userdto.bills());
     return userRepository.save(user);
 
   }

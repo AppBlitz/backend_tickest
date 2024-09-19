@@ -1,4 +1,4 @@
-import { User } from "../../interface/UserInterface.ts";
+import { User } from "../../interface/User/UserInterface.ts";
 
 import { api } from "../../api/api.ts";
 export const registerUser = (user: User) => {
@@ -9,10 +9,7 @@ export const registerUser = (user: User) => {
       address: user.address,
       password: user.password,
       phoneNumber: user.phoneNumber,
-      state: "ASSET",
-    })
-    .then((response) => {
-      console.log("User registered successfully:", response.data);
+      bills: [{ nameUser: user.fullName }],
     })
     .catch((error) => {
       console.error("Error registering user:", error);
