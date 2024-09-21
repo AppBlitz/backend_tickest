@@ -1,34 +1,41 @@
-import { useForm } from "react-hook-form";
-import { User } from "../../interface/User/UserInterface.ts";
+import { Address } from "./data/Address.tsx";
+import { Email } from "./data/email.tsx";
+import { Fullname } from "./data/fullName.tsx";
+import { IdentificationNumber } from "./data/identificationNumber.tsx";
+import { Password } from "./data/password.tsx";
+import { PhoneNumber } from "./data/phoneNumber.tsx";
+import { StateContext } from "../register/context/StateContext.tsx";
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext.ts";
 import { registerUser } from "./register.ts";
+import { Users } from "../../interface/User/UserInterface.ts";
 
-export function Register() {
-  const { register, handleSubmit } = useForm<User>();
+const Register = () => {
+  const { User } = useContext(UserContext);
+  function sendUser() {
+    const user: Users = {
+      email: User.email + "",
+      fullName: User.fullName + "",
+      identificationNumber: User.identificationNumber + "",
+      address: User.address + "",
+      phoneNumber: User.phoneNumber + "",
+      password: User.password + "",
+    };
+    registerUser(user);
+  }
   return (
-    <div>
-      <form onSubmit={handleSubmit(registerUser)}>
-        <div>
-          <label>Nombre</label>
-          <input type="text" {...register("fullName", { required: true })} />
-        </div>
-        <div>
-          <label>email</label>
-          <input type="text" {...register("email", { required: true })} />
-        </div>
-        <div>
-          <label>address</label>
-          <input type="text" {...register("address", { required: true })} />
-        </div>
-        <div>
-          <label>password</label>
-          <input type="text" {...register("password", { required: true })} />
-        </div>
-        <div>
-          <label>phone number</label>
-          <input type="text" {...register("phoneNumber", { required: true })} />
-        </div>
-        <button> click me</button>
-      </form>
-    </div>
+    <StateContext>
+      <div>
+        <Email />
+        <Fullname />
+        <IdentificationNumber />
+        <PhoneNumber />
+        <Address />
+        <Password />
+      </div>
+      <button onClick={() => sendUser()}>Register</button>
+    </StateContext>
   );
-}
+};
+
+export { Register };

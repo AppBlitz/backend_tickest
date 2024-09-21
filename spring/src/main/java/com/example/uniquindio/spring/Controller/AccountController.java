@@ -28,7 +28,12 @@ public class AccountController {
    */
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) {
-    User user = userService.saveUser((userdto));
-    return ResponseEntity.status(200).body(user);
+    if (userService.validateUser(userdto) != true) {
+      User user = userService.saveUser((userdto));
+      return ResponseEntity.status(200).body(user);
+    } else {
+      return ResponseEntity.status(409).body(null);
+    }
+
   }
 }

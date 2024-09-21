@@ -1,13 +1,11 @@
 import { Bill } from "./UserBill";
-import { UserState } from "./UserState";
 
-export interface User {
+export type Users = {
   fullName?: string;
   email?: string;
   address?: string;
   password?: string;
   phoneNumber?: string;
-  statate?: UserState
+  identificationNumber: string,
   bills?: Bill[];
-}
-
+};

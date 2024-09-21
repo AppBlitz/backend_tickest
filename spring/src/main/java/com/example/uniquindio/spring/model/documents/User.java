@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.example.uniquindio.spring.model.enums.Rol;
 import com.example.uniquindio.spring.model.enums.StateAccount;
 import com.example.uniquindio.spring.model.vo.Bill;
 
@@ -28,4 +29,8 @@ public class User {
   StateAccount state;
   @lombok.NonNull
   List<Bill> bills;
+  @lombok.NonNull
+  Rol rol;
+  @lombok.NonNull
+  String identificationNumber;
 }
