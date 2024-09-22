@@ -10,7 +10,7 @@ import com.example.uniquindio.spring.service.ShoppingCartService;
 @RestController
 @RequestMapping("/shoppingCart")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class ShoppingCartControllerController {
+public class ShoppingCartController {
 
   @Autowired
   ShoppingCartService shoppingCartService;
