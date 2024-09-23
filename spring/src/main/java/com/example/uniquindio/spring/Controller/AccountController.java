@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.uniquindio.spring.dto.UserDto;
+import com.example.uniquindio.spring.dto.emaildto.EmailDto;
+import com.example.uniquindio.spring.service.EmailService;
 import com.example.uniquindio.spring.service.UserService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -19,6 +21,9 @@ public class AccountController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    EmailService emailService;
 
     /**
      * TODO: method create user
@@ -35,5 +40,10 @@ public class AccountController {
             return ResponseEntity.status(409).body(null);
         }
 
+    }
+
+    @RequestMapping(value = "email", method = RequestMethod.POST)
+    public void sendEmail(@RequestBody() EmailDto emaildto) throws Exception {
+        emailService.sendEmailRegister(emaildto);
     }
 }
