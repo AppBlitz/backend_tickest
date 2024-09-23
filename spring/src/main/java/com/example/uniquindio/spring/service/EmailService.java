@@ -19,9 +19,9 @@ public class EmailService {
     public void sendFirstPurchaseCouponMail(EamilDto dto) throws MailSendingException {
         SimpleMailMessage mimeMessage = new SimpleMailMessage();
 
-        mimeMessage.setFrom("amaeventosuq@gmail.com");
+        mimeMessage.setFrom("karlcorralesmovil@gmail.com");
         mimeMessage.setTo(dto.email());
-        mimeMessage.setSubject("Primera compra en AmaEventos | Cupón de 10% de DCTO");
+        mimeMessage.setSubject("Primera compra en | Cupón de 10% de DCTO");
         mimeMessage.setText(String.format("Tu codigo de cupón para un 10%% de descuento es: %s"));
         mimeMessage.setCc(dto.email());
         sendMessage(mimeMessage);
