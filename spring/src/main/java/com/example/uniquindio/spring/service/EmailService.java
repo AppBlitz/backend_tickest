@@ -1,7 +1,6 @@
 package com.example.uniquindio.spring.service;
 
 import com.example.uniquindio.spring.dto.emaildto.EamilDto;
-import com.example.uniquindio.spring.exceptions.MailSendingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
@@ -16,7 +15,7 @@ public class EmailService {
     private String sender;
 
 
-    public void sendFirstPurchaseCouponMail(EamilDto dto) throws MailSendingException {
+    public void sendFirstPurchaseCouponMail(EamilDto dto) throws Exception{
         SimpleMailMessage mimeMessage = new SimpleMailMessage();
 
         mimeMessage.setFrom("amaeventosuq@gmail.com");
@@ -27,11 +26,10 @@ public class EmailService {
         sendMessage(mimeMessage);
     }
 
-    private void sendMessage(SimpleMailMessage mimeMessage) throws MailSendingException {
+    private void sendMessage(SimpleMailMessage mimeMessage) throws Exception{
         try {
             mailSender.send(mimeMessage);
         } catch (MailException e) {
-            throw new MailSendingException(e.getMessage());
         }
     }
 }
