@@ -1,11 +1,9 @@
 package com.example.uniquindio.spring.service;
 
-<<<<<<< HEAD
+
 import com.example.uniquindio.spring.dto.emaildto.EmailDto;
 
-=======
-import com.example.uniquindio.spring.dto.emaildto.EamilDto;
->>>>>>> fabian
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
