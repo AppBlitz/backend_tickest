@@ -36,4 +36,4 @@ const Auxiliar = () => {
     </div>
   );
 };
-export { Auxiliaar };
+export { Auxiliar };
