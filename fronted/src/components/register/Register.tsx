@@ -1,9 +1,9 @@
 import { StateContext } from "../register/context/StateContext.tsx";
-import { Aux } from "../register/Aux.tsx";
+import { Auxiliar } from "../register/Auxiliar.tsx";
 function Register() {
   return (
     <StateContext>
-      <Aux />
+      <Auxiliar />
     </StateContext>
   );
 }
