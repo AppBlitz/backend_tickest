@@ -10,12 +10,12 @@ import lombok.NonNull;
 
 public class Event {
 
-  @NonNull
-  String nameEvent;
-  @NonNull
-  EventType eventType;
-  @NonNull
-  List<Comment> comments;
-  @NonNull
-  StateEvent stateEvent;
+    @NonNull
+    String nameEvent;
+    @NonNull
+    EventType eventType;
+    @NonNull
+    List<Comment> comments;
+    @NonNull
+    StateEvent stateEvent;
 }

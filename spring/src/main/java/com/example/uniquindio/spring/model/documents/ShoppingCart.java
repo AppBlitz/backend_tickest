@@ -14,22 +14,22 @@ import com.example.uniquindio.spring.model.vo.Items;
 @Document("ShoppingCart")
 public class ShoppingCart {
 
-  @lombok.NonNull
-  String nameUser;
+    @lombok.NonNull
+    String nameUser;
 
-  @lombok.NonNull
-  String email;
+    @lombok.NonNull
+    String email;
 
-  @lombok.NonNull
-  LocalDate localData;
+    @lombok.NonNull
+    LocalDate localData;
 
-  @lombok.NonNull
-  List<Items> items;
+    @lombok.NonNull
+    List<Items> items;
 
-  @lombok.NonNull
-  String phoneNumber;
+    @lombok.NonNull
+    String phoneNumber;
 
-  @lombok.NonNull
-  String identificationNumber;
+    @lombok.NonNull
+    String identificationNumber;
 
 }

@@ -18,33 +18,33 @@ import com.example.uniquindio.spring.service.interfaces.IUserService;
 @Service
 public class UserService implements IUserService {
 
-  @Autowired
-  UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-  @Override
-  public Optional<User> findByEmail(String email) {
-    return userRepository.findByEmail(email);
-  }
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
-  @Override
-  public User saveUser(UserDto userdto) {
-    List<Bill> bills = new ArrayList<>();
-    User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
-        userdto.phoneNumber(), StateAccount.ASSET, bills, Rol.USER, userdto.identificationNumber());
-    return userRepository.save(user);
+    @Override
+    public User saveUser(UserDto userdto) {
+        List<Bill> bills = new ArrayList<>();
+        User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
+                userdto.phoneNumber(), StateAccount.ASSET, bills, Rol.USER, userdto.identificationNumber());
+        return userRepository.save(user);
 
-  }
+    }
 
-  @Override
-  public List<User> getAllUser() {
-    return userRepository.findAll();
-  }
+    @Override
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
 
-  @Override
-  public boolean validateUser(UserDto userdto) {
+    @Override
+    public boolean validateUser(UserDto userdto) {
 
-    return userRepository.existsByEmailAndIdentificationNumber(userdto.email(), userdto.identificationNumber());
+        return userRepository.existsByEmailAndIdentificationNumber(userdto.email(), userdto.identificationNumber());
 
-  }
+    }
 
 }

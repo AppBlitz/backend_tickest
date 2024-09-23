@@ -7,7 +7,7 @@ package com.example.uniquindio.spring.model.vo;
 
 public class Bill {
 
-  @lombok.NonNull
-  String nameUser;
+    @lombok.NonNull
+    String nameUser;
 
 }

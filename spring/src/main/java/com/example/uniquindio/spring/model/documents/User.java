@@ -15,22 +15,22 @@ import com.example.uniquindio.spring.model.vo.Bill;
 @Document("User")
 public class User {
 
-  @lombok.NonNull
-  String fullName;
-  @lombok.NonNull
-  String password;
-  @lombok.NonNull
-  String email;
-  @lombok.NonNull
-  String address;
-  @lombok.NonNull
-  String phoneNumber;
-  @lombok.NonNull
-  StateAccount state;
-  @lombok.NonNull
-  List<Bill> bills;
-  @lombok.NonNull
-  Rol rol;
-  @lombok.NonNull
-  String identificationNumber;
+    @lombok.NonNull
+    String fullName;
+    @lombok.NonNull
+    String password;
+    @lombok.NonNull
+    String email;
+    @lombok.NonNull
+    String address;
+    @lombok.NonNull
+    String phoneNumber;
+    @lombok.NonNull
+    StateAccount state;
+    @lombok.NonNull
+    List<Bill> bills;
+    @lombok.NonNull
+    Rol rol;
+    @lombok.NonNull
+    String identificationNumber;
 }

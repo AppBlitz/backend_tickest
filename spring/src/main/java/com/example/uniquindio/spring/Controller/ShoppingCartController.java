@@ -12,7 +12,7 @@ import com.example.uniquindio.spring.service.ShoppingCartService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ShoppingCartController {
 
-  @Autowired
-  ShoppingCartService shoppingCartService;
+    @Autowired
+    ShoppingCartService shoppingCartService;
 
 }

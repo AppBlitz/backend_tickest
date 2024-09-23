@@ -9,7 +9,7 @@ import com.example.uniquindio.spring.service.interfaces.IShoppingCartService;
 @Service
 public class ShoppingCartService implements IShoppingCartService {
 
-  @Autowired
-  ShoppingCartRepository shoppingCartRepository;
+    @Autowired
+    ShoppingCartRepository shoppingCartRepository;
 
 }

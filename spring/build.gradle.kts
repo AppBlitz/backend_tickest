@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.6"
 }
 
-group = "com.example.uniquindio"
+group = "com.example"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -26,7 +26,6 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("org.springframework.boot:spring-boot-starter-mail")
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")

@@ -8,15 +8,15 @@ import java.util.List;
 @lombok.NoArgsConstructor
 public class Items {
 
-  int QuantityTicketsSold;
+    int QuantityTicketsSold;
 
-  @lombok.NonNull
-  String nameLocated;
+    @lombok.NonNull
+    String nameLocated;
 
-  @lombok.NonNull
-  String town;
+    @lombok.NonNull
+    String town;
 
-  @lombok.NonNull
-  List<String> positions;
+    @lombok.NonNull
+    List<String> positions;
 
 }

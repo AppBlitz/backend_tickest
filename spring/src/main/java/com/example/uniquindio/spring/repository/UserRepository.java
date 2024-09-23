@@ -10,7 +10,7 @@ import com.example.uniquindio.spring.model.documents.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
-  Optional<User> findByEmail(String email);
+    Optional<User> findByEmail(String email);
 
-  boolean existsByEmailAndIdentificationNumber(String email, String identificationNumber);
+    boolean existsByEmailAndIdentificationNumber(String email, String identificationNumber);
 }
