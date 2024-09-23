@@ -9,7 +9,7 @@ import { UserContext } from "./context/UserContext.ts";
 import { registerUser } from "./register.ts";
 import { Users } from "../../interface/User/UserInterface.ts";
 
-const Aux = () => {
+const Auxiliar = () => {
   const { User } = useContext(UserContext);
   function sendUser() {
     const user: Users = {
@@ -36,4 +36,4 @@ const Aux = () => {
     </div>
   );
 };
-export { Aux };
+export { Auxiliaar };
