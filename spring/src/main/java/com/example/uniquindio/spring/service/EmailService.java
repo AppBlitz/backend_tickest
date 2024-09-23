@@ -1,7 +1,11 @@
 package com.example.uniquindio.spring.service;
 
+<<<<<<< HEAD
 import com.example.uniquindio.spring.dto.emaildto.EmailDto;
 
+=======
+import com.example.uniquindio.spring.dto.emaildto.EamilDto;
+>>>>>>> fabian
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -20,7 +24,12 @@ public class EmailService {
     @Value("${spring.mail.username}")
     private String sender;
 
+<<<<<<< HEAD
     public void sendEmailRegister(EmailDto dto) throws Exception {
+=======
+
+    public void sendFirstPurchaseCouponMail(EamilDto dto) throws Exception{
+>>>>>>> fabian
         SimpleMailMessage mimeMessage = new SimpleMailMessage();
 
         mimeMessage.setFrom(sender);
@@ -31,7 +40,11 @@ public class EmailService {
         sendMessage(mimeMessage);
     }
 
+<<<<<<< HEAD
     private void sendMessage(SimpleMailMessage mimeMessage) throws Exception {
+=======
+    private void sendMessage(SimpleMailMessage mimeMessage) throws Exception{
+>>>>>>> fabian
         try {
             mailSender.send(mimeMessage);
         } catch (MailException e) {
