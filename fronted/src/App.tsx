@@ -1,10 +1,13 @@
-import { Register } from "./components/index.ts";
+import { Link } from "react-router-dom";
 import "./App.css";
+
 
 function App() {
   return (
     <>
-      <Register />
+
+      <Link to={"register"}>register</Link>
+
     </>
   );
 }
