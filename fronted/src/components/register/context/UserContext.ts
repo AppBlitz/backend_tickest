@@ -7,6 +7,8 @@ interface users {
 
 const userValue: users = {
   User: {
+fullName:"",
+    identificationNumber:"",
   },
   setUser: () => undefined
 }

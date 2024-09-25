@@ -8,6 +8,8 @@ interface props {
 
 const StateContext = ({ children }: props) => {
   const [User, setUser] = React.useState<Users>({
+    fullName:"",
+    identificationNumber:""
   });
   return (
     <UserContext.Provider value={{ User, setUser }}>
