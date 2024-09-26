@@ -1,8 +1,6 @@
 package com.example.uniquindio.spring.service;
 
-
 import com.example.uniquindio.spring.dto.emaildto.EmailDto;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,21 +20,19 @@ public class EmailService {
     @Value("${spring.mail.username}")
     private String sender;
 
-
     public void sendEmailRegister(EmailDto dto) throws Exception {
 
         SimpleMailMessage mimeMessage = new SimpleMailMessage();
 
         mimeMessage.setFrom(sender);
         mimeMessage.setTo(dto.email());
-        mimeMessage.setSubject("Primera compra en | Cupón de 10% de DCTO");
-        mimeMessage.setText(String.format("Tu codigo de cupón para un 10%% de descuento es: %s","hello"));
+        mimeMessage.setSubject(dto.subject());
+        mimeMessage.setText(String.format(dto.message() + " %s", dto.code()));
         mimeMessage.setCc(dto.email());
         sendMessage(mimeMessage);
     }
 
-
-    private void sendMessage(SimpleMailMessage mimeMessage) throws Exception{
+    private void sendMessage(SimpleMailMessage mimeMessage) throws Exception {
 
         try {
             mailSender.send(mimeMessage);

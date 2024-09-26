@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.UserDto;
+import com.example.uniquindio.spring.dto.emaildto.EmailDto;
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.model.enums.Rol;
 import com.example.uniquindio.spring.model.enums.StateAccount;
@@ -21,18 +22,24 @@ public class UserService implements IUserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    EmailService emailService;
+
     @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public User saveUser(UserDto userdto) {
+    public User saveUser(UserDto userdto) throws Exception {
         List<Bill> bills = new ArrayList<>();
+        String code = validateTokens();
         User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
-                userdto.phoneNumber(), StateAccount.ASSET, bills, Rol.USER, userdto.identificationNumber());
+                userdto.phoneNumber(), StateAccount.IDLE, bills, Rol.USER, userdto.identificationNumber(), code);
+        EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta",
+                code);
+        emailService.sendEmailRegister((emaildto));
         return userRepository.save(user);
-
     }
 
     @Override
@@ -45,6 +52,16 @@ public class UserService implements IUserService {
 
         return userRepository.existsByEmailAndIdentificationNumber(userdto.email(), userdto.identificationNumber());
 
+    }
+
+    public String validateTokens() {
+        String code = "";
+        boolean centinela = true;
+        while (centinela != false) {
+            code = "AQWER3455";
+            centinela = userRepository.existsBycodeValidator((code));
+        }
+        return code;
     }
 
 }

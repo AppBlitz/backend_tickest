@@ -30,9 +30,10 @@ public class AccountController {
      *
      * @param userdto
      * @return
+     * @throws Exception
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) {
+    public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) throws Exception {
         if (userService.validateUser(userdto) != true) {
             User user = userService.saveUser((userdto));
             return ResponseEntity.status(200).body(user);
@@ -42,7 +43,12 @@ public class AccountController {
 
     }
 
-    @RequestMapping(value = "email", method = RequestMethod.POST)
+    /**
+     * Method for send email user when register
+     * 
+     * @param emaildto
+     * @throws Exception
+     */
     public void sendEmail(@RequestBody() EmailDto emaildto) throws Exception {
         emailService.sendEmailRegister(emaildto);
     }

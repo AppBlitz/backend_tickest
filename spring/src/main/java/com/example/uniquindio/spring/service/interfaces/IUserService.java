@@ -14,7 +14,7 @@ public interface IUserService {
      * @param userdto
      * @return Object User saved
      */
-    public User saveUser(UserDto userdto);
+    public User saveUser(UserDto userdto) throws Exception;
 
     /**
      * Search for all Users

@@ -33,4 +33,7 @@ public class User {
     Rol rol;
     @lombok.NonNull
     String identificationNumber;
+    @lombok.NonNull
+    String codeValidator;
+
 }

@@ -1,7 +1,7 @@
 import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
-import { registerUser } from "./register.ts";
 import { Users } from "../../interface/User/UserInterface.ts";
+import { api } from "../../api/api.ts";
 function Register() {
   const {
     register,
@@ -9,8 +9,23 @@ function Register() {
     formState: { errors },
   } = useForm<Users>();
 
+  const registerUser = (user: Users) => {
+    api
+      .post("/account/add", {
+        fullName: user.fullName,
+        email: user.email,
+        address: user.address,
+        password: user.password,
+        phoneNumber: user.phoneNumber,
+        identificationNumber: user.identificationNumber,
+      })
+      .catch((error) => {
+        console.log("error" + error);
+      })
+      .finally();
+  };
   return (
-    <div className="">
+    <div>
       <form onSubmit={handleSubmit(registerUser)}>
         <div>
           <label>Nombre completo</label>
@@ -29,7 +44,6 @@ function Register() {
         <div>
           <label>Número de cedula</label>
           <Input
-            className="w-52 border-red-900"
             placeholder="Número de cedula"
             type="text"
             {...register("identificationNumber", {
@@ -75,7 +89,7 @@ function Register() {
           )}
         </div>
         <div>
-          <label>Dirección de residencia</label>
+          <label className="text-red-600">Dirección de residencia</label>
           <Input
             placeholder="Dirección de residencia"
             type="text"
