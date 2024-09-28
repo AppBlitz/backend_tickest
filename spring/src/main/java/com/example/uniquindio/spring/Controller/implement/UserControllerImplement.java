@@ -25,12 +25,6 @@ public class UserControllerImplement implements UserController {
     @Autowired
     UserService userService;
 
-    /**
-     * TODO: Method
-     *
-     * @param email
-     * @return
-     */
     @Override
     @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
     public ResponseEntity<Optional<User>> findByEmail(@PathVariable("email") String email)
@@ -39,11 +33,6 @@ public class UserControllerImplement implements UserController {
         return ResponseEntity.status(200).body(user);
     }
 
-    /**
-     * TODO: Method for obtaining all users
-     *
-     * @return
-     */
     @Override
     @RequestMapping(value = "/user/all", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getAll() throws Exception {

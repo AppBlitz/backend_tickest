@@ -9,29 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.uniquindio.spring.Controller.AccountController;
 import com.example.uniquindio.spring.dto.UserDto;
 import com.example.uniquindio.spring.dto.user.UpdateUserDtoRegister;
-import com.example.uniquindio.spring.service.EmailService;
 import com.example.uniquindio.spring.service.UserService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("account")
-public class AccountController {
+public class AccountControllerImplement implements AccountController {
 
     @Autowired
     UserService userService;
 
-    @Autowired
-    EmailService emailService;
-
-    /**
-     * TODO: method create user
-     *
-     * @param userdto
-     * @return
-     * @throws Exception
-     */
+    @Override
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) throws Exception {
         if (userService.validateUser(userdto) != true) {
@@ -43,7 +34,8 @@ public class AccountController {
 
     }
 
-    @RequestMapping(value = "/updateRegister", method = RequestMethod.PUT)
+    @Override
+    @RequestMapping(value = "/update/register", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserRegister(@RequestBody() UpdateUserDtoRegister updateUserRegister)
             throws Exception {
         return ResponseEntity.status((200)).body(userService.updateUser(updateUserRegister));

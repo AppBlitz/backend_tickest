@@ -39,7 +39,7 @@ public class EmailService {
         mimeMessage.setFrom(sender);
         mimeMessage.setTo(dto.email());
         mimeMessage.setSubject(dto.subject());
-        mimeMessage.setText(String.format(dto.message() + " %s", dto.code()));
+        mimeMessage.setText(dto.message() + " " + dto.code());
         mimeMessage.setCc(dto.email());
         sendMessage(mimeMessage);
     }

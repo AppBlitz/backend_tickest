@@ -5,12 +5,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.uniquindio.spring.Controller.ShoppingCartController;
 import com.example.uniquindio.spring.service.ShoppingCartService;
 
 @RestController
 @RequestMapping("/shoppingCart")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class ShoppingCartController {
+public class ShoppingCartControllerImplement implements ShoppingCartController {
 
     @Autowired
     ShoppingCartService shoppingCartService;

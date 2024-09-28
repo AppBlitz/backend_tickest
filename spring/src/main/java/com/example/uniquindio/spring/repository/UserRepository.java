@@ -15,5 +15,7 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     boolean existsBycodeValidator(String codeValidator);
 
+    Optional<User> findByEmailAndCodeValidator(String email, String codeValidator);
+
     Optional<User> findByEmailAndPassword(String email, String password);
 }
