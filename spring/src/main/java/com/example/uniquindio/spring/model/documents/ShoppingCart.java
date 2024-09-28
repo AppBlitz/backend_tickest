@@ -3,6 +3,7 @@ package com.example.uniquindio.spring.model.documents;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.uniquindio.spring.model.vo.Items;
@@ -14,6 +15,8 @@ import com.example.uniquindio.spring.model.vo.Items;
 @Document("ShoppingCart")
 public class ShoppingCart {
 
+    @Id
+    String id;
     @lombok.NonNull
     String nameUser;
 
