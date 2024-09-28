@@ -72,8 +72,8 @@ public class UserService implements IUserService {
     @Override
     public User updateUser(UpdateUserDtoRegister updateUserDtoRegister) throws Exception {
 
-        Optional<User> updateUser = userRepository.findByEmailAndCodeValidator(updateUserDtoRegister.email(),
-                updateUserDtoRegister.codeValidator());
+        Optional<User> updateUser = userRepository.findByEmailAndCodeValidatorAndPassword(updateUserDtoRegister.email(),
+                updateUserDtoRegister.codeValidator(), updateUserDtoRegister.password());
         if (updateUser.isEmpty()) {
             throw new RuntimeException(" User not found");
         } else {
@@ -84,7 +84,7 @@ public class UserService implements IUserService {
             userRepository.save(user);
             user.setCodeValidator("IDLE");
             EmailDto emaildto = new EmailDto(user.getEmail(),
-                    "Código de descuento \n el código solo es aplicable para un compra \n desceunto del 15 % \n",
+                    "Código de descuento \n el código solo es aplicable para un compra \n descuento del 15 % \n",
                     "Código de descuento",
                     code);
             emailService.sendDescountCode(emaildto);
