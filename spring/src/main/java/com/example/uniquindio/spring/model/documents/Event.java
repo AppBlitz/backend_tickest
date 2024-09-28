@@ -24,10 +24,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 
 public class Event {
-    
 
-    @Id
-    String id;
     @NonNull
     String nameEvent;
     @NonNull
