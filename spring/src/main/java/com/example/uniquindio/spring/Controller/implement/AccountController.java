@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.Controller;
+package com.example.uniquindio.spring.Controller.implement;
 
 import com.example.uniquindio.spring.model.documents.User;
 import org.springframework.beans.factory.annotation.Autowired;

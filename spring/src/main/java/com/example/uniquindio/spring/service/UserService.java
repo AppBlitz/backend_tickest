@@ -11,6 +11,9 @@ import com.example.uniquindio.spring.dto.UserDto;
 import com.example.uniquindio.spring.dto.emaildto.EmailDto;
 import com.example.uniquindio.spring.dto.user.LoginUser;
 import com.example.uniquindio.spring.dto.user.UpdateUserDtoRegister;
+import com.example.uniquindio.spring.exception.EmailInvalidException;
+import com.example.uniquindio.spring.exception.PasswordInvalidException;
+import com.example.uniquindio.spring.exception.UserException;
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.model.enums.Rol;
 import com.example.uniquindio.spring.model.enums.StateAccount;
@@ -28,7 +31,7 @@ public class UserService implements IUserService {
     EmailService emailService;
 
     @Override
-    public Optional<User> findByEmail(String email) {
+    public Optional<User> findByEmail(String email) throws EmailInvalidException {
         return userRepository.findByEmail(email);
     }
 
@@ -50,7 +53,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean validateUser(UserDto userdto) {
+    public boolean validateUser(UserDto userdto) throws UserException {
 
         return userRepository.existsByEmailAndIdentificationNumber(userdto.email(), userdto.identificationNumber());
 
@@ -66,6 +69,7 @@ public class UserService implements IUserService {
         return code;
     }
 
+    @Override
     public User updateUser(UpdateUserDtoRegister updateUserDtoRegister) throws Exception {
 
         Optional<User> updateUser = userRepository.findByEmail(updateUserDtoRegister.email());
@@ -78,20 +82,20 @@ public class UserService implements IUserService {
             user.setCodeDiscountRegister((code));
             userRepository.save((user));
 
-            /*
-             * EmailDto emaildto = new EmailDto(user.getEmail(),
-             * "Código de descuento \n el código solo es aplicable para un compra \n desceunto del 15 % \n"
-             * ,
-             * "Código de descuento",
-             * code);
-             * emailService.sendEmailRegister((emaildto))
-             */
+            EmailDto emaildto = new EmailDto(user.getEmail(),
+                    "Código de descuento \n el código solo es aplicable para un compra \n desceunto del 15 % \n",
+                    "Código de descuento",
+                    code);
+            emailService.sendDescountCode((emaildto));
+
             return user;
         }
 
     }
 
-    public Optional<User> findByEmailAndPassword(LoginUser loginUser) {
+    @Override
+    public Optional<User> findByEmailAndPassword(LoginUser loginUser)
+            throws EmailInvalidException, PasswordInvalidException {
         return userRepository.findByEmailAndPassword((loginUser.email()), loginUser.password());
     }
 }
