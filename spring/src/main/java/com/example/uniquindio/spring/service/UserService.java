@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.UserDto;
 import com.example.uniquindio.spring.dto.emaildto.EmailDto;
+import com.example.uniquindio.spring.dto.user.UpdateUserDtoRegister;
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.model.enums.Rol;
 import com.example.uniquindio.spring.model.enums.StateAccount;
@@ -35,7 +36,7 @@ public class UserService implements IUserService {
         List<Bill> bills = new ArrayList<>();
         String code = validateTokens();
         User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
-                userdto.phoneNumber(), StateAccount.IDLE, bills, Rol.USER, userdto.identificationNumber(), code);
+                userdto.phoneNumber(), StateAccount.IDLE, bills, Rol.USER, userdto.identificationNumber(), code, "");
         EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta",
                 code);
         emailService.sendEmailRegister((emaildto));
@@ -62,6 +63,31 @@ public class UserService implements IUserService {
             centinela = userRepository.existsBycodeValidator((code));
         }
         return code;
+    }
+
+    public User updateUser(UpdateUserDtoRegister updateUserDtoRegister) throws Exception {
+
+        Optional<User> updateUser = userRepository.findByEmail(updateUserDtoRegister.email());
+        if (updateUser.isEmpty()) {
+            throw new RuntimeException(" User not found");
+        } else {
+            String code = "JVNSIN8767";
+            User user = updateUser.get();
+            user.setState((StateAccount.ASSET));
+            user.setCodeDiscountRegister((code));
+            userRepository.save((user));
+
+            /*
+             * EmailDto emaildto = new EmailDto(user.getEmail(),
+             * "Código de descuento \n el código solo es aplicable para un compra \n desceunto del 15 % \n"
+             * ,
+             * "Código de descuento",
+             * code);
+             * emailService.sendEmailRegister((emaildto))
+             */
+            return user;
+        }
+
     }
 
 }

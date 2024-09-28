@@ -2,6 +2,7 @@ package com.example.uniquindio.spring.model.documents;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.uniquindio.spring.model.enums.Rol;
@@ -14,6 +15,9 @@ import com.example.uniquindio.spring.model.vo.Bill;
 @lombok.ToString
 @Document("User")
 public class User {
+
+    @Id
+    String id;
 
     @lombok.NonNull
     String fullName;
@@ -35,5 +39,7 @@ public class User {
     String identificationNumber;
     @lombok.NonNull
     String codeValidator;
+    @lombok.NonNull
+    String codeDiscountRegister;
 
 }

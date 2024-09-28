@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.uniquindio.spring.dto.UserDto;
-import com.example.uniquindio.spring.dto.emaildto.EmailDto;
+import com.example.uniquindio.spring.dto.user.UpdateUserDtoRegister;
 import com.example.uniquindio.spring.service.EmailService;
 import com.example.uniquindio.spring.service.UserService;
 
@@ -43,13 +43,9 @@ public class AccountController {
 
     }
 
-    /**
-     * Method for send email user when register
-     * 
-     * @param emaildto
-     * @throws Exception
-     */
-    public void sendEmail(@RequestBody() EmailDto emaildto) throws Exception {
-        emailService.sendEmailRegister(emaildto);
+    @RequestMapping(value = "/updateRegister", method = RequestMethod.PUT)
+    public ResponseEntity<User> updateUserRegister(@RequestBody() UpdateUserDtoRegister updateUserRegister)
+            throws Exception {
+        return ResponseEntity.status((200)).body(userService.updateUser(updateUserRegister));
     }
 }
