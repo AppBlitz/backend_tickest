@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.UserDto;
 import com.example.uniquindio.spring.dto.emaildto.EmailDto;
+import com.example.uniquindio.spring.dto.user.LoginUser;
 import com.example.uniquindio.spring.dto.user.UpdateUserDtoRegister;
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.model.enums.Rol;
@@ -90,4 +91,7 @@ public class UserService implements IUserService {
 
     }
 
+    public Optional<User> findByEmailAndPassword(LoginUser loginUser) {
+        return userRepository.findByEmailAndPassword((loginUser.email()), loginUser.password());
+    }
 }

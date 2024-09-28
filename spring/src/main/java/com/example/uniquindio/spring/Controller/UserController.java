@@ -3,6 +3,7 @@ package com.example.uniquindio.spring.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.uniquindio.spring.dto.user.LoginUser;
 import com.example.uniquindio.spring.model.documents.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +46,12 @@ public class UserController {
         List<User> users = userService.getAllUser();
         return ResponseEntity.status(200).body(users);
     }
+
+    @RequestMapping(value = "/user/login", method = RequestMethod.GET)
+    public ResponseEntity<Optional<User>> login(LoginUser loginUser) {
+        Optional<User> user = userService.findByEmailAndPassword((loginUser));
+        return ResponseEntity.status(200).body(user);
+
+    }
+
 }
