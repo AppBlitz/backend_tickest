@@ -30,6 +30,9 @@ public class UserService implements IUserService {
     @Autowired
     EmailService emailService;
 
+    @Autowired
+    CouponService couponService;
+
     @Override
     public Optional<User> findByEmail(String email) throws EmailInvalidException {
         return userRepository.findByEmail(email);
@@ -38,7 +41,7 @@ public class UserService implements IUserService {
     @Override
     public User saveUser(UserDto userdto) throws Exception {
         List<Bill> bills = new ArrayList<>();
-        String code = validateTokens();
+        String code = couponService.getActivateAccount(20);
         User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
                 userdto.phoneNumber(), StateAccount.IDLE, bills, Rol.USER, userdto.identificationNumber(), code, "");
         EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta",
@@ -59,16 +62,6 @@ public class UserService implements IUserService {
 
     }
 
-    public String validateTokens() {
-        String code = "";
-        boolean centinela = true;
-        while (centinela != false) {
-            code = "AQWER3455";
-            centinela = userRepository.existsBycodeValidator((code));
-        }
-        return code;
-    }
-
     @Override
     public User updateUser(UpdateUserDtoRegister updateUserDtoRegister) throws Exception {
 
@@ -77,12 +70,12 @@ public class UserService implements IUserService {
         if (updateUser.isEmpty()) {
             throw new RuntimeException(" User not found");
         } else {
-            String code = "JVNSIN8767";
+            String code = couponService.getCouponDescountRegiserFisrt(20);
             User user = updateUser.get();
             user.setState((StateAccount.ASSET));
             user.setCodeDiscountRegister(code);
-            userRepository.save(user);
             user.setCodeValidator("IDLE");
+            userRepository.save(user);
             EmailDto emaildto = new EmailDto(user.getEmail(),
                     "Código de descuento \n el código solo es aplicable para un compra \n descuento del 15 % \n",
                     "Código de descuento",

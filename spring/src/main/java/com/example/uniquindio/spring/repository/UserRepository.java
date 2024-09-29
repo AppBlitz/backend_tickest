@@ -11,11 +11,16 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     Optional<User> findByEmail(String email);
 
+    Optional<User> findByEmailAndCodeValidatorAndPassword(String email, String codeValidator, String password);
+
+    Optional<User> findByEmailAndPassword(String email, String password);
+
     boolean existsByEmailAndIdentificationNumber(String email, String identificationNumber);
 
     boolean existsBycodeValidator(String codeValidator);
 
-    Optional<User> findByEmailAndCodeValidatorAndPassword(String email, String codeValidator, String password);
+    /* boolean existsdByCodeDiscountRegister(String codeDiscountRegister); */
 
-    Optional<User> findByEmailAndPassword(String email, String password);
+    boolean existsByCodeDiscountRegister(String codeDiscountRegister);
+
 }
