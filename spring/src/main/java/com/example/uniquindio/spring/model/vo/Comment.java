@@ -8,13 +8,13 @@ import lombok.NonNull;
 
 public class Comment {
 
-  @NonNull
-  User user;
+    @NonNull
+    User user;
 
-  @NonNull
-  LocalDateTime localData;
+    @NonNull
+    LocalDateTime localData;
 
-  @NonNull
-  String comment;
+    @NonNull
+    String comment;
 
 }
