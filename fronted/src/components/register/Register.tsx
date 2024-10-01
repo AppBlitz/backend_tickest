@@ -2,6 +2,8 @@ import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { Users } from "../../interface/User/UserInterface.ts";
 import { api } from "../../api/api.ts";
+import { Link } from "react-router-dom"
+
 function Register() {
   const {
     register,
@@ -114,8 +116,9 @@ function Register() {
             </p>
           )}
         </div>
-        <button> Crear</button>
+        <button>Crear</button>
       </form>
+      <Link to={"/"}> home</Link>
     </div>
   );
 }

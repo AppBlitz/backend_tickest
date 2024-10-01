@@ -41,7 +41,7 @@ public class UserControllerImplement implements UserController {
     }
 
     @Override
-    @RequestMapping(value = "/user/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ResponseEntity<Optional<User>> login(@RequestBody() LoginUser loginUser) throws Exception {
         Optional<User> user = userService.findByEmailAndPassword((loginUser));
         return ResponseEntity.status(200).body(user);

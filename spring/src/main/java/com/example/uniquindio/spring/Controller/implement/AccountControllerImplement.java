@@ -34,7 +34,6 @@ public class AccountControllerImplement implements AccountController {
 
     }
 
-    @Override
     @RequestMapping(value = "/update/register", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserRegister(@RequestBody() UpdateUserDtoRegister updateUserRegister)
             throws Exception {
