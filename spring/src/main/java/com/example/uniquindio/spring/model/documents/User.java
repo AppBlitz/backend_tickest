@@ -2,10 +2,11 @@ package com.example.uniquindio.spring.model.documents;
 
 import java.util.List;
 
+import lombok.NonNull;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.uniquindio.spring.model.enums.StateAccount;
-import com.example.uniquindio.spring.model.vo.Bill;
+import com.example.uniquindio.spring.model.vo.Invoice;
 
 @lombok.NoArgsConstructor
 @lombok.Data
@@ -14,6 +15,8 @@ import com.example.uniquindio.spring.model.vo.Bill;
 @Document("User")
 public class User {
 
+  @NonNull
+  String id;
   @lombok.NonNull
   String fullName;
   @lombok.NonNull
@@ -27,5 +30,5 @@ public class User {
   @lombok.NonNull
   StateAccount state;
   @lombok.NonNull
-  List<Bill> bills;
+  List<Invoice> invoice;
 }
