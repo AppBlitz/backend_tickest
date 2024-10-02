@@ -3,7 +3,7 @@ package com.example.uniquindio.spring.service.invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.uniquindio.spring.repository.InvoiceRepository;
-import com.example.uniquindio.spring.model.vo.Invoice;
+import com.example.uniquindio.spring.model.documents.Invoice;
 
 @Service
 public class InvoiceServices {

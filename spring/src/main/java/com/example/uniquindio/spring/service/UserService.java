@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.uniquindio.spring.model.documents.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,6 @@ import com.example.uniquindio.spring.exception.UserException;
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.model.enums.Rol;
 import com.example.uniquindio.spring.model.enums.StateAccount;
-import com.example.uniquindio.spring.model.vo.Bill;
 import com.example.uniquindio.spring.repository.UserRepository;
 import com.example.uniquindio.spring.service.interfaces.IUserService;
 
@@ -40,15 +40,42 @@ public class UserService implements IUserService {
 
     @Override
     public User saveUser(UserDto userdto) throws Exception {
-        List<Bill> bills = new ArrayList<>();
+        // Create an empty user object
+        User user = new User();
+
+        // Set the user data
+        user.setFullName(userdto.fullName());
+        user.setPassword(userdto.password());
+        user.setEmail(userdto.email());
+        user.setAddress(userdto.address());
+        user.setPhoneNumber(userdto.phoneNumber());
+
+        // Set the account state to idle
+        user.setState(StateAccount.IDLE);
+
+        // Initialize invoices list
+        List<String> invoices = new ArrayList<>();
+        user.setInvoices(invoices);
+
+        // Set the role as USER
+        user.setRol(Rol.USER);
+
+        // Set the identification number and other details
+        user.setIdentificationNumber(userdto.identificationNumber());
+
+        // Generate activation code
         String code = couponService.getActivateAccount(20);
-        User user = new User(userdto.fullName(), userdto.password(), userdto.email(), userdto.address(),
-                userdto.phoneNumber(), StateAccount.IDLE, bills, Rol.USER, userdto.identificationNumber(), code, "");
-        EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta",
-                code);
+        user.setCodeValidator(code);
+        user.setCodeDiscountRegister("");
+
+        // Prepare and send the activation email
+        EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta", code);
         emailService.sendEmailRegister((emaildto));
+
+        // Save the user object in the repository
         return userRepository.save(user);
     }
+
 
     @Override
     public List<User> getAllUser() {

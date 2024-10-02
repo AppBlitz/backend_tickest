@@ -8,7 +8,7 @@ import lombok.Data;
 import org.springframework.stereotype.Service;
 
 @Data
-@Document("Store")
+@Document("store")
 public class Store {
 
   @Id
