@@ -23,7 +23,7 @@ public class AccountControllerImplement implements AccountController {
     UserService userService;
 
     @Override
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) throws Exception {
         if (userService.validateUser(userdto) != true) {
             User user = userService.saveUser((userdto));
@@ -34,7 +34,6 @@ public class AccountControllerImplement implements AccountController {
 
     }
 
-    @Override
     @RequestMapping(value = "/update/register", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUserRegister(@RequestBody() UpdateUserDtoRegister updateUserRegister)
             throws Exception {
