@@ -3,10 +3,9 @@ package com.example.uniquindio.spring.dto;
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
 import com.example.uniquindio.spring.model.vo.Comment;
-import com.example.uniquindio.spring.model.vo.Locality;
+import com.example.uniquindio.spring.model.vo.items.Locality;
 import lombok.NonNull;
 
-import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -32,6 +31,8 @@ public record EventDto(
                        @NonNull
                        List<Comment> comments,
                        @NonNull
-                       StateEvent stateEvent) {
+                       StateEvent stateEvent,
+                       @NonNull
+                       Integer capacity) {
 
 }

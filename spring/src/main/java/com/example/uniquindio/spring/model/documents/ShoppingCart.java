@@ -3,33 +3,30 @@ package com.example.uniquindio.spring.model.documents;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.example.uniquindio.spring.model.vo.information.UserInformation;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.example.uniquindio.spring.model.vo.Items;
+import com.example.uniquindio.spring.model.vo.items.Item;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.ToString
-@lombok.RequiredArgsConstructor
-@Document("ShoppingCart")
+@Data
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
+@Document("shoppingCart")
+@Builder
 public class ShoppingCart {
 
-    @lombok.NonNull
-    String nameUser;
+    @Id
+    String id;
 
-    @lombok.NonNull
-    String email;
+    //user information
+    @NonNull
+    UserInformation userInformation;
 
-    @lombok.NonNull
-    LocalDate localData;
+    @NonNull
+    List<Item> items;
 
-    @lombok.NonNull
-    List<Items> items;
-
-    @lombok.NonNull
-    String phoneNumber;
-
-    @lombok.NonNull
-    String identificationNumber;
 
 }
