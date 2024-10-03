@@ -1,4 +1,5 @@
 package com.example.uniquindio.spring.model.vo.items;
+
 import com.example.uniquindio.spring.model.enums.CouponType;
 import com.example.uniquindio.spring.model.enums.ItemType;
 import jakarta.validation.constraints.DecimalMax;
@@ -32,5 +33,6 @@ public class Coupon {
     private float discount_percentage;
     @Builder.Default
     private LocalDate date = LocalDate.now();
+
 
 }
