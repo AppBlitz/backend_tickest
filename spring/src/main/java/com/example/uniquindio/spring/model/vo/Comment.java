@@ -6,10 +6,15 @@ import com.example.uniquindio.spring.model.documents.User;
 
 import lombok.NonNull;
 
+@lombok.NoArgsConstructor
+@lombok.Data
+@lombok.RequiredArgsConstructor
+@lombok.ToString
+
 public class Comment {
 
     @NonNull
-    User user;
+    String user;
 
     @NonNull
     LocalDateTime localData;

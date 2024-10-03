@@ -9,24 +9,32 @@ import org.springframework.stereotype.Service;
 import com.example.uniquindio.spring.repository.EventRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService implements IEventService {
 
-@Autowired
-EventRepository eventRepository;
+    @Autowired
+    EventRepository eventRepository;
 
 
     @Override
-    public void saveOrEditEvent(EventDto eventdto) {
-        Event event=new Event(eventdto.nameEvent(),eventdto.adressEvent(),eventdto.city(), eventdto.descriptionEvent(),
-                eventdto.eventType(), eventdto.imageEvent(), eventdto.imageLocality(),eventdto.date(),eventdto.locality(),
-                eventdto.comments(),eventdto.stateEvent());
+    public Event saveEvent(EventDto eventdto) {
+        Event event=eventdtoTOEvent(eventdto);
         eventRepository.save(event);
+        return event;
     }
 
     @Override
-    public void deleteEvent(EventDto eventdto) {
+    public void editEvent(EventDto eventdto) {
+
+
+    }
+
+    @Override
+    public void deleteEvent(String id) {
+        //faltan tikets
+        eventRepository.deleteById(id);
 
     }
 
@@ -37,22 +45,39 @@ EventRepository eventRepository;
 
     @Override
     public List<Event> getAllEventsByCity(String city) {
-        return List.of();
+        return eventRepository.findByCity(city);
     }
 
     @Override
     public List<Event> getAllEventsByName(String nameEvent) {
-        return List.of();
+        return eventRepository.findByNameEvent(nameEvent);
     }
 
     @Override
     public List<Event> getAllEventsByType(EventType eventType) {
-        return List.of();
+        return eventRepository.findByEventType(eventType);
     }
 
     @Override
-    public List<Event> getAllEvents() {
-        return List.of();
+    public List<Event> getAllEvents() {return eventRepository.findAll();}
+
+    public Event eventdtoTOEvent(EventDto eventdto){
+        Event event=new Event();
+        //faltan tikets
+        event.setNameEvent(eventdto.nameEvent());
+        event.setAdressEvent(eventdto.adressEvent());
+        event.setCity(eventdto.city());
+        event.setDescriptionEvent(eventdto.descriptionEvent());
+        event.setEventType(eventdto.eventType());
+        event.setImageEvent(eventdto.imageEvent());
+        event.setImageLocality(eventdto.imageLocality());
+        event.setDate(eventdto.date());
+        event.setLocality(eventdto.locality());
+        event.setCapacity(eventdto.capacity());
+        event.setComments(eventdto.comments());
+        event.setStateEvent(eventdto.stateEvent());
+
+        return event;
     }
 
 }

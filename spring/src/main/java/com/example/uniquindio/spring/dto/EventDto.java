@@ -7,6 +7,7 @@ import com.example.uniquindio.spring.model.vo.items.Locality;
 import lombok.NonNull;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public record EventDto(
@@ -25,9 +26,11 @@ public record EventDto(
                        @NonNull
                        String imageLocality,
                        @NonNull
-                       LocalDate date,
+                       LocalDateTime date,
                        @NonNull
                        List<Locality> locality,
+                       @NonNull
+                       int capacity,
                        @NonNull
                        List<Comment> comments,
                        @NonNull
