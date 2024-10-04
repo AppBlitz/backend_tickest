@@ -2,11 +2,10 @@ package com.example.uniquindio.spring.dto;
 
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
-import com.example.uniquindio.spring.model.vo.Comment;
+import com.example.uniquindio.spring.model.vo.items.Comment;
 import com.example.uniquindio.spring.model.vo.items.Locality;
 import lombok.NonNull;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,13 +28,11 @@ public record EventDto(
                        LocalDateTime date,
                        @NonNull
                        List<Locality> locality,
-                       @NonNull
+
                        int capacity,
                        @NonNull
                        List<Comment> comments,
                        @NonNull
-                       StateEvent stateEvent,
-                       @NonNull
-                       Integer capacity) {
+                       StateEvent stateEvent) {
 
 }

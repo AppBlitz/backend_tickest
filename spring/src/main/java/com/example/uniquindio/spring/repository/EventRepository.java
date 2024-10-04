@@ -8,13 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import com.example.uniquindio.spring.model.documents.Event;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface EventRepository extends MongoRepository<Event, String> {
 
-    Optional<Event> findById(String id);
+    public List<Event> getAllEventsByDate(LocalDateTime date);
 
     List<Event> findByNameEvent(String nameEvent);
 

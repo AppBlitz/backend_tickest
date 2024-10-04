@@ -1,14 +1,18 @@
 package com.example.uniquindio.spring.service;
 
 import com.example.uniquindio.spring.dto.EventDto;
+import com.example.uniquindio.spring.exception.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
+import com.example.uniquindio.spring.model.enums.StateEvent;
 import com.example.uniquindio.spring.service.interfaces.IEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.uniquindio.spring.repository.EventRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -19,28 +23,30 @@ public class EventService implements IEventService {
 
 
     @Override
-    public Event saveEvent(EventDto eventdto) {
+    public Event saveEvent(EventDto eventdto) throws EventException {
         Event event=eventdtoTOEvent(eventdto);
         eventRepository.save(event);
         return event;
     }
 
     @Override
-    public void editEvent(EventDto eventdto) {
+    public Event editEvent(EventDto eventdto) {
 
-
+        return eventRepository.save(eventdtoTOEvent(eventdto));
     }
 
     @Override
-    public void deleteEvent(String id) {
-        //faltan tikets
-        eventRepository.deleteById(id);
+    public Event deleteEvent(String id) {
 
-    }
-
-    @Override
-    public void generateReports(Event event) {
-
+        Optional<Event> event = eventRepository.findById(id);
+        if (event.isPresent()) {
+            Event updatedEvent = event.get();
+            updatedEvent.setStateEvent(StateEvent.IDLE);
+            eventRepository.save(updatedEvent);
+            return updatedEvent;
+        } else {
+            throw new EventException("Evento no encontrado");
+        }
     }
 
     @Override
@@ -49,7 +55,7 @@ public class EventService implements IEventService {
     }
 
     @Override
-    public List<Event> getAllEventsByName(String nameEvent) {
+    public List<Event> getAllEventsByName(String nameEvent) throws EventException {
         return eventRepository.findByNameEvent(nameEvent);
     }
 
@@ -60,6 +66,10 @@ public class EventService implements IEventService {
 
     @Override
     public List<Event> getAllEvents() {return eventRepository.findAll();}
+
+    public List<Event> getAllEventsByDate(LocalDateTime date) {
+        return eventRepository.findByDate(date);
+    }
 
     public Event eventdtoTOEvent(EventDto eventdto){
         Event event=new Event();

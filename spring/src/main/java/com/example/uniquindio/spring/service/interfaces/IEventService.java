@@ -11,11 +11,10 @@ public interface IEventService {
 
     public Event saveEvent(EventDto eventdto);
 
-    public void editEvent(EventDto eventdto);
+    public Event editEvent(EventDto eventdto);
 
-    public void deleteEvent(String id);
 
-    public void generateReports(Event event);
+    public Event deleteEvent(String id);
 
     public List<Event> getAllEventsByCity(String city);
 
