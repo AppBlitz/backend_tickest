@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface EventRepository extends MongoRepository<Event, String> {
 
-    public List<Event> getAllEventsByDate(LocalDateTime date);
+    public List<Event> findByDate(LocalDateTime date);
 
     List<Event> findByNameEvent(String nameEvent);
 
