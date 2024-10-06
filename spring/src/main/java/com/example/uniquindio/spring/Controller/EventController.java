@@ -1,17 +1,18 @@
 package com.example.uniquindio.spring.Controller;
 
-import com.example.uniquindio.spring.dto.EventDto;
+import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
+import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.repository.EventRepository;
 import com.example.uniquindio.spring.service.EventService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.Document;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -31,16 +32,20 @@ public class EventController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<Event> saveEvent(@RequestBody() EventDto eventdto) {
+    public ResponseEntity<Event> saveEvent(@RequestBody() CreateEventDto eventdto) {
         Event event= eventService.saveEvent((eventdto));
         return ResponseEntity.status(200).body(event);
-
-
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Event> deleteEvent(@PathVariable String id) {
         Event e=eventService.deleteEvent(id);
+        return ResponseEntity.status(200).body(e);
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public ResponseEntity<Event> editEvent(@RequestBody() EditEventDto eventdto){
+        Event e= eventService.editEvent(eventdto);
         return ResponseEntity.status(200).body(e);
     }
 
@@ -56,16 +61,19 @@ public class EventController {
         return ResponseEntity.status(200).body("eventos cargados: "+e.size());
     }
 
-    @RequestMapping(value ="/findByType/{type}", method = RequestMethod.GET)
-    public ResponseEntity<String> findEventByType(@PathVariable String type) {
-        List<Event> e = eventService.getAllEventsByType(EventType.valueOf(type));
+    @RequestMapping(value ="/findByType/{eventType}", method = RequestMethod.GET)
+    public ResponseEntity<String> findEventByType(@PathVariable String eventType) {
+        List<Event> e = eventService.getAllEventsByType(EventType.valueOf(eventType.toUpperCase()));
         return ResponseEntity.status(200).body("eventos cargados: "+e.size());
     }
 
-    @RequestMapping(value ="/findByDate/{date}", method = RequestMethod.GET)
-    public ResponseEntity<String> findEventByDate(@PathVariable String date) {
-        List<Event> e = eventService.getAllEventsByDate(LocalDateTime.parse(date));
-        return ResponseEntity.status(200).body("eventos cargados: "+e.size());
+    @RequestMapping(value ="/findByDate/{saleStartDate}", method = RequestMethod.GET)
+    public ResponseEntity<List<Event>> findEventByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate saleStartDate) {
+
+            List<Event> events = eventService.getAllEventsByDate(saleStartDate);
+            return ResponseEntity.status(200).body(events);
+
+
     }
 
 

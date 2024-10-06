@@ -1,18 +1,28 @@
 package com.example.uniquindio.spring.model.vo.items;
+import lombok.*;
 
-@lombok.NoArgsConstructor
-@lombok.Data
-@lombok.RequiredArgsConstructor
-@lombok.ToString
+
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
+@Getter
+@Setter
 
 public class Locality {
 
-    @lombok.NonNull
-    String nameLocality;
+    @NonNull
+    private String nameLocality;
 
-    double price;
+    @NonNull
+    private String[] imageLocality;
 
-    int capacityMax;
+    private double price;
+
+    private int capacityMax;
+
+    private int capacityActual;
+
 
 
 }

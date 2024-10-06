@@ -2,22 +2,25 @@ package com.example.uniquindio.spring.model.vo.items;
 
 import java.time.LocalDateTime;
 
-import lombok.NonNull;
+import com.example.uniquindio.spring.model.documents.User;
+import lombok.*;
 
-@lombok.NoArgsConstructor
-@lombok.Data
-@lombok.RequiredArgsConstructor
-@lombok.ToString
+@NoArgsConstructor
+@Data
+@RequiredArgsConstructor
+@ToString
+@Getter
+@Setter
 
 public class Comment {
 
     @NonNull
-    String user;
-
-    //@NonNull
-   // LocalDateTime localData;
+    private User user;
 
     @NonNull
-    String comment;
+    private LocalDateTime localData;
+
+    @NonNull
+    private String comment;
 
 }

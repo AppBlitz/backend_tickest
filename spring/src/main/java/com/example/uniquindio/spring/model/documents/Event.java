@@ -1,8 +1,11 @@
 package com.example.uniquindio.spring.model.documents;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
+import com.example.uniquindio.spring.model.vo.items.Ticket;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
@@ -23,34 +26,56 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("event")
 @Builder
 @NoArgsConstructor
+
 public class Event {
-    
 
     @Id
-    String id;
- //   List<Ticket> availableTickets;
+    private String id;
+
+
     @NonNull
-    String nameEvent;
+    private String nameEvent;
+
     @NonNull
-    String adressEvent;
+    private String adressEvent;
+
     @NonNull
-    String city;
+    private String city;
+
     @NonNull
-    String descriptionEvent;
+    private String descriptionEvent;
+
     @NonNull
-    EventType eventType;
+    private EventType eventType;
+
     @NonNull
-    String[] imageEvent;
+    private String[] imageEvent;
+
     @NonNull
-    String imageLocality;
-   @NonNull
-   LocalDateTime date;
-   @NonNull
-    List<Locality> locality;
-   @NonNull
-   Integer capacity;
-   @NonNull
-    List<Comment> comments;
+    private LocalDate eventDate;
+
     @NonNull
-    StateEvent stateEvent;
+    private LocalTime eventTime;
+
+    @NonNull
+    private LocalDate saleStartDate;
+
+    @NonNull
+    private LocalTime saleStartTime;
+
+    @NonNull
+    private List<Locality> locality;
+
+    @NonNull
+    private Integer capacityMax;
+
+    @NonNull
+    private Integer capacity;
+
+    @NonNull
+    private List<Comment> comments;
+
+    @NonNull
+    private StateEvent stateEvent;
+
 }
