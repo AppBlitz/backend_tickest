@@ -1,27 +1,29 @@
 package com.example.uniquindio.spring.service.interfaces;
 
-import com.example.uniquindio.spring.dto.EventDto;
+import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
+import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
-import org.bson.types.ObjectId;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IEventService {
 
-    public Event saveEvent(EventDto eventdto);
+    public Event saveEvent(CreateEventDto eventdto);
 
-    public void editEvent(EventDto eventdto);
+    public Event editEvent(EditEventDto eventdto);
 
-    public void deleteEvent(String id);
 
-    public void generateReports(Event event);
+    public Event deleteEvent(String id);
 
     public List<Event> getAllEventsByCity(String city);
 
     public List<Event> getAllEventsByName(String nameEvent);
 
     public List<Event> getAllEventsByType(EventType eventType);
+
+    public List<Event> getAllEventsByDate(LocalDate saleStartDate);
 
     public List<Event> getAllEvents();
 

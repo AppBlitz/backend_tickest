@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cc56075-bd7a-4e9b-b369-f9537210a961" name="Changes" comment="llegué yo" />
+    <list default="true" id="7cc56075-bd7a-4e9b-b369-f9537210a961" name="Changes" comment="evento ahi va">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/EventRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,9 +40,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Record" />
         <option value="Enum" />
+        <option value="Exception" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -58,8 +63,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AppBlitz/Project.git&quot;,
-    &quot;accountId&quot;: &quot;f7e943ed-8380-4e94-9b8a-77be84fce27c&quot;
+    &quot;url&quot;: &quot;https://github.com/AppBlitz/backend_tickest.git&quot;,
+    &quot;accountId&quot;: &quot;ff20e993-c118-4003-b0df-53cd83ac4759&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -79,6 +84,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Gradle.Build spring.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -86,7 +92,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.Application (1).executor&quot;: &quot;Run&quot;,
     &quot;data.sources.detected.do.not.suggest.again&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;platoGood&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;jahn&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;T:/My Downloads/unieventos240912/unieventos240912&quot;,
@@ -124,8 +130,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
       </set>
     </attachedChunks>
   </component>
@@ -158,6 +164,15 @@
       <workItem from="1727834921831" duration="4324000" />
       <workItem from="1727841993865" duration="355000" />
       <workItem from="1727874306373" duration="608000" />
+      <workItem from="1727972003839" duration="608000" />
+      <workItem from="1728005971193" duration="6865000" />
+      <workItem from="1728050712436" duration="354000" />
+      <workItem from="1728051191082" duration="12204000" />
+      <workItem from="1728073905140" duration="1068000" />
+      <workItem from="1728098059966" duration="1060000" />
+      <workItem from="1728133371845" duration="675000" />
+      <workItem from="1728187494937" duration="4511000" />
+      <workItem from="1728274978606" duration="1428000" />
     </task>
     <task id="LOCAL-00001" summary="llegué yo">
       <option name="closed" value="true" />
@@ -183,7 +198,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727837935850</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="avance microservicios Evento(editar, eliminar. filtrar)">
+      <option name="closed" value="true" />
+      <created>1728013036834</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728013036835</updated>
+    </task>
+    <task id="LOCAL-00005" summary="minicorrecion">
+      <option name="closed" value="true" />
+      <created>1728013091197</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728013091197</updated>
+    </task>
+    <task id="LOCAL-00006" summary="evento ahi va">
+      <option name="closed" value="true" />
+      <created>1728194138208</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728194138208</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +230,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="llegué yo" />
-    <option name="LAST_COMMIT_MESSAGE" value="llegué yo" />
+    <MESSAGE value="avance eventx" />
+    <MESSAGE value="avance microservicios Evento(editar, eliminar. filtrar)" />
+    <MESSAGE value="minicorrecion" />
+    <MESSAGE value="evento ahi va" />
+    <option name="LAST_COMMIT_MESSAGE" value="evento ahi va" />
   </component>
 </project>
