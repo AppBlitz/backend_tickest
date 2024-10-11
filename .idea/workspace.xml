@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="metodos de servicio de comentarios y reportes">
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/interfaces/event/EventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/utils/JWTUtilsdto/ValidationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/exception/utils/GlobalException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/utils/FilterToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/event/EventControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/event/EventControllerImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/pay/PaymentControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/pay/PaymentControllerImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/user/UserControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/user/UserControllerImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/interfaces/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/interfaces/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/utils/CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/utils/CommentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/event/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/event/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/pay/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/pay/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/pay/CouponService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/pay/CouponService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/event/IEventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/event/IEventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/user/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/user/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/pay/ICouponService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/pay/ICouponService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +29,16 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Exception" />
+        <option value="Record" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -34,11 +47,50 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Build spring.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "Spring Boot.Application.executor": "Run",
     "git-widget-placeholder": "jahn",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="spring.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.uniquindio.spring.Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.uniquindio.spring.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Application" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="metodos de servicio de comentarios y reportes">
+      <option name="closed" value="true" />
+      <created>1728670727665</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728670727665</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="metodos de servicio de comentarios y reportes" />
+    <option name="LAST_COMMIT_MESSAGE" value="metodos de servicio de comentarios y reportes" />
   </component>
 </project>

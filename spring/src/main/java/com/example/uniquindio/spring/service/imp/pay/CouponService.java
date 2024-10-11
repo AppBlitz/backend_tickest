@@ -26,10 +26,7 @@ public class CouponService implements ICouponService {
     return generateCode((number));
   }
 
-  @Override
-  public String getCouponDescountRegiserFisrt(int number) {
-    return validateCouponDescountRegisterFirst("", number);
-  }
+
 
   private String generateCode(int number) {
     String centinela = "";
@@ -49,13 +46,5 @@ public class CouponService implements ICouponService {
     return code;
   }
 
-  private String validateCouponDescountRegisterFirst(String code, int number) {
-    boolean auxiliar = true;
-    while (auxiliar != false) {
-      code = generateCode(number);
-      auxiliar = userRepository.existsByCodeDiscountRegister(code);
-    }
-    return code;
-  }
 
 }

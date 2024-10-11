@@ -14,10 +14,6 @@ public interface ICouponService {
    */
   public String getActivateAccount(int number);
 
-  /**
-   * @param number
-   * @return
-   */
-  public String getCouponDescountRegiserFisrt(int number);
+;
 
 }

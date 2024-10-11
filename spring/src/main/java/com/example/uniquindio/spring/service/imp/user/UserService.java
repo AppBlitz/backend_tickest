@@ -2,9 +2,11 @@ package com.example.uniquindio.spring.service.imp.user;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.example.uniquindio.spring.dto.utils.CommentDto;
+import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.TokenDto;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.CouponType;
 import com.example.uniquindio.spring.model.vo.Comment;
@@ -13,7 +15,9 @@ import com.example.uniquindio.spring.model.vo.payment.Coupon;
 import com.example.uniquindio.spring.service.imp.email.EmailService;
 import com.example.uniquindio.spring.service.imp.event.EventService;
 import com.example.uniquindio.spring.service.imp.pay.CouponService;
+import com.example.uniquindio.spring.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.userdto.UserDto;
@@ -43,16 +47,20 @@ public class UserService implements IUserService {
     @Autowired
     EventService eventService;
 
+    JWTUtils jwtUtils;
+
     @Override
     public Optional<User> findByEmail(String email) throws EmailInvalidException {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public User saveUser(UserDto userdto) throws Exception {
-        if (!userRepository.existsById(userdto.identificationNumber())) {
-            // Create an empty user object
-            User user = new User();
+    public User saveUser(UserDto userdto) throws Exception,UserException {
+        // Create an empty user object
+        User user = new User();
+
+        if (!validateUser(userdto))
+        {
 
             // Set the user data
             user.setFullName(userdto.fullName());
@@ -78,21 +86,19 @@ public class UserService implements IUserService {
             String code = couponService.getActivateAccount(20);
             user.setCodeValidator(code);
             Coupon coupon = new Coupon();
-            coupon.setCode("BIENBENIDA");
+            coupon.setCode("BIENVENIDA");
             coupon.setType(CouponType.UNIQUE_CODE);
             coupon.setDiscount_percentage(0.1F);
             coupon.setName("Bienvenida");
             user.getCouponsCode().add(coupon);
 
             // Prepare and send the activation email
-            EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta", code);
-            emailService.sendEmailRegister((emaildto));
-
-            // Save the user object in the repository
-            return userRepository.save(user);
+            EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta");
+            emailService.sendEmail((emaildto));
 
         }
-        return null;
+        // Save the user object in the repository
+        return userRepository.save(user);
     }
 
 
@@ -116,7 +122,6 @@ public class UserService implements IUserService {
         if (updateUser.isEmpty()) {
             throw new RuntimeException(" User not found");
         } else {
-            String code = couponService.getCouponDescountRegiserFisrt(20);
             User user = updateUser.get();
             user.setState((StateAccount.ASSET));
             user.setCouponsCode(updateUserDtoRegister.couponList());
@@ -124,9 +129,8 @@ public class UserService implements IUserService {
             userRepository.save(user);
             EmailDTO emaildto = new EmailDTO(user.getEmail(),
                     "Código de descuento \n el código solo es aplicable para un compra \n descuento del 15 % \n",
-                    "Código de descuento",
-                    code);
-            emailService.sendDescountCode(emaildto);
+                    "Código de descuento");
+            //emailService.sendDescountCode(emaildto);
             return user;
         }
 
@@ -136,6 +140,20 @@ public class UserService implements IUserService {
     public Optional<User> findByEmailAndPassword(LoginUser loginUser)
             throws EmailInvalidException, PasswordInvalidException {
         return userRepository.findByEmailAndPassword((loginUser.email()), loginUser.password());
+    }
+
+    public TokenDto verifyLogin(LoginUser loginUser) throws Exception {
+        Optional<User> cuenta = userRepository.findByEmail(loginUser.email());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+
+        if( !passwordEncoder.matches(loginUser.password(), cuenta.get().getPassword()) ) {
+            throw new Exception("La contraseña es incorrecta");
+        }
+
+
+        Map<String, Object> map = construirClaims(cuenta.get());
+        return new TokenDto( jwtUtils.generarToken(cuenta.get().getEmail(), map) );
     }
 
     public UserInformation getInformation(User user) {
@@ -159,4 +177,15 @@ public class UserService implements IUserService {
 
         return comment;
     }
+
+    private Map<String, Object> construirClaims(User cuenta) {
+        return Map.of(
+                "rol", cuenta.getRol(),
+                "nombre", cuenta.getFullName(),
+                "id", cuenta.getIdentificationNumber(),
+                "address", cuenta.getAddress(),
+                "phone",cuenta.getPhoneNumber()
+        );
+    }
+
 }

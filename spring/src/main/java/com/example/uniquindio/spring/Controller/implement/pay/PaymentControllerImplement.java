@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("payment")
 public class PaymentControllerImplement {
+    /*
     @Autowired
     PaymentService paymentService;
 
-    @Value("${mercado_pago_access_token}")
-    private String mercadoPagoAccessToken;
-
+*/
 
 
 }
