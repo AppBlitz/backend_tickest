@@ -27,6 +27,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("event")
 @Builder
 @NoArgsConstructor
+@ToString
 
 public class Event {
 

@@ -41,6 +41,10 @@ dependencies {
 	implementation ("com.google.zxing:javase:3.4.1")
 	implementation ("org.springframework.boot:spring-boot-starter-mail")
 	implementation("com.mercadopago:sdk-java:2.1.29")
+	implementation ("org.springframework.security:spring-security-crypto:6.3.3")
+	implementation ("io.jsonwebtoken:jjwt-api:0.12.6")
+	runtimeOnly ("io.jsonwebtoken:jjwt-impl:0.12.6")
+	runtimeOnly ("io.jsonwebtoken:jjwt-jackson:0.12.6")
 }
 
 

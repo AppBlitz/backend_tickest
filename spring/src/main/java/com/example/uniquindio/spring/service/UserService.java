@@ -2,10 +2,14 @@ package com.example.uniquindio.spring.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import com.example.uniquindio.spring.dto.JWTUtilsdto.TokenDto;
 import com.example.uniquindio.spring.model.documents.Invoice;
+import com.example.uniquindio.spring.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.UserDto;
@@ -32,6 +36,8 @@ public class UserService implements IUserService {
 
     @Autowired
     CouponService couponService;
+
+   // private final JWTUtils jwtUtils;
 
     @Override
     public Optional<User> findByEmail(String email) throws EmailInvalidException {
@@ -116,6 +122,36 @@ public class UserService implements IUserService {
     @Override
     public Optional<User> findByEmailAndPassword(LoginUser loginUser)
             throws EmailInvalidException, PasswordInvalidException {
+
+        /*User cuenta = obtenerPorEmail(loginUser.email());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+
+        if( !passwordEncoder.matches(loginUser.password(), cuenta.getPassword()) ) {
+            throw new Exception("La contraseña es incorrecta");
+        }
+
+
+        Map<String, Object> map = construirClaims(cuenta);
+        return new TokenDto( jwtUtils.generarToken(cuenta.getEmail(), map) );*/
+
         return userRepository.findByEmailAndPassword((loginUser.email()), loginUser.password());
     }
+
+    private String encryptPassword(String password){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode( password );
+    }
+
+    private Map<String, Object> construirClaims(User cuenta) {
+        return Map.of(
+                "rol", cuenta.getRol(),
+                "nombre", cuenta.getFullName(),
+                "id", cuenta.getId(),
+                "identificationNumber",cuenta.getIdentificationNumber(),
+                "Address",cuenta.getAddress()
+
+        );
+    }
+
 }

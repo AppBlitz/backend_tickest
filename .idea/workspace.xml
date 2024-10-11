@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cc56075-bd7a-4e9b-b369-f9537210a961" name="Changes" comment="base servicios de evento">
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/PaymentControllerImplement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/PaymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring/src/main/resources/mercado-Pago.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7cc56075-bd7a-4e9b-b369-f9537210a961" name="Changes" comment="mercadoPago 1era parte">
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/JWTUtilsdto/MensajeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/JWTUtilsdto/TokenDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/exception/MpException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/spring/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/EventControllerImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/EventControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/EventControllerImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/PaymentControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/PaymentControllerImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Pay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/utils/JWTUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/utils/JWTUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +66,9 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Exception" />
         <option value="Class" />
         <option value="Record" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -110,7 +117,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Application (1).executor": "Debug",
+    "Spring Boot.Application (1).executor": "Run",
     "data.sources.detected.do.not.suggest.again": "true",
     "git-widget-placeholder": "jahn",
     "ignore.virus.scanning.warn.message": "true",
@@ -135,7 +142,7 @@
       <recent name="co.edu.uniquindio.unieventos" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.spring [build]">
+  <component name="RunManager" selected="Spring Boot.Application (1)">
     <configuration name="spring [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -250,7 +257,7 @@
       <workItem from="1728435540400" duration="2767000" />
       <workItem from="1728491910862" duration="1061000" />
       <workItem from="1728525368724" duration="298000" />
-      <workItem from="1728577146087" duration="17696000" />
+      <workItem from="1728577146087" duration="28375000" />
     </task>
     <task id="LOCAL-00001" summary="llegué yo">
       <option name="closed" value="true" />
@@ -308,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728276987390</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="mercadoPago 1era parte">
+      <option name="closed" value="true" />
+      <created>1728612832374</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728612832374</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +347,7 @@
     <MESSAGE value="minicorrecion" />
     <MESSAGE value="evento ahi va" />
     <MESSAGE value="base servicios de evento" />
-    <option name="LAST_COMMIT_MESSAGE" value="base servicios de evento" />
+    <MESSAGE value="mercadoPago 1era parte" />
+    <option name="LAST_COMMIT_MESSAGE" value="mercadoPago 1era parte" />
   </component>
 </project>
