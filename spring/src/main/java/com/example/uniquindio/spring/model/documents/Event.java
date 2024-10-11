@@ -1,15 +1,24 @@
 package com.example.uniquindio.spring.model.documents;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
+
+import com.example.uniquindio.spring.model.vo.items.Ticket;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
-import com.example.uniquindio.spring.model.vo.Comment;
+import com.example.uniquindio.spring.model.vo.items.Comment;
 
 import com.example.uniquindio.spring.model.vo.items.Locality;
-import com.example.uniquindio.spring.model.vo.items.Ticket;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
@@ -18,31 +27,56 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("event")
 @Builder
 @NoArgsConstructor
+
 public class Event {
 
-    @NonNull
-    String nameEvent;
-    @NonNull
-    String adressEvent;
-    @NonNull
-    String city;
-    @NonNull
-    String descriptionEvent;
-    @NonNull
-    EventType eventType;
-    @NonNull
-    String[] imageEvent;
-    @NonNull
-    String imageLocality;
-    @NonNull
-    LocalDate date;
-    @NonNull
-    List<Locality> locality;
-    @NonNull
-    List<Comment> comments;
-    @NonNull
-    StateEvent stateEvent;
+    @Id
+    private String id;
 
 
+    @NonNull
+    private String nameEvent;
+
+    @NonNull
+    private String adressEvent;
+
+    @NonNull
+    private String city;
+
+    @NonNull
+    private String descriptionEvent;
+
+    @NonNull
+    private EventType eventType;
+
+    @NonNull
+    private String[] imageEvent;
+
+    @NonNull
+    private LocalDate eventDate;
+
+    @NonNull
+    private LocalTime eventTime;
+
+    @NonNull
+    private LocalDate saleStartDate;
+
+    @NonNull
+    private LocalTime saleStartTime;
+
+    @NonNull
+    private List<Locality> locality;
+
+    @NonNull
+    private Integer capacityMax;
+
+    @NonNull
+    private Integer capacity;
+
+    @NonNull
+    private List<Comment> comments;
+
+    @NonNull
+    private StateEvent stateEvent;
 
 }
