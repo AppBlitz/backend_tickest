@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.model.vo.items;
+package com.example.uniquindio.spring.model.vo.payment;
 
 import lombok.*;
 
