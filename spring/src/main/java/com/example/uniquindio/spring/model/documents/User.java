@@ -2,17 +2,20 @@ package com.example.uniquindio.spring.model.documents;
 
 import java.util.List;
 
-import com.example.uniquindio.spring.model.vo.items.Coupon;
+import com.example.uniquindio.spring.model.vo.payment.Coupon;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import com.example.uniquindio.spring.model.enums.Rol;
 import com.example.uniquindio.spring.model.enums.StateAccount;
 
-@lombok.NoArgsConstructor
-@lombok.Data
-@lombok.RequiredArgsConstructor
-@lombok.ToString
+
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
+@ToString
 @Document("user")
+@Builder
 public class User {
     // Login data
     @lombok.NonNull
@@ -24,7 +27,7 @@ public class User {
 
     // Personal user data
     @Id
-    String id;
+    String identificationNumber;
     @lombok.NonNull
     String fullName;
     @lombok.NonNull
@@ -37,16 +40,14 @@ public class User {
     StateAccount state;
 
     Rol rol;
-    @lombok.NonNull
-    String identificationNumber;
-
+    @NonNull
+    String idShoppingCart;
     // Invoices and discount data
-    @lombok.NonNull
+    @NonNull
     List<String> invoices;//List of invoice IDs
 
     //Coupons data
-    @lombok.NonNull
-    String codeDiscountRegister;
+    @NonNull
     List<Coupon> couponsCode;
 
 

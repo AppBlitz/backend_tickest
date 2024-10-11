@@ -1,12 +1,10 @@
-package com.example.uniquindio.spring.model.vo.items;
+package com.example.uniquindio.spring.model.vo.payment;
 
 import com.example.uniquindio.spring.model.enums.CouponType;
-import com.example.uniquindio.spring.model.enums.ItemType;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 

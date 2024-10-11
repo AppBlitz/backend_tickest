@@ -1,15 +1,12 @@
-package com.example.uniquindio.spring.service;
+package com.example.uniquindio.spring.service.imp;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
-import com.example.uniquindio.spring.dto.JWTUtilsdto.TokenDto;
-import com.example.uniquindio.spring.model.documents.Invoice;
-import com.example.uniquindio.spring.utils.JWTUtils;
+import com.example.uniquindio.spring.model.enums.CouponType;
+import com.example.uniquindio.spring.model.vo.payment.Coupon;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.UserDto;
@@ -37,8 +34,6 @@ public class UserService implements IUserService {
     @Autowired
     CouponService couponService;
 
-   // private final JWTUtils jwtUtils;
-
     @Override
     public Optional<User> findByEmail(String email) throws EmailInvalidException {
         return userRepository.findByEmail(email);
@@ -46,40 +41,49 @@ public class UserService implements IUserService {
 
     @Override
     public User saveUser(UserDto userdto) throws Exception {
-        // Create an empty user object
-        User user = new User();
+        if (!userRepository.existsById(userdto.identificationNumber())) {
+            // Create an empty user object
+            User user = new User();
 
-        // Set the user data
-        user.setFullName(userdto.fullName());
-        user.setPassword(userdto.password());
-        user.setEmail(userdto.email());
-        user.setAddress(userdto.address());
-        user.setPhoneNumber(userdto.phoneNumber());
+            // Set the user data
+            user.setFullName(userdto.fullName());
+            user.setPassword(userdto.password());
+            user.setEmail(userdto.email());
+            user.setAddress(userdto.address());
+            user.setPhoneNumber(userdto.phoneNumber());
 
-        // Set the account state to idle
-        user.setState(StateAccount.IDLE);
+            // Set the account state to idle
+            user.setState(StateAccount.IDLE);
 
-        // Initialize invoices list
-        List<String> invoices = new ArrayList<>();
-        user.setInvoices(invoices);
+            // Initialize invoices list
+            List<String> invoices = new ArrayList<>();
+            user.setInvoices(invoices);
 
-        // Set the role as USER
-        user.setRol(Rol.USER);
+            // Set the role as USER
+            user.setRol(Rol.USER);
 
-        // Set the identification number and other details
-        user.setIdentificationNumber(userdto.identificationNumber());
+            // Set the identification number and other details
+            user.setIdentificationNumber(userdto.identificationNumber());
 
-        // Generate activation code
-        String code = couponService.getActivateAccount(20);
-        user.setCodeValidator(code);
-        user.setCodeDiscountRegister("");
+            // Generate activation code
+            String code = couponService.getActivateAccount(20);
+            user.setCodeValidator(code);
+            Coupon coupon = new Coupon();
+            coupon.setCode("BIENBENIDA");
+            coupon.setType(CouponType.UNIQUE_CODE);
+            coupon.setDiscount_percentage(0.1F);
+            coupon.setName("Bienvenida");
+            user.getCouponsCode().add(coupon);
 
-        // Prepare and send the activation email
-        EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta", code);
-        emailService.sendEmailRegister((emaildto));
+            // Prepare and send the activation email
+            EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta", code);
+            emailService.sendEmailRegister((emaildto));
 
-        // Save the user object in the repository
-        return userRepository.save(user);
+            // Save the user object in the repository
+            return userRepository.save(user);
+
+        }
+        return null;
     }
 
 
@@ -99,14 +103,14 @@ public class UserService implements IUserService {
     public User updateUser(UpdateUserDtoRegister updateUserDtoRegister) throws Exception {
 
         Optional<User> updateUser = userRepository.findByEmailAndCodeValidatorAndPassword(updateUserDtoRegister.email(),
-                updateUserDtoRegister.codeValidator(), updateUserDtoRegister.password());
+                updateUserDtoRegister.couponList(), updateUserDtoRegister.password());
         if (updateUser.isEmpty()) {
             throw new RuntimeException(" User not found");
         } else {
             String code = couponService.getCouponDescountRegiserFisrt(20);
             User user = updateUser.get();
             user.setState((StateAccount.ASSET));
-            user.setCodeDiscountRegister(code);
+            user.setCouponsCode(updateUserDtoRegister.couponList());
             user.setCodeValidator("IDLE");
             userRepository.save(user);
             EmailDto emaildto = new EmailDto(user.getEmail(),
@@ -122,36 +126,6 @@ public class UserService implements IUserService {
     @Override
     public Optional<User> findByEmailAndPassword(LoginUser loginUser)
             throws EmailInvalidException, PasswordInvalidException {
-
-        /*User cuenta = obtenerPorEmail(loginUser.email());
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-
-        if( !passwordEncoder.matches(loginUser.password(), cuenta.getPassword()) ) {
-            throw new Exception("La contraseña es incorrecta");
-        }
-
-
-        Map<String, Object> map = construirClaims(cuenta);
-        return new TokenDto( jwtUtils.generarToken(cuenta.getEmail(), map) );*/
-
         return userRepository.findByEmailAndPassword((loginUser.email()), loginUser.password());
     }
-
-    private String encryptPassword(String password){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.encode( password );
-    }
-
-    private Map<String, Object> construirClaims(User cuenta) {
-        return Map.of(
-                "rol", cuenta.getRol(),
-                "nombre", cuenta.getFullName(),
-                "id", cuenta.getId(),
-                "identificationNumber",cuenta.getIdentificationNumber(),
-                "Address",cuenta.getAddress()
-
-        );
-    }
-
 }

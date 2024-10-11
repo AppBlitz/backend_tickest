@@ -1,9 +1,9 @@
-package com.example.uniquindio.spring.model.vo.items;
-
-import java.time.LocalDateTime;
+package com.example.uniquindio.spring.model.vo;
 
 import com.example.uniquindio.spring.model.documents.User;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Data

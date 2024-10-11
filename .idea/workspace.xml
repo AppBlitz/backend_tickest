@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cc56075-bd7a-4e9b-b369-f9537210a961" name="Changes" comment="mercadoPago 1era parte">
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/JWTUtilsdto/MensajeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/JWTUtilsdto/TokenDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/exception/MpException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/spring/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/EventControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/EventControllerImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/PaymentControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/PaymentControllerImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Pay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Coupon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Pay.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Pay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/PaymentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/utils/JWTUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/utils/JWTUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,10 +114,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.Application (1).executor": "Run",
     "data.sources.detected.do.not.suggest.again": "true",
-    "git-widget-placeholder": "jahn",
+    "git-widget-placeholder": "platoGood",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "T:/My Downloads/unieventos240912/unieventos240912",
+    "last_opened_file_path": "P:/GitHub/Repositories/Avanzada/Backend/spring/src/main/java/com/example/uniquindio/spring/model/vo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
