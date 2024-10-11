@@ -55,6 +55,15 @@ public class EventService implements IEventService {
         }
     }
 
+    public Event getEventById(String id){
+        Optional<Event> e = eventRepository.findById(id);
+        if(e.isPresent()){
+            return e.get();
+        }else{
+            throw new EventException("Evento no encontrado");
+        }
+    }
+
     @Override
     public List<Event> getAllEventsByCity(String city) {
         return eventRepository.findByCity(city);

@@ -12,6 +12,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class EmailService {
 
     @Autowired
-    private JavaMailSender mailSender;
+    JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
     private String sender;
@@ -69,4 +70,7 @@ public class EmailService {
 
         mailSender.send(message);
     }
+
+
+
 }
