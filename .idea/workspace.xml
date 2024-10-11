@@ -4,16 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cc56075-bd7a-4e9b-b369-f9537210a961" name="Changes" comment="mercadoPago 1era parte">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="7cc56075-bd7a-4e9b-b369-f9537210a961" name="Changes" comment="Organizacion de directorios">
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/email/IEmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/invoice/IOrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/utils/PropertiesReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Coupon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/items/Pay.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Pay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/spring/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/emaildto/EmailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/emaildto/EmailDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/eventdto/CreateEventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/eventdto/CreateEventDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/eventdto/EditEventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/eventdto/EditEventDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Pay.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Pay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/email/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/email/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/invoice/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/invoice/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/resources/Spanish.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +66,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Record" />
         <option value="Exception" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -81,14 +88,24 @@
     &quot;assignee&quot;: &quot;juandajedrez&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AppBlitz/backend_tickest.git&quot;,
-    &quot;accountId&quot;: &quot;ff20e993-c118-4003-b0df-53cd83ac4759&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AppBlitz/backend_tickest.git",
+    "accountId": "ff20e993-c118-4003-b0df-53cd83ac4759"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "AppBlitz",
+    "repository": "backend_tickest"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -114,10 +131,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.Application (1).executor": "Run",
     "data.sources.detected.do.not.suggest.again": "true",
-    "git-widget-placeholder": "platoGood",
+    "git-widget-placeholder": "#27 on platoGood",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "P:/GitHub/Repositories/Avanzada/Backend/spring/src/main/java/com/example/uniquindio/spring/model/vo",
+    "last_opened_file_path": "P:/GitHub/Repositories/Avanzada/Backend/spring/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -132,12 +149,19 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="P:\GitHub\Repositories\Avanzada\Backend\spring\src\main\resources" />
+      <recent name="P:\GitHub\Repositories\Avanzada\Backend\spring\src\main\java\com\example\uniquindio\spring\exception" />
+      <recent name="P:\GitHub\Repositories\Avanzada\Backend\spring\src\main\java\com\example\uniquindio\spring\Controller\interfaces" />
+      <recent name="P:\GitHub\Repositories\Avanzada\Backend\spring\src\main\java\com\example\uniquindio\spring\Controller\implement" />
+      <recent name="P:\GitHub\Repositories\Avanzada\Backend\spring\src\main\java\com\example\uniquindio\spring\dto" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.uniquindio.spring.dto" />
       <recent name="co.edu.uniquindio.unieventos" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application (1)">
+  <component name="RunManager" selected="Gradle.spring [build]">
     <configuration name="spring [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -318,7 +342,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728612832374</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="arreglo de errores">
+      <option name="closed" value="true" />
+      <created>1728642143639</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1728642143639</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Organizacion de directorios">
+      <option name="closed" value="true" />
+      <created>1728647017409</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1728647017409</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,6 +383,8 @@
     <MESSAGE value="evento ahi va" />
     <MESSAGE value="base servicios de evento" />
     <MESSAGE value="mercadoPago 1era parte" />
-    <option name="LAST_COMMIT_MESSAGE" value="mercadoPago 1era parte" />
+    <MESSAGE value="arreglo de errores" />
+    <MESSAGE value="Organizacion de directorios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Organizacion de directorios" />
   </component>
 </project>

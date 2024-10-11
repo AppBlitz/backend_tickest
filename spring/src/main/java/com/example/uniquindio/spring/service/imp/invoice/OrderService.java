@@ -2,12 +2,14 @@ package com.example.uniquindio.spring.service.imp.invoice;
 
 import com.example.uniquindio.spring.model.documents.Invoice;
 import com.example.uniquindio.spring.service.imp.email.EmailService;
+import com.example.uniquindio.spring.service.interfaces.invoice.IOrderService;
+import com.example.uniquindio.spring.service.interfaces.utils.IQRGeneration;
 import com.example.uniquindio.spring.utils.QRCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderService {
+public class OrderService implements IQRGeneration, IOrderService {
     @Autowired
     private EmailService emailService;
 
