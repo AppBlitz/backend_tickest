@@ -3,6 +3,7 @@ package com.example.uniquindio.spring.service.imp.email;
 import com.example.uniquindio.spring.dto.emaildto.EmailDTO;
 import com.example.uniquindio.spring.service.interfaces.email.IEmailService;
 import com.example.uniquindio.spring.utils.PropertiesReader;
+import lombok.NonNull;
 import org.springframework.stereotype.Service;
 import org.simplejavamail.api.email.Email;
 import org.simplejavamail.api.mailer.Mailer;
@@ -14,7 +15,7 @@ import org.springframework.scheduling.annotation.Async;
 public class EmailService implements IEmailService {
     @Override
     @Async
-    public void sendEmail(EmailDTO emailDTO) throws Exception {
+    public void sendEmail(@NonNull EmailDTO emailDTO) throws Exception {
         PropertiesReader reader = new PropertiesReader("resources/email.properties");
 
         Email email = EmailBuilder.startingBlank()
@@ -26,7 +27,7 @@ public class EmailService implements IEmailService {
 
 
         try (Mailer mailer = MailerBuilder
-                .withSMTPServer(reader.getProperty("host"), Integer.valueOf(reader.getProperty("port")), reader.getProperty("username"))
+                .withSMTPServer(reader.getProperty("host"), Integer.valueOf(reader.getProperty("port")), reader.getProperty("username"), reader.getProperty("password"))
                 .withTransportStrategy(TransportStrategy.SMTP_TLS)
                 .withDebugLogging(true)
                 .buildMailer()) {

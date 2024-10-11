@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.Controller.implement.pay;
+package com.example.uniquindio.spring.controller.implement.pay;
 
 import com.example.uniquindio.spring.service.imp.pay.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
