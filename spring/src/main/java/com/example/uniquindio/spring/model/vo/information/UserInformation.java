@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @lombok.Data
 @lombok.RequiredArgsConstructor
 @lombok.ToString
-@Document("User")
 public class UserInformation {
 
     @NonNull
