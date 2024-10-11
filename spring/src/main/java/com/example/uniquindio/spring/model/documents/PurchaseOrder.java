@@ -1,10 +1,12 @@
 package com.example.uniquindio.spring.model.documents;
 
+import com.example.uniquindio.spring.model.vo.payment.Coupon;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.DecimalMin;
+import java.util.List;
 
 @NoArgsConstructor
 @Data
@@ -32,6 +34,9 @@ public class PurchaseOrder {
     @DecimalMin(value = "0.0", inclusive = true)
     @Builder.Default
     Double total = 0.0;
+
+    @NonNull
+    List<Coupon> couponList;
 
 
 }

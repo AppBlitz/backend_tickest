@@ -23,6 +23,26 @@ import com.mercadopago.resources.preference.Preference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import com.mercadopago.client.payment.PaymentClient;
+import com.mercadopago.exceptions.MPApiException;
+import com.mercadopago.exceptions.MPException;
+import com.example.uniquindio.spring.model.vo.information.UserInformation;
+import com.example.uniquindio.spring.model.vo.items.Item;
+import com.example.uniquindio.spring.model.vo.items.Locality;
+import com.example.uniquindio.spring.model.vo.payment.Pay;
+import com.example.uniquindio.spring.model.documents.Event;
+import com.example.uniquindio.spring.model.documents.PurchaseOrder;
+import com.mercadopago.MercadoPagoConfig;
+import com.mercadopago.client.common.AddressRequest;
+import com.mercadopago.client.common.IdentificationRequest;
+import com.mercadopago.client.common.PhoneRequest;
+import com.mercadopago.client.preference.*;
+import com.mercadopago.resources.payment.Payment;
+import com.mercadopago.resources.preference.PreferencePayer;
+import com.mercadopago.resources.preference.PreferenceItem;
+import com.mercadopago.resources.preference.Preference;
+
+import java.util.List;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -32,13 +52,13 @@ import java.util.Map;
 @Service
 @PropertySource("classpath:mercado-Pago.properties")
 public class PaymentService {
-
+/**
     @Value("${mercado_pago_sample_access_token}")
     private String mercadoPagoAccessToken;
 
     //descomente y mire a ver
 
-/*
+
     public Preference CreatePayment(String idOrden) throws MPException, MPApiException {
 
    // Obtener la orden guardada en la base de datos y los ítems de la orden
@@ -119,7 +139,7 @@ public class PaymentService {
 
    return preference;
    }
- */
+
 
     //creo el pago
     private Pay createPay(Payment payment) {

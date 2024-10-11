@@ -7,6 +7,6 @@ import com.example.uniquindio.spring.model.vo.items.Item;
 import lombok.NonNull;
 
 public record ShoppingCartDto(@NonNull String nameUser, @NonNull String email, @NonNull String phoneNumber,
-                              @NonNull String indentificationNumber, @NonNull List<Item> items) {
+                              @NonNull String indentificationNumber, @NonNull String address, @NonNull List<Item> items) {
 
 }
