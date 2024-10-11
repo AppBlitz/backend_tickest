@@ -24,6 +24,7 @@ repositories {
 }
 
 dependencies {
+
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
   	implementation("org.springframework.boot:spring-boot-starter-mail")
 	implementation("org.springframework.boot:spring-boot-starter-web")
@@ -39,6 +40,7 @@ dependencies {
 	implementation ("com.google.zxing:core:3.4.1")
 	implementation ("com.google.zxing:javase:3.4.1")
 	implementation ("org.springframework.boot:spring-boot-starter-mail")
+	implementation("com.mercadopago:sdk-java:2.1.29")
 }
 
 

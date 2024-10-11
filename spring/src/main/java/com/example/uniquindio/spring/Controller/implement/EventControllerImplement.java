@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.Controller;
+package com.example.uniquindio.spring.Controller.implement;
 
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
@@ -12,13 +12,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("event")
-public class EventController {
+public class EventControllerImplement {
 
     @Autowired
     EventService eventService;
@@ -70,8 +69,8 @@ public class EventController {
     @RequestMapping(value ="/findByDate/{saleStartDate}", method = RequestMethod.GET)
     public ResponseEntity<List<Event>> findEventByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate saleStartDate) {
 
-            List<Event> events = eventService.getAllEventsByDate(saleStartDate);
-            return ResponseEntity.status(200).body(events);
+        List<Event> events = eventService.getAllEventsByDate(saleStartDate);
+        return ResponseEntity.status(200).body(events);
 
 
     }
