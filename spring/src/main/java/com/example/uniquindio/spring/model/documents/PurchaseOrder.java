@@ -4,39 +4,36 @@ import com.example.uniquindio.spring.model.vo.payment.Coupon;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.validation.constraints.DecimalMin;
 import java.util.List;
 
-@NoArgsConstructor
-@Data
-@AllArgsConstructor
-@ToString
-@Document("purchaseOrder")
-@Builder
+@NoArgsConstructor // Generates a no-args constructor
+@Data // Generates getters, setters, equals, hashCode, and toString methods
+@AllArgsConstructor // Generates a constructor with all fields
+@ToString // Generates a toString method for the class
+@Document("purchaseOrder") // Specifies that this class is a MongoDB document with the collection name "purchaseOrder"
+@Builder // Allows for a builder pattern to create instances of this class
 public class PurchaseOrder {
 
-    @Id
-    @NonNull
-    String purchaseOrderNumber;
+    @Id // Marks this field as the unique identifier in the MongoDB document
+    @NonNull // Indicates that this field cannot be null
+    String purchaseOrderNumber; // Unique identifier for the purchase order
 
-    @NonNull
-    ShoppingCart shoppingCart;
+    @NonNull // Indicates that this field cannot be null
+    ShoppingCart shoppingCart; // Shopping cart associated with this purchase order
 
-    @DecimalMin(value = "0.0", inclusive = true)
-    @Builder.Default
-    Double debit = 0.0;
+    @DecimalMin(value = "0.0", inclusive = true) // Ensures that the debit value is at least 0.0
+    @Builder.Default // Sets a default value for this field when using the builder
+    Double debit = 0.0; // The debit amount for the purchase order, defaults to 0.0
 
-    @DecimalMin(value = "0.0", inclusive = true)
-    @Builder.Default
-    Double credit = 0.0;
+    @DecimalMin(value = "0.0", inclusive = true) // Ensures that the credit value is at least 0.0
+    @Builder.Default // Sets a default value for this field when using the builder
+    Double credit = 0.0; // The credit amount for the purchase order, defaults to 0.0
 
-    @DecimalMin(value = "0.0", inclusive = true)
-    @Builder.Default
-    Double total = 0.0;
+    @DecimalMin(value = "0.0", inclusive = true) // Ensures that the total value is at least 0.0
+    @Builder.Default // Sets a default value for this field when using the builder
+    Double total = 0.0; // The total amount for the purchase order, defaults to 0.0
 
-    @NonNull
-    List<Coupon> couponList;
-
-
+    @NonNull // Indicates that this field cannot be null
+    List<Coupon> couponList; // List of coupons associated with this purchase order
 }

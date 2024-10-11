@@ -1,7 +1,10 @@
 package com.example.uniquindio.spring.service.imp.pay;
 
+import java.time.LocalDate;
 import java.util.Random;
 
+import com.example.uniquindio.spring.model.enums.CouponType;
+import com.example.uniquindio.spring.model.vo.payment.Coupon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,52 +13,30 @@ import com.example.uniquindio.spring.service.interfaces.pay.ICouponService;
 
 @Service
 public class CouponService implements ICouponService {
-  private final String code = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-  private final Random random = new Random();
 
-  @Autowired
-  UserRepository userRepository;
 
-  @Override
-  public String getActivateAccount(int number) {
-    return validateActivateAccount("", number);
-  }
-
-  @Override
-  public String getCouponRecorverPassword(int number) {
-    return generateCode((number));
-  }
-
-  @Override
-  public String getCouponDescountRegiserFisrt(int number) {
-    return validateCouponDescountRegisterFirst("", number);
-  }
-
-  private String generateCode(int number) {
-    String centinela = "";
-    while (number > 0) {
-      centinela += code.charAt(random.nextInt(code.length()));
-      number = number - 1;
+    @Override
+    public Coupon createCoupon(Double percentage, LocalDate dateFinish, CouponType type) {
+        return null;
     }
-    return centinela;
-  }
 
-  private String validateActivateAccount(String code, int number) {
-    boolean auxiliar = true;
-    while (auxiliar != false) {
-      code = generateCode(number);
-      auxiliar = userRepository.existsBycodeValidator(code);
+    @Override
+    public boolean validateCoupon(Coupon coupon) {
+        return false;
     }
-    return code;
-  }
 
-  private String validateCouponDescountRegisterFirst(String code, int number) {
-    boolean auxiliar = true;
-    while (auxiliar != false) {
-      code = generateCode(number);
-      auxiliar = userRepository.existsByCodeDiscountRegister(code);
+    @Override
+    public boolean finishCouponUnique(String idCoupon) {
+        return false;
     }
-    return code;
-  }
 
+    @Override
+    public boolean finishCouponIndividual(Coupon coupon) {
+        return false;
+    }
+
+    @Override
+    public boolean sendCoupon(Coupon coupon) {
+        return false;
+    }
 }

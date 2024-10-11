@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.Controller.interfaces.user;
+package com.example.uniquindio.spring.controller.interfaces.user;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

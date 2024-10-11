@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.Controller.implement.event;
+package com.example.uniquindio.spring.controller.implement.event;
 
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;

@@ -1,30 +1,47 @@
 package com.example.uniquindio.spring.utils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Utility class for reading properties from a .properties file.
+ */
 public class PropertiesReader {
 
-    private Properties properties = new Properties();
+    private Properties properties = new Properties(); // Holds the properties loaded from the file
 
-    // Constructor que recibe la ruta del archivo .properties
+    // Constructor that receives the path of the .properties file
     public PropertiesReader(String filePath) {
-        // Cargar las propiedades desde la ubicación específica
-        try (InputStream input = new FileInputStream(filePath)) {
-            properties.load(input);
+        // Load the properties from the specified location
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream(filePath)) {
+            if (input == null) {
+                System.out.println("Sorry, unable to find " + filePath);
+                return;
+            }
+            properties.load(input); // Load properties from the input stream
         } catch (IOException ex) {
-            ex.printStackTrace();
+            ex.printStackTrace(); // Print the stack trace in case of an error
         }
     }
 
-    // Método para obtener una propiedad específica
+    /**
+     * Method to get a specific property by key.
+     *
+     * @param key the key of the property to retrieve
+     * @return the value of the specified property, or null if not found
+     */
     public String getProperty(String key) {
-        return properties.getProperty(key);
+        return properties.getProperty(key); // Return the property value for the given key
     }
 
-    // Método para obtener todas las propiedades
+    /**
+     * Method to get all properties.
+     *
+     * @return the Properties object containing all key-value pairs
+     */
     public Properties getAllProperties() {
-        return properties;
+        return properties; // Return all properties
     }
 }
