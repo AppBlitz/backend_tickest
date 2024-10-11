@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.uniquindio.spring.dto.utils.CommentDto;
+import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.CouponType;
+import com.example.uniquindio.spring.model.vo.Comment;
 import com.example.uniquindio.spring.model.vo.information.UserInformation;
 import com.example.uniquindio.spring.model.vo.payment.Coupon;
 import com.example.uniquindio.spring.service.imp.email.EmailService;
+import com.example.uniquindio.spring.service.imp.event.EventService;
 import com.example.uniquindio.spring.service.imp.pay.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +40,8 @@ public class UserService implements IUserService {
 
     @Autowired
     CouponService couponService;
+    @Autowired
+    EventService eventService;
 
     @Override
     public Optional<User> findByEmail(String email) throws EmailInvalidException {
@@ -140,5 +146,17 @@ public class UserService implements IUserService {
         userInformation.setId(user.getIdentificationNumber());
         userInformation.setPhoneNumber(user.getPhoneNumber());
         return userInformation;
+    }
+
+    public Comment postComment(CommentDto commentdto)throws UserException {
+        Comment comment = new Comment();
+        Optional<User> u=userRepository.findById(commentdto.IdUser());
+        comment.setUser(u.get());
+        comment.setComment(commentdto.text());
+
+        Event e = eventService.getEventById(commentdto.idEvent());
+        e.getComments().add(comment);
+
+        return comment;
     }
 }

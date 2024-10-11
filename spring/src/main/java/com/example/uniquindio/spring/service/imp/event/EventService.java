@@ -6,12 +6,14 @@ import com.example.uniquindio.spring.exception.event.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
+import com.example.uniquindio.spring.model.vo.items.Locality;
 import com.example.uniquindio.spring.service.interfaces.event.IEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.uniquindio.spring.repository.EventRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +26,7 @@ public class EventService implements IEventService {
 
     @Override
     public Event saveEvent(CreateEventDto eventdto) throws EventException {
-        Event event=eventdtoTOEvent(eventdto);
+        Event event = eventdtoTOEvent(eventdto);
         eventRepository.save(event);
         return event;
     }
@@ -33,10 +35,10 @@ public class EventService implements IEventService {
     public Event editEvent(EditEventDto eventdto) {
         Optional<Event> e = eventRepository.findById(eventdto.id());
         Event event;
-        if(e.isPresent()){
-            event=eventdtoTOEvent(e.get(),eventdto);
+        if (e.isPresent()) {
+            event = eventdtoTOEvent(e.get(), eventdto);
             return eventRepository.save(event);
-        }else{
+        } else {
             throw new EventException("evento no encontrado");
         }
     }
@@ -55,11 +57,11 @@ public class EventService implements IEventService {
         }
     }
 
-    public Event getEventById(String id){
+    public Event getEventById(String id) {
         Optional<Event> e = eventRepository.findById(id);
-        if(e.isPresent()){
+        if (e.isPresent()) {
             return e.get();
-        }else{
+        } else {
             throw new EventException("Evento no encontrado");
         }
     }
@@ -80,14 +82,65 @@ public class EventService implements IEventService {
     }
 
     @Override
-    public List<Event> getAllEvents() {return eventRepository.findAll();}
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
 
+    @Override
     public List<Event> getAllEventsByDate(LocalDate saleStartDate) {
 
         return eventRepository.findBysaleStartDate(saleStartDate);
     }
 
-    public Event eventdtoTOEvent(CreateEventDto eventdto){
+    @Override
+    public List<String> getStatisticalData(String id) {
+        Event event=getEventById(id);
+        List<String> listReports = new ArrayList<>();
+        listReports.add(PercentageSoldByLocation(event.getLocality()));
+        listReports.add(ticketsSoldTotal(event));
+        listReports.add(totalEarnings(event));
+        listReports.add(soldOut(event.getLocality()));
+
+
+        return listReports;
+    }
+
+    private String PercentageSoldByLocation(List<Locality> localityList){
+        String result="Porcentaje Vendido por localidad: \n";
+        for(Locality locality: localityList){
+            int max=locality.getCapacityMax();
+            int sold=max- locality.getCapacityActual();
+            result+= locality.getNameLocality()+" = "+sold*100/max+" % \n";
+        }
+        return result;
+    }
+
+    private String ticketsSoldTotal(Event event){
+        int total=event.getCapacityMax()-event.getCapacity();
+        return "entradas vendidas en total del evento = "+total;
+    }
+
+    private String totalEarnings(Event event){
+        return null;
+    }
+
+    private String soldOut(List<Locality> localityList){
+        int cant=0;
+        int Total= localityList.size();
+        String result="Sold Out en: \n";
+        for(Locality locality: localityList){
+            if(locality.getCapacityActual()==0){
+                cant++;
+                result+=locality.getNameLocality()+"\n";
+            }
+        }
+        result+="\n Cantidad Total de localidades soldOut = "+cant+
+                "\n Porcentaje de Localidades soldOut = "+cant*100/Total+"% ";
+
+        return result;
+    }
+
+    private Event eventdtoTOEvent(CreateEventDto eventdto){
         Event event=new Event();
 
         event.setNameEvent(eventdto.nameEvent());
@@ -109,7 +162,7 @@ public class EventService implements IEventService {
         return event;
     }
 
-    public Event eventdtoTOEvent(Event event,EditEventDto eventdto){
+    private Event eventdtoTOEvent(Event event,EditEventDto eventdto){
 
         event.setNameEvent(eventdto.nameEvent());
         event.setAdressEvent(eventdto.adressEvent());
@@ -126,8 +179,6 @@ public class EventService implements IEventService {
         event.setCapacity(eventdto.capacity());
         event.setComments(eventdto.comments());
         event.setStateEvent(eventdto.stateEvent());
-
-
 
         return event;
     }

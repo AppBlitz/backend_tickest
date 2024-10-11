@@ -2,5 +2,5 @@ package com.example.uniquindio.spring.dto.utils;
 
 import lombok.NonNull;
 
-public record CommentDto(@NonNull String nameUser, @NonNull String text) {
+public record CommentDto(@NonNull String IdUser, @NonNull String text,@NonNull String idEvent) {
 }

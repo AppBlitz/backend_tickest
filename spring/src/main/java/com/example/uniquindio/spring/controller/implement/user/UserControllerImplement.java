@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import com.example.uniquindio.spring.controller.interfaces.user.UserController;
 import com.example.uniquindio.spring.dto.userdto.LoginUser;
+import com.example.uniquindio.spring.dto.utils.CommentDto;
 import com.example.uniquindio.spring.model.documents.User;
+import com.example.uniquindio.spring.model.vo.Comment;
 import com.example.uniquindio.spring.service.imp.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +48,13 @@ public class UserControllerImplement implements UserController {
         Optional<User> user = userService.findByEmailAndPassword((loginUser));
         return ResponseEntity.status(200).body(user);
 
+    }
+
+    @Override
+    @RequestMapping(value = "/postComment", method = RequestMethod.POST)
+    public ResponseEntity<Comment> postComment(@RequestBody() CommentDto commentdto) throws Exception {
+        Comment comment = userService.postComment(commentdto);
+        return ResponseEntity.status(200).body(comment);
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.uniquindio.spring.service.interfaces.event;
 
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
+import com.example.uniquindio.spring.exception.event.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface IEventService {
 
-    public Event saveEvent(CreateEventDto eventdto);
+    public Event saveEvent(CreateEventDto eventdto) throws EventException;
 
     public Event editEvent(EditEventDto eventdto);
 
@@ -27,5 +28,6 @@ public interface IEventService {
 
     public List<Event> getAllEvents();
 
+    public List<String> getStatisticalData(String id) ;
 
 }
