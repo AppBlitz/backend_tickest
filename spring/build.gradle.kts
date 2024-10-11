@@ -28,6 +28,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
   	implementation("org.springframework.boot:spring-boot-starter-mail")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation ("org.simplejavamail:simple-java-mail:8.11.2")
+	implementation ("org.simplejavamail:batch-module:8.10.1")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

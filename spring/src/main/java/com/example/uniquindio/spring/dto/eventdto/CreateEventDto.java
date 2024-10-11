@@ -2,7 +2,8 @@ package com.example.uniquindio.spring.dto.eventdto;
 
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
-import com.example.uniquindio.spring.model.vo.items.Comment;
+
+import com.example.uniquindio.spring.model.vo.Comment;
 import com.example.uniquindio.spring.model.vo.items.Locality;
 import com.example.uniquindio.spring.model.vo.items.Ticket;
 import lombok.NonNull;

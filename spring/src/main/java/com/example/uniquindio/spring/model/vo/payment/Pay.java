@@ -27,6 +27,6 @@ public class Pay {
     private String moneda;
     @NonNull
     private String codigoAutorizacion;
-    @NonNull
+
     private float valorTransaccion;
 }

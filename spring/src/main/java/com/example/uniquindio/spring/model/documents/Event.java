@@ -5,13 +5,14 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.example.uniquindio.spring.model.vo.Comment;
 import com.example.uniquindio.spring.model.vo.items.Ticket;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
-import com.example.uniquindio.spring.model.vo.items.Comment;
+
 
 import com.example.uniquindio.spring.model.vo.items.Locality;
 import lombok.AllArgsConstructor;

@@ -1,75 +1,40 @@
 package com.example.uniquindio.spring.service.imp.email;
 
-import com.example.uniquindio.spring.dto.emaildto.EmailDto;
-
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+import com.example.uniquindio.spring.dto.emaildto.EmailDTO;
+import com.example.uniquindio.spring.service.interfaces.email.IEmailService;
+import com.example.uniquindio.spring.utils.PropertiesReader;
 import org.springframework.stereotype.Service;
-
+import org.simplejavamail.api.email.Email;
+import org.simplejavamail.api.mailer.Mailer;
+import org.simplejavamail.api.mailer.config.TransportStrategy;
+import org.simplejavamail.email.EmailBuilder;
+import org.simplejavamail.mailer.MailerBuilder;
+import org.springframework.scheduling.annotation.Async;
 @Service
-@PropertySource("classpath:email.properties")
-public class EmailService {
+public class EmailService implements IEmailService {
+    @Override
+    @Async
+    public void sendEmail(EmailDTO emailDTO) throws Exception {
+        PropertiesReader reader = new PropertiesReader("resources/email.properties");
 
-    @Autowired
-    JavaMailSender mailSender;
+        Email email = EmailBuilder.startingBlank()
+                .from(reader.getProperty("username"))
+                .to(emailDTO.email())
+                .withSubject(emailDTO.subject())
+                .withPlainText(emailDTO.message())
+                .buildEmail();
 
-    @Value("${spring.mail.username}")
-    private String sender;
 
-    public void sendEmailRegister(EmailDto dto) throws Exception {
+        try (Mailer mailer = MailerBuilder
+                .withSMTPServer(reader.getProperty("host"), Integer.valueOf(reader.getProperty("port")), reader.getProperty("username"))
+                .withTransportStrategy(TransportStrategy.SMTP_TLS)
+                .withDebugLogging(true)
+                .buildMailer()) {
 
-        SimpleMailMessage mimeMessage = new SimpleMailMessage();
 
-        mimeMessage.setFrom(sender);
-        mimeMessage.setTo(dto.email());
-        mimeMessage.setSubject(dto.subject());
-        mimeMessage.setText(String.format(dto.message() + " %s", dto.code()));
-        mimeMessage.setCc(dto.email());
-        sendMessage(mimeMessage);
-    }
-
-    public void sendDescountCode(EmailDto dto) throws Exception {
-
-        SimpleMailMessage mimeMessage = new SimpleMailMessage();
-
-        mimeMessage.setFrom(sender);
-        mimeMessage.setTo(dto.email());
-        mimeMessage.setSubject(dto.subject());
-        mimeMessage.setText(dto.message() + " " + dto.code());
-        mimeMessage.setCc(dto.email());
-        sendMessage(mimeMessage);
-    }
-
-    private void sendMessage(SimpleMailMessage mimeMessage) throws Exception {
-
-        try {
-            mailSender.send(mimeMessage);
-        } catch (MailException e) {
+            mailer.sendMail(email);
         }
+
+
     }
-
-    public void sendOrderConfirmationEmail(String to, String orderDetails, byte[] qrCodeImage) throws MessagingException {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-        helper.setTo(to);
-        helper.setSubject("Order Confirmation");
-        helper.setText(orderDetails, true);
-
-        // Attach the QR code
-        helper.addAttachment("order-qr.png", new ByteArrayResource(qrCodeImage));
-
-        mailSender.send(message);
-    }
-
-
-
 }

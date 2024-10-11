@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.uniquindio.spring.dto.userdto.UserDto;
-import com.example.uniquindio.spring.dto.emaildto.EmailDto;
+import com.example.uniquindio.spring.dto.emaildto.EmailDTO;
 import com.example.uniquindio.spring.dto.userdto.LoginUser;
 import com.example.uniquindio.spring.dto.userdto.UpdateUserDtoRegister;
 import com.example.uniquindio.spring.exception.email.EmailInvalidException;
@@ -79,7 +79,7 @@ public class UserService implements IUserService {
             user.getCouponsCode().add(coupon);
 
             // Prepare and send the activation email
-            EmailDto emaildto = new EmailDto(userdto.email(), "Código para activar la cuenta", "Activación de cuenta", code);
+            EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta", code);
             emailService.sendEmailRegister((emaildto));
 
             // Save the user object in the repository
@@ -116,7 +116,7 @@ public class UserService implements IUserService {
             user.setCouponsCode(updateUserDtoRegister.couponList());
             user.setCodeValidator("IDLE");
             userRepository.save(user);
-            EmailDto emaildto = new EmailDto(user.getEmail(),
+            EmailDTO emaildto = new EmailDTO(user.getEmail(),
                     "Código de descuento \n el código solo es aplicable para un compra \n descuento del 15 % \n",
                     "Código de descuento",
                     code);
