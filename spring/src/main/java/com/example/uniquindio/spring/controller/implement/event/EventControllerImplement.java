@@ -1,5 +1,6 @@
 package com.example.uniquindio.spring.controller.implement.event;
 
+import com.example.uniquindio.spring.Controller.interfaces.event.EventController;
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.exception.event.EventException;
@@ -18,12 +19,10 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("event")
-public class EventControllerImplement {
+public class EventControllerImplement implements EventController {
 
     @Autowired
     EventService eventService;
-    @Autowired
-    private EventRepository eventRepository;
 
     /**
      * TODO: method create user
@@ -77,6 +76,12 @@ public class EventControllerImplement {
 
     }
 
+    @Override
+    @RequestMapping(value = "/generarReporte/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<String>> getStatisticalData(@PathVariable String id) throws EventException {
+        List<String> statisticalData = eventService.getStatisticalData(id);
+        return ResponseEntity.status(200).body(statisticalData);
+    }
 
 
 }

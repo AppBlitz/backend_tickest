@@ -5,7 +5,11 @@ import java.util.Optional;
 
 import com.example.uniquindio.spring.controller.interfaces.user.UserController;
 import com.example.uniquindio.spring.dto.userdto.LoginUser;
+import com.example.uniquindio.spring.dto.userdto.UserDto;
 import com.example.uniquindio.spring.dto.utils.CommentDto;
+import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.MensajeDto;
+import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.TokenDto;
+import com.example.uniquindio.spring.exception.user.UserException;
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.model.vo.Comment;
 import com.example.uniquindio.spring.service.imp.user.UserService;
@@ -28,6 +32,21 @@ public class UserControllerImplement implements UserController {
     UserService userService;
 
     @Override
+    @RequestMapping(value = "/user/add", method = RequestMethod.POST)
+    public ResponseEntity<MensajeDto<String>> saveUser(@RequestBody UserDto userdto) throws Exception {
+        userService.saveUser(userdto);
+        return ResponseEntity.ok(new MensajeDto<>(false,"el usuario fue agregado con exito"));
+    }
+
+    @Override
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<MensajeDto<TokenDto>> login(@RequestBody() LoginUser loginUser) throws Exception {
+        TokenDto token = userService.verifyLogin((loginUser));
+        return ResponseEntity.ok(new MensajeDto<>(false,token));
+
+    }
+
+    @Override
     @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
     public ResponseEntity<Optional<User>> findByEmail(@PathVariable("email") String email)
             throws Exception {
@@ -36,18 +55,10 @@ public class UserControllerImplement implements UserController {
     }
 
     @Override
-    @RequestMapping(value = "/user/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getAll() throws Exception {
         List<User> users = userService.getAllUser();
         return ResponseEntity.status(200).body(users);
-    }
-
-    @Override
-    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    public ResponseEntity<Optional<User>> login(@RequestBody() LoginUser loginUser) throws Exception {
-        Optional<User> user = userService.findByEmailAndPassword((loginUser));
-        return ResponseEntity.status(200).body(user);
-
     }
 
     @Override
