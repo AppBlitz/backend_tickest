@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.Controller.implement.user;
+package com.example.uniquindio.spring.controller.implement.user;
 
 import com.example.uniquindio.spring.model.documents.User;
 import com.example.uniquindio.spring.service.imp.user.UserService;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.uniquindio.spring.Controller.interfaces.user.AccountController;
+import com.example.uniquindio.spring.controller.interfaces.user.AccountController;
 import com.example.uniquindio.spring.dto.userdto.UserDto;
 import com.example.uniquindio.spring.dto.userdto.UpdateUserDtoRegister;
 

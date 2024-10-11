@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.Controller.interfaces.user;
+package com.example.uniquindio.spring.controller.interfaces.user;
 
 import java.util.List;
 import java.util.Optional;

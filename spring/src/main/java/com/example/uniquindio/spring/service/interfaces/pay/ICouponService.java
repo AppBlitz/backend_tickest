@@ -1,23 +1,51 @@
 package com.example.uniquindio.spring.service.interfaces.pay;
 
+import com.example.uniquindio.spring.model.enums.CouponType;
+import com.example.uniquindio.spring.model.vo.payment.Coupon;
+import java.time.LocalDate;
+
 public interface ICouponService {
 
   /**
-   * @param number
-   * @return
+   * Creates a new coupon with the specified percentage, expiration date, and type.
+   *
+   * @param percentage the discount percentage of the coupon
+   * @param dateFinish the expiration date of the coupon
+   * @param type the type of coupon (as defined in CouponType enum)
+   * @return the created Coupon object
    */
-  public String getCouponRecorverPassword(int number);
+  Coupon createCoupon(Double percentage, LocalDate dateFinish, CouponType type);
 
   /**
-   * @param number
-   * @return
+   * Validates the given coupon based on predefined rules.
+   *
+   * @param coupon the coupon to be validated
+   * @return true if the coupon is valid, false otherwise
    */
-  public String getActivateAccount(int number);
+  boolean validateCoupon(Coupon coupon);
 
   /**
-   * @param number
-   * @return
+   * Searches for a coupon in the coupon collection of the MongoDatabase
+   * based on its unique identifier (idCoupon) and marks it as used or finished.
+   *
+   * @param idCoupon the unique identifier of the coupon
+   * @return true if the coupon was successfully marked as finished, false otherwise
    */
-  public String getCouponDescountRegiserFisrt(int number);
+  boolean finishCouponUnique(String idCoupon);
 
+  /**
+   * Searches for the coupon in the user's coupon list and marks it as used or finished.
+   *
+   * @param coupon the coupon to be finished for the user
+   * @return true if the coupon was successfully marked as finished for the user, false otherwise
+   */
+  boolean finishCouponIndividual(Coupon coupon);
+
+  /**
+   * Sends the given coupon to the user's email address.
+   *
+   * @param coupon the coupon to be sent
+   * @return true if the coupon was successfully sent via email, false otherwise
+   */
+  boolean sendCoupon(Coupon coupon);
 }

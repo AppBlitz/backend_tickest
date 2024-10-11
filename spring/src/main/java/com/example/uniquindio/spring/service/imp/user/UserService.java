@@ -79,8 +79,8 @@ public class UserService implements IUserService {
             user.getCouponsCode().add(coupon);
 
             // Prepare and send the activation email
-            EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta", code);
-            emailService.sendEmailRegister((emaildto));
+            EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta");
+            //emailService.sendEmailRegister((emaildto));
 
             // Save the user object in the repository
             return userRepository.save(user);
@@ -116,14 +116,14 @@ public class UserService implements IUserService {
             user.setCouponsCode(updateUserDtoRegister.couponList());
             user.setCodeValidator("IDLE");
             userRepository.save(user);
-            EmailDTO emaildto = new EmailDTO(user.getEmail(),
+            /**EmailDTO emaildto = new EmailDTO(user.getEmail(),
                     "Código de descuento \n el código solo es aplicable para un compra \n descuento del 15 % \n",
                     "Código de descuento",
                     code);
             emailService.sendDescountCode(emaildto);
-            return user;
+            return user;**/
         }
-
+        return null;
     }
 
     @Override
