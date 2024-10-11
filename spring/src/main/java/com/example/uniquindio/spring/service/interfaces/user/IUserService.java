@@ -6,10 +6,12 @@ import java.util.Optional;
 import com.example.uniquindio.spring.dto.userdto.UserDto;
 import com.example.uniquindio.spring.dto.userdto.LoginUser;
 import com.example.uniquindio.spring.dto.userdto.UpdateUserDtoRegister;
+import com.example.uniquindio.spring.dto.utils.CommentDto;
 import com.example.uniquindio.spring.exception.email.EmailInvalidException;
 import com.example.uniquindio.spring.exception.user.PasswordInvalidException;
 import com.example.uniquindio.spring.exception.user.UserException;
 import com.example.uniquindio.spring.model.documents.User;
+import com.example.uniquindio.spring.model.vo.Comment;
 import com.example.uniquindio.spring.model.vo.information.UserInformation;
 
 public interface IUserService {
@@ -51,4 +53,6 @@ public interface IUserService {
     public boolean validateUser(UserDto userdto) throws UserException;
 
     UserInformation getInformation(User user);
+
+    public Comment postComment(CommentDto commentdto)throws UserException;
 }

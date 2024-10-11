@@ -3,6 +3,8 @@ package com.example.uniquindio.spring.Controller.interfaces.user;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.uniquindio.spring.dto.utils.CommentDto;
+import com.example.uniquindio.spring.model.vo.Comment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,4 +32,6 @@ public interface UserController {
      * @throws Exception
      */
     public ResponseEntity<Optional<User>> login(@RequestBody LoginUser loginUser) throws Exception;
+
+    public ResponseEntity<Comment> postComment(@RequestBody CommentDto comment) throws Exception;
 }
