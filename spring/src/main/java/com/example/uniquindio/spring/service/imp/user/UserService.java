@@ -83,8 +83,8 @@ public class UserService implements IUserService {
             user.setIdentificationNumber(userdto.identificationNumber());
 
             // Generate activation code
-            String code = couponService.getActivateAccount(20);
-            user.setCodeValidator(code);
+            //String code = couponService.getActivateAccount(20);
+            //user.setCodeValidator(code);
             Coupon coupon = new Coupon();
             coupon.setCode("BIENVENIDA");
             coupon.setType(CouponType.UNIQUE_CODE);
