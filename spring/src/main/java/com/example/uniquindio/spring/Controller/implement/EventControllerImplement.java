@@ -2,6 +2,7 @@ package com.example.uniquindio.spring.Controller.implement;
 
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
+import com.example.uniquindio.spring.exception.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.repository.EventRepository;
@@ -43,31 +44,32 @@ public class EventControllerImplement {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.PUT)
-    public ResponseEntity<Event> editEvent(@RequestBody() EditEventDto eventdto){
+    public ResponseEntity<Event> editEvent(@RequestBody() EditEventDto eventdto) throws EventException {
         Event e= eventService.editEvent(eventdto);
         return ResponseEntity.status(200).body(e);
     }
 
     @RequestMapping(value ="/findByName/{name}", method = RequestMethod.GET)
-    public ResponseEntity<String> findEventByName(@PathVariable String name) {
+    public ResponseEntity<String> findEventByName(@PathVariable String name) throws EventException {
         List<Event> e = eventService.getAllEventsByName(name);
         return ResponseEntity.status(200).body("eventos cargados: "+e.size());
     }
 
     @RequestMapping(value ="/findByCity/{city}", method = RequestMethod.GET)
-    public ResponseEntity<String> findEventByCity(@PathVariable String city) {
+    public ResponseEntity<String> findEventByCity(@PathVariable String city) throws EventException {
         List<Event> e = eventService.getAllEventsByCity(city);
         return ResponseEntity.status(200).body("eventos cargados: "+e.size());
     }
 
     @RequestMapping(value ="/findByType/{eventType}", method = RequestMethod.GET)
-    public ResponseEntity<String> findEventByType(@PathVariable String eventType) {
+    public ResponseEntity<String> findEventByType(@PathVariable String eventType) throws EventException {
         List<Event> e = eventService.getAllEventsByType(EventType.valueOf(eventType.toUpperCase()));
         return ResponseEntity.status(200).body("eventos cargados: "+e.size());
     }
 
     @RequestMapping(value ="/findByDate/{saleStartDate}", method = RequestMethod.GET)
-    public ResponseEntity<List<Event>> findEventByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate saleStartDate) {
+    public ResponseEntity<List<Event>> findEventByDate
+            (@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate saleStartDate)  throws EventException {
 
         List<Event> events = eventService.getAllEventsByDate(saleStartDate);
         return ResponseEntity.status(200).body(events);
