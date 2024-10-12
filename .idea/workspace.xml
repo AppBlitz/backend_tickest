@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="emmmmmm see">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Coupon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/CouponAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/CouponAbstract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/EventRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="solucion compilacion" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728702408133</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="solucion compilacion">
+      <option name="closed" value="true" />
+      <created>1728706173241</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728706173242</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -109,6 +112,7 @@
     <MESSAGE value="metodos user, adicion de tokens y implementacion pequeña de mensajeDto" />
     <MESSAGE value="espera correccion cupon" />
     <MESSAGE value="emmmmmm see" />
-    <option name="LAST_COMMIT_MESSAGE" value="emmmmmm see" />
+    <MESSAGE value="solucion compilacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="solucion compilacion" />
   </component>
 </project>

@@ -1,9 +1,9 @@
-package com.example.uniquindio.spring.controller.implement.user;
+package com.example.uniquindio.spring.Controller.implement.user;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.example.uniquindio.spring.controller.interfaces.user.UserController;
+import com.example.uniquindio.spring.Controller.interfaces.user.UserController;
 import com.example.uniquindio.spring.dto.userdto.LoginUser;
 import com.example.uniquindio.spring.dto.userdto.UpdateUserDto;
 import com.example.uniquindio.spring.dto.userdto.UserDto;
