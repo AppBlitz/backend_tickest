@@ -4,30 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="espera correccion cupon">
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/interfaces/pay/PaymentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/dto/userdto/UpdateUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/pay/IPaymentService.java" afterDir="false" />
+    <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="emmmmmm see">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/interfaces/event/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/interfaces/event/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/invoice/ShoppingCartControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/invoice/ShoppingCartControllerImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/pay/PaymentControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/pay/PaymentControllerImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/user/UserControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/user/UserControllerImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/interfaces/invoice/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/interfaces/invoice/ShoppingCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/interfaces/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/interfaces/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/PurchaseOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/documents/PurchaseOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/Coupon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/CouponAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/payment/CouponAbstract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/repository/EventRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/event/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/event/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/invoice/InvoiceServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/invoice/InvoiceServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/invoice/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/invoice/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/pay/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/pay/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/event/IEventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/event/IEventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/invoice/IInvoiceServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/invoice/IInvoiceServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/invoice/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/invoice/IOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/user/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/user/IUserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,13 +93,22 @@
       <option name="project" value="LOCAL" />
       <updated>1728689884931</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="emmmmmm see">
+      <option name="closed" value="true" />
+      <created>1728702408132</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728702408133</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="metodos de servicio de comentarios y reportes" />
     <MESSAGE value="metodos user, adicion de tokens y implementacion pequeña de mensajeDto" />
     <MESSAGE value="espera correccion cupon" />
-    <option name="LAST_COMMIT_MESSAGE" value="espera correccion cupon" />
+    <MESSAGE value="emmmmmm see" />
+    <option name="LAST_COMMIT_MESSAGE" value="emmmmmm see" />
   </component>
 </project>
