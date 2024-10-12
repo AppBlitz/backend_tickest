@@ -20,7 +20,7 @@ import org.springframework.scheduling.annotation.Async;
 @Service
 public class EmailService implements IEmailService {
     @Override
-    @Async
+    //@Async
     public void sendEmail(@NonNull EmailDTO emailDTO) throws Exception {
         PropertiesReader reader = new PropertiesReader("resources/email.properties");
 

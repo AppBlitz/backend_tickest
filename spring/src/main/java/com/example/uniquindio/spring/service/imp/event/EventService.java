@@ -92,13 +92,16 @@ public class EventService implements IEventService {
         return eventRepository.findBysaleStartDate(saleStartDate);
     }
 
+    public List<Event> getAllEventsByDateEvent(LocalDate dateEvent) {
+        return eventRepository.findByEventDate(dateEvent);
+    }
+
     @Override
     public List<String> getStatisticalData(String id) {
         Event event=getEventById(id);
         List<String> listReports = new ArrayList<>();
         listReports.add(PercentageSoldByLocation(event.getLocality()));
         listReports.add(ticketsSoldTotal(event));
-        listReports.add(totalEarnings(event));
         listReports.add(soldOut(event.getLocality()));
 
 
@@ -118,10 +121,6 @@ public class EventService implements IEventService {
     private String ticketsSoldTotal(Event event){
         int total=event.getCapacityMax()-event.getCapacity();
         return "entradas vendidas en total del evento = "+total;
-    }
-
-    private String totalEarnings(Event event){
-        return null;
     }
 
     private String soldOut(List<Locality> localityList){

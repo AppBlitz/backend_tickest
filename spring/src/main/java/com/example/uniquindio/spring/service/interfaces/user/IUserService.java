@@ -3,9 +3,7 @@ package com.example.uniquindio.spring.service.interfaces.user;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.uniquindio.spring.dto.userdto.UserDto;
-import com.example.uniquindio.spring.dto.userdto.LoginUser;
-import com.example.uniquindio.spring.dto.userdto.UpdateUserDtoRegister;
+import com.example.uniquindio.spring.dto.userdto.*;
 import com.example.uniquindio.spring.dto.utils.CommentDto;
 import com.example.uniquindio.spring.exception.email.EmailInvalidException;
 import com.example.uniquindio.spring.exception.user.PasswordInvalidException;
@@ -36,12 +34,17 @@ public interface IUserService {
      */
     public List<User> getAllUser();
 
+
+    public void editUser(UpdateUserDto user);
+
     /**
      * Search for the user by email
      *
      * @param email
      * @return A Optional null if not exists, Optinal User if exists
      */
+
+
     public Optional<User> findByEmail(String email) throws EmailInvalidException;
 
     /**
@@ -52,7 +55,20 @@ public interface IUserService {
      */
     public boolean validateUser(UserDto userdto) throws UserException;
 
+    /**
+     * get infromation of user
+     *
+     * @param user
+     * @return
+     */
     UserInformation getInformation(User user);
 
+    /**
+     * post comment in a event
+     *
+     * @param commentdto
+     * @return
+     * @throws UserException
+     */
     public Comment postComment(CommentDto commentdto)throws UserException;
 }
