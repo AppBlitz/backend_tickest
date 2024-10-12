@@ -1,6 +1,7 @@
 package com.example.uniquindio.spring.service.interfaces.invoice;
 
 import com.example.uniquindio.spring.dto.invoicedto.OrderDTO;
+import com.example.uniquindio.spring.model.vo.information.CompanyInformation;
 import com.example.uniquindio.spring.model.vo.payment.Pay;
 
 public interface IInvoiceServices {
