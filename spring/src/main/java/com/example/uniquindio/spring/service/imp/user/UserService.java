@@ -75,8 +75,8 @@ public class UserService implements IUserService {
             user.setIdentificationNumber(userdto.identificationNumber());
 
             // Generate activation code
-            String code = couponService.getActivateAccount(20);
-            user.setCodeValidator(code);
+            //String code = couponService.getActivateAccount(20);
+            //user.setCodeValidator(code);
             Coupon coupon = new Coupon();
             coupon.setCode("BIENBENIDA");
             coupon.setType(CouponType.UNIQUE_CODE);
@@ -116,7 +116,7 @@ public class UserService implements IUserService {
         if (updateUser.isEmpty()) {
             throw new RuntimeException(" User not found");
         } else {
-            String code = couponService.getCouponDescountRegiserFisrt(20);
+            //String code = couponService.getCouponDescountRegiserFisrt(20);
             User user = updateUser.get();
             user.setState((StateAccount.ASSET));
             user.setCouponsCode(updateUserDtoRegister.couponList());
