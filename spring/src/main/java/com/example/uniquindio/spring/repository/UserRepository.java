@@ -17,10 +17,12 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     boolean existsByEmailAndIdentificationNumber(String email, String identificationNumber);
 
+    boolean existsByIdentificationNumber(String identificationNumber);
+
     boolean existsBycodeValidator(String codeValidator);
 
     /* boolean existsdByCodeDiscountRegister(String codeDiscountRegister); */
 
-    boolean existsByCodeDiscountRegister(String codeDiscountRegister);
+   // boolean existsByCodeDiscountRegister(String codeDiscountRegister);
 
 }
