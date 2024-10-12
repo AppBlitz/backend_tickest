@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Comment {
 
     @NonNull
-    private User user;
+    private String iduser;
 
     @NonNull
     private LocalDateTime localData;

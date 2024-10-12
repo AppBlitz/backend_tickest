@@ -129,6 +129,21 @@ public class OrderService implements IQRGeneration, IOrderService {
 
     }
 
+    public PurchaseOrder getOrderById(String id) throws Exception {
+        Optional<PurchaseOrder> order = orderRepository.findById(id);
+        if(order.isPresent()){
+            return order.get();
+        }else{
+            throw new Exception("orden no encontrada");
+        }
+    }
+
+    public void saveOrder(PurchaseOrder order){
+
+        orderRepository.save(order);
+
+    }
+
     @Override
     public byte[] generateQR(String idOreder) throws QRGenerationException{
 

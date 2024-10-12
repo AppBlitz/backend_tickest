@@ -19,6 +19,10 @@ public interface EventRepository extends MongoRepository<Event, String> {
     //@Query("{ saleStartDate: { $regex: ?0, $options: 'i' } }")
     List<Event> findBysaleStartDate(LocalDate saleStartDate);
 
+    List<Event> findByEventDate (LocalDate saleStartDate);
+
+
+
     @Query("{ city: { $regex: ?0, $options: 'i' } }")
     List<Event> findByCity(String city);
 
