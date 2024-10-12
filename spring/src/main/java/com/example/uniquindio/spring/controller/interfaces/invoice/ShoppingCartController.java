@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.controller.interfaces.invoice;
+package com.example.uniquindio.spring.Controller.interfaces.invoice;
 
 public interface ShoppingCartController {
 }

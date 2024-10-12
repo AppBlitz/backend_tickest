@@ -28,9 +28,6 @@ public class CouponService implements ICouponService {
     CouponRepository couponRepository;
 
     @Autowired
-    UserService userService;
-
-    @Autowired
     UserRepository userRepository;
 
     @Autowired

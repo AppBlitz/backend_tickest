@@ -51,7 +51,6 @@ public class InvoiceServices  implements IInvoiceServices {
     @Autowired
     private EventService eventService;
 
-
     @Override
     public boolean sendInformation(String idUser, String idInvoice) {
         try {

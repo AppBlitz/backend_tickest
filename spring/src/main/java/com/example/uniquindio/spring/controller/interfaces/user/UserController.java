@@ -3,7 +3,9 @@ package com.example.uniquindio.spring.controller.interfaces.user;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.uniquindio.spring.dto.userdto.UpdateUserDto;
 import com.example.uniquindio.spring.dto.userdto.UserDto;
+import com.example.uniquindio.spring.dto.userdto.UserInformationDTO;
 import com.example.uniquindio.spring.dto.utils.CommentDto;
 import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.MensajeDto;
 import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.TokenDto;
@@ -38,5 +40,21 @@ public interface UserController {
      */
     public ResponseEntity<MensajeDto<TokenDto>> login(@RequestBody LoginUser loginUser) throws Exception;
 
+    /**
+     * update parameters of account
+     *
+     * @param userDto
+     * @return
+     * @throws Exception
+     */
+    public ResponseEntity<MensajeDto<String>> edituser(@RequestBody UpdateUserDto userDto) throws Exception;
+
+    /**
+     * add a comment to event
+     *
+     * @param comment
+     * @return
+     * @throws Exception
+     */
     public ResponseEntity<Comment> postComment(@RequestBody CommentDto comment) throws Exception;
 }

@@ -1,5 +1,7 @@
 package com.example.uniquindio.spring.service.imp.pay;
 
+import com.example.uniquindio.spring.service.imp.invoice.InvoiceServices;
+import com.example.uniquindio.spring.service.imp.invoice.OrderService;
 import com.mercadopago.client.payment.PaymentClient;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
@@ -20,6 +22,7 @@ import com.mercadopago.resources.preference.PreferenceItem;
 import com.mercadopago.resources.preference.Preference;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
@@ -52,17 +55,25 @@ import java.util.Map;
 @Service
 @PropertySource("classpath:mercado-Pago.properties")
 public class PaymentService {
-/**
+
+    private final InvoiceServices invoiceServices;
     @Value("${mercado_pago_sample_access_token}")
     private String mercadoPagoAccessToken;
+
+    @Autowired
+    OrderService orderservice;
+
+    public PaymentService(InvoiceServices invoiceServices) {
+        this.invoiceServices = invoiceServices;
+    }
 
     //descomente y mire a ver
 
 
-    public Preference CreatePayment(String idOrden) throws MPException, MPApiException {
+    public Preference CreatePayment(String idOrden) throws Exception {
 
    // Obtener la orden guardada en la base de datos y los ítems de la orden
-   PurchaseOrder order = OrderService.getById(idOrden);
+   PurchaseOrder order = orderservice.getOrderById(idOrden);
 
    List<PreferenceItemRequest> itemsPasarela = new ArrayList<>();
 
@@ -121,7 +132,7 @@ public class PaymentService {
            .backUrls(backUrls)
            .items(itemsPasarela)
            .payer(payer)
-           .metadata(Map.of("id_orden", order.getById()))
+           .metadata(Map.of("id_orden", order.getPurchaseOrderNumber()))
            .notificationUrl("URL NOTIFICACION")
            .build();
 
@@ -132,9 +143,9 @@ public class PaymentService {
 
 
    // Guardar el código de la pasarela en la orden
-   order.setPurchaseOrderNumber( preference.getId() );
+   order.setIdGateway( preference.getId() );
    //aqui abajo ponga donde vaya a guardar la orden
-   //ordenRepo.save(order);
+   orderservice.saveOrder(order);
 
 
    return preference;
@@ -156,8 +167,8 @@ public class PaymentService {
     }
 
     //simplemente voy a poner este ejemplo de notificacion
-/*
-    public void recibirNotificacionMercadoPago(Map<String, Object> request) {
+
+    public void notifyMercadoPago(Map<String, Object> request) {
         try {
 
 
@@ -187,10 +198,10 @@ public class PaymentService {
 
 
                 // Se obtiene la orden guardada en la base de datos y se le asigna el pago
-                PurchaseOrder order = obtenerOrden(idOrden);
+                PurchaseOrder order = orderservice.getOrderById(idOrden);
                 Pay pay = createPay(payment);
-                order.setPay(pay);
-                ordenRepo.save(order);
+                invoiceServices.addPayment(order,pay);
+                orderservice.saveOrder(order);
             }
 
 
@@ -198,7 +209,7 @@ public class PaymentService {
             e.printStackTrace();
         }
     }
-*/
+
 
 
 

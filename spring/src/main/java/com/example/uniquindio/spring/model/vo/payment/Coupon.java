@@ -6,15 +6,17 @@ import jakarta.validation.constraints.DecimalMin;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.time.LocalDate;
 
+@Builder
 @NoArgsConstructor // Generates a no-args constructor
 @Getter // Generates getters for all fields
 @Setter // Generates setters for all fields
 @EqualsAndHashCode // Generates equals and hashCode methods based on all fields
 @ToString // Generates a toString method for the class
 @AllArgsConstructor // Generates a constructor with all fields
-@Builder // Allows for a builder pattern to create instances of this class
 public class Coupon extends CouponAbstract {
 
     @EqualsAndHashCode.Include // Indicates this field should be included in equals and hashCode calculations
@@ -23,6 +25,7 @@ public class Coupon extends CouponAbstract {
     private String code; // Unique code for the coupon
 
     @NonNull // Indicates that this field cannot be null
+    @Field("couponType")
     private CouponType type; // The type of the coupon (defined in the CouponType enum)
 
     @NonNull // Indicates that this field cannot be null

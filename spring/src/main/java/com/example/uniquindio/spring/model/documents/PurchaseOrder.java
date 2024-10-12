@@ -22,6 +22,9 @@ public class PurchaseOrder {
     @NonNull // Indicates that this field cannot be null
     ShoppingCart shoppingCart; // Shopping cart associated with this purchase order
 
+    @NonNull // Indicates that this field cannot be null
+    String idGateway; //identifier for the Payment gateway
+
     @DecimalMin(value = "0.0", inclusive = true) // Ensures that the debit value is at least 0.0
     @Builder.Default // Sets a default value for this field when using the builder
     Double debit = 0.0; // The debit amount for the purchase order, defaults to 0.0
