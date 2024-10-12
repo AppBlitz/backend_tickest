@@ -122,6 +122,7 @@ public class UserService implements IUserService {
         if (updateUser.isEmpty()) {
             throw new RuntimeException(" User not found");
         } else {
+
             User user = updateUser.get();
             user.setState((StateAccount.ASSET));
             user.setCouponsCode(updateUserDtoRegister.couponList());
