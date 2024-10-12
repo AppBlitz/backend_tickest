@@ -1,11 +1,13 @@
 package com.example.uniquindio.spring.model.vo.information;
 
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
 @Data
+@NoArgsConstructor
 @Document("Store")
 public class CompanyInformation {
 
