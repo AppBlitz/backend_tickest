@@ -81,4 +81,7 @@ public class Event {
     @NonNull
     private StateEvent stateEvent;
 
+    @NonNull
+    private List<String> userList;
+
 }
