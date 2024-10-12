@@ -30,7 +30,7 @@ public class Invoice {
   long invoiceNumber; // Unique number identifying the invoice
 
   @NonNull // Indicates that this field cannot be null
-  Pay Payment; // The payment method used for the invoice
+  Pay PaymentMethod; // The payment method used for the invoice
 
   // QR Code
   byte[] QR; // Byte array representing the QR code associated with the invoice
