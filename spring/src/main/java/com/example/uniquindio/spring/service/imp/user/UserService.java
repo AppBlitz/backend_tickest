@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.example.uniquindio.spring.dto.userdto.*;
 import com.example.uniquindio.spring.dto.utils.CommentDto;
 import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.TokenDto;
 import com.example.uniquindio.spring.model.documents.Event;
@@ -20,10 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.uniquindio.spring.dto.userdto.UserDto;
 import com.example.uniquindio.spring.dto.emaildto.EmailDTO;
-import com.example.uniquindio.spring.dto.userdto.LoginUser;
-import com.example.uniquindio.spring.dto.userdto.UpdateUserDtoRegister;
 import com.example.uniquindio.spring.exception.email.EmailInvalidException;
 import com.example.uniquindio.spring.exception.user.PasswordInvalidException;
 import com.example.uniquindio.spring.exception.user.UserException;
@@ -108,6 +106,20 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void editUser(UpdateUserDto userdto) {
+
+        Optional<User> userO = userRepository.findById(userdto.id());
+        User user=userO.get();
+
+        user.setFullName(userdto.fullName());
+        user.setEmail(userdto.password());
+        user.setAddress(userdto.address());
+        user.setPhoneNumber(userdto.phoneNumber());
+
+        userRepository.save(user);
+    }
+
+    @Override
     public boolean validateUser(UserDto userdto) throws UserException {
 
         return userRepository.existsByEmailAndIdentificationNumber(userdto.email(), userdto.identificationNumber());
@@ -169,8 +181,7 @@ public class UserService implements IUserService {
 
     public Comment postComment(CommentDto commentdto)throws UserException {
         Comment comment = new Comment();
-        Optional<User> u=userRepository.findById(commentdto.IdUser());
-        comment.setUser(u.get());
+        comment.setIduser(commentdto.IdUser());
         comment.setComment(commentdto.text());
 
         Event e = eventService.getEventById(commentdto.idEvent());

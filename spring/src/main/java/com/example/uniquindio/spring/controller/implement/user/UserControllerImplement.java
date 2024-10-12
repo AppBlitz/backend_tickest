@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import com.example.uniquindio.spring.controller.interfaces.user.UserController;
 import com.example.uniquindio.spring.dto.userdto.LoginUser;
+import com.example.uniquindio.spring.dto.userdto.UpdateUserDto;
 import com.example.uniquindio.spring.dto.userdto.UserDto;
+import com.example.uniquindio.spring.dto.userdto.UserInformationDTO;
 import com.example.uniquindio.spring.dto.utils.CommentDto;
 import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.MensajeDto;
 import com.example.uniquindio.spring.dto.utils.JWTUtilsdto.TokenDto;
@@ -47,6 +49,13 @@ public class UserControllerImplement implements UserController {
     }
 
     @Override
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public ResponseEntity<MensajeDto<String>> edituser(@RequestBody UpdateUserDto userDto) throws Exception {
+        userService.editUser(userDto);
+        return ResponseEntity.ok(new MensajeDto<>(false,"usuario editado con exito"));
+    }
+
+    @Override
     @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
     public ResponseEntity<Optional<User>> findByEmail(@PathVariable("email") String email)
             throws Exception {
@@ -67,5 +76,7 @@ public class UserControllerImplement implements UserController {
         Comment comment = userService.postComment(commentdto);
         return ResponseEntity.status(200).body(comment);
     }
+
+
 
 }

@@ -34,6 +34,21 @@ public interface IOrderService {
     Double calculateCredit(List<Item> itemList);
 
     /**
+     * get order of database by id
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public PurchaseOrder getOrderById(String id) throws Exception;
+
+    /**
+     * save order in database
+     *
+     * @param order
+     */
+    public void saveOrder(PurchaseOrder order);
+
+    /**
      * Calculates the total debit based on the provided coupon list and initial debit amount.
      *
      * @param couponList the list of coupons to apply

@@ -46,9 +46,16 @@ public class InvoiceServices  implements IInvoiceServices {
         return invoiceRepository.save(invoice);
     }
     @Override
-    public boolean addPayment(OrderDTO orderDTO, Pay pay) {
-
-        return false;
+    public boolean addPayment(PurchaseOrder order, Pay pay) {
+        try{
+            Invoice invoice = new Invoice();
+            invoice.setPayment(pay);
+            invoice.setPurchaseOrder(order);
+            createInvoice(invoice);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
     }
     @Override
     public boolean sendInformation(String idUser, String idInvoice) {
