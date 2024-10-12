@@ -1,6 +1,7 @@
 package com.example.uniquindio.spring.model.documents;
 
 import com.example.uniquindio.spring.model.vo.information.CompanyInformation;
+import com.example.uniquindio.spring.model.vo.payment.Pay;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -29,7 +30,7 @@ public class Invoice {
   long invoiceNumber; // Unique number identifying the invoice
 
   @NonNull // Indicates that this field cannot be null
-  String PaymentMethod; // The payment method used for the invoice
+  Pay PaymentMethod; // The payment method used for the invoice
 
   // QR Code
   byte[] QR; // Byte array representing the QR code associated with the invoice
