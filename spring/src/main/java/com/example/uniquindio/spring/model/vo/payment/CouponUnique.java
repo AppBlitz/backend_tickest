@@ -6,6 +6,7 @@ import jakarta.validation.constraints.DecimalMin;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDate;
 
 @NoArgsConstructor // Generates a no-args constructor
@@ -15,26 +16,14 @@ import java.time.LocalDate;
 @ToString // Generates a toString method for the class
 @AllArgsConstructor // Generates a constructor with all fields
 @Builder // Allows for a builder pattern to create instances of this class
-public class Coupon extends CouponAbstract {
+@Document("couponUnique") // Specifies that this class is a MongoDB document with the collection name "coupon"
+public class CouponUnique extends CouponAbstract{
 
     @EqualsAndHashCode.Include // Indicates this field should be included in equals and hashCode calculations
     @Id // Marks this field as the unique identifier in the MongoDB document
     @NonNull // Indicates that this field cannot be null
     private String code; // Unique code for the coupon
+    @NonNull
+    private Coupon coupon;
 
-    @NonNull // Indicates that this field cannot be null
-    private CouponType type; // The type of the coupon (defined in the CouponType enum)
-
-    @NonNull // Indicates that this field cannot be null
-    private String name; // The name of the coupon
-
-    @DecimalMin(value = "0.0", inclusive = true) // Ensures the discount percentage is at least 0.0
-    @DecimalMax(value = "1.0", inclusive = true) // Ensures the discount percentage does not exceed 1.0 (100%)
-    private float discount_percentage; // The discount percentage of the coupon
-
-    @Builder.Default // Sets a default value for this field when using the builder
-    private LocalDate date = LocalDate.now(); // The date of coupon creation, defaults to the current date
-
-    @Builder.Default // Sets a default value for this field when using the builder
-    private boolean active = true; // Indicates whether the coupon is active, defaults to true
 }
