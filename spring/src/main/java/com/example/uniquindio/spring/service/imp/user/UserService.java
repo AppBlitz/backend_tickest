@@ -1,5 +1,6 @@
 package com.example.uniquindio.spring.service.imp.user;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -183,6 +184,7 @@ public class UserService implements IUserService {
         Comment comment = new Comment();
         comment.setIduser(commentdto.IdUser());
         comment.setComment(commentdto.text());
+        comment.setLocalData(LocalDateTime.now());
 
         Event e = eventService.getEventById(commentdto.idEvent());
         e.getComments().add(comment);
