@@ -77,6 +77,13 @@ public interface EventController {
             throws EventException;
 
     /**
+     * look all events and get up
+     * @return
+     * @throws EventException
+     */
+    public ResponseEntity<String> findEventAllEvents() throws EventException;
+
+    /**
      * get statistical data of events
      * @param idEvent
      * @return

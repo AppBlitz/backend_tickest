@@ -87,6 +87,11 @@ public class EventService implements IEventService {
     }
 
     @Override
+    public List<Event> getEventsByState(StateEvent stateEvent) {
+        return eventRepository.findEventsByState(stateEvent);
+    }
+
+    @Override
     public List<Event> getAllEventsByDate(LocalDate saleStartDate) {
 
         return eventRepository.findBysaleStartDate(saleStartDate);

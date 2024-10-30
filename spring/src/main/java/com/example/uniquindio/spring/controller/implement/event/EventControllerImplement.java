@@ -6,6 +6,7 @@ import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.exception.event.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
+import com.example.uniquindio.spring.model.enums.StateEvent;
 import com.example.uniquindio.spring.repository.EventRepository;
 import com.example.uniquindio.spring.service.imp.event.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,9 +73,20 @@ public class EventControllerImplement implements EventController {
 
         List<Event> events = eventService.getAllEventsByDate(saleStartDate);
         return ResponseEntity.status(200).body(events);
-
-
     }
+
+    @RequestMapping(value ="/findAllEvents", method = RequestMethod.GET)
+    public ResponseEntity<String> findEventAllEvents() throws EventException {
+        List<Event> e = eventService.getAllEvents();
+        return ResponseEntity.status(200).body("eventos cargados: "+e.size());
+    }
+
+    @RequestMapping(value ="/findByState/{stateEvent}", method = RequestMethod.GET)
+    public ResponseEntity<String> findEventByState(@PathVariable String stateEvent) throws EventException {
+        List<Event> e = eventService.getEventsByState(StateEvent.valueOf(stateEvent.toUpperCase()));
+        return ResponseEntity.status(200).body("eventos cargados: "+e.size());
+    }
+
 
     @Override
     @RequestMapping(value = "/generarReporte/{id}", method = RequestMethod.GET)

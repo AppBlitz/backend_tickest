@@ -1,6 +1,7 @@
 package com.example.uniquindio.spring.repository;
 
 import com.example.uniquindio.spring.model.enums.EventType;
+import com.example.uniquindio.spring.model.enums.StateEvent;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -26,5 +27,7 @@ public interface EventRepository extends MongoRepository<Event, String> {
 
     //@Query("{ eventType: { $regex: ?0, $options: 'i' } }")
     List<Event> findByEventType(EventType eventType);
+
+    List<Event> findEventsByState(StateEvent stateEvent);
 
 }
