@@ -5,6 +5,7 @@ import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.exception.event.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
+import com.example.uniquindio.spring.model.enums.StateEvent;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -76,6 +77,13 @@ public interface IEventService {
      * @return
      */
     public List<Event> getAllEvents();
+
+    /**
+     * look for a event by state
+     * @param stateEvent
+     * @return
+     */
+    public List<Event> getEventsByState(StateEvent stateEvent);
 
     /**
      * get statistical data of events
