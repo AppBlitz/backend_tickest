@@ -17,17 +17,17 @@ public interface EventRepository extends MongoRepository<Event, String> {
     @Query("{ nameEvent: { $regex: ?0, $options: 'i' } }")
     List<Event> findByNameEvent(String nameEvent);
 
-    //@Query("{ saleStartDate: { $regex: ?0, $options: 'i' } }")
+    // @Query("{ saleStartDate: { $regex: ?0, $options: 'i' } }")
     List<Event> findBysaleStartDate(LocalDate saleStartDate);
 
-    List<Event> findByEventDate (LocalDate saleStartDate);
+    List<Event> findByEventDate(LocalDate saleStartDate);
 
     @Query("{ city: { $regex: ?0, $options: 'i' } }")
     List<Event> findByCity(String city);
 
-    //@Query("{ eventType: { $regex: ?0, $options: 'i' } }")
+    // @Query("{ eventType: { $regex: ?0, $options: 'i' } }")
     List<Event> findByEventType(EventType eventType);
 
-    List<Event> findEventsByState(StateEvent stateEvent);
+    List<Event> findEventsByStateEvent(StateEvent stateEvent);
 
 }

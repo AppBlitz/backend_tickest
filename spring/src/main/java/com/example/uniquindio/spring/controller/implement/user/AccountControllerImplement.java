@@ -1,7 +1,5 @@
-package com.example.uniquindio.spring.Controller.implement.user;
+package com.example.uniquindio.spring.controller.implement.user;
 
-import com.example.uniquindio.spring.model.documents.User;
-import com.example.uniquindio.spring.service.imp.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,21 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.uniquindio.spring.Controller.interfaces.user.AccountController;
-import com.example.uniquindio.spring.dto.userdto.UserDto;
 import com.example.uniquindio.spring.dto.userdto.UpdateUserDtoRegister;
-
+import com.example.uniquindio.spring.dto.userdto.UserDto;
+import com.example.uniquindio.spring.model.documents.User;
+import com.example.uniquindio.spring.service.imp.user.UserService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("account")
-public class AccountControllerImplement implements AccountController {
+public class AccountControllerImplement {
 
     @Autowired
     UserService userService;
 
-    @Override
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<User> saveUser(@RequestBody() UserDto userdto) throws Exception {
         if (userService.validateUser(userdto) != true) {
             User user = userService.saveUser((userdto));

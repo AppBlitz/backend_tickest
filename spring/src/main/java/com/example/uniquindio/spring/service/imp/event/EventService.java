@@ -23,7 +23,6 @@ public class EventService implements IEventService {
     @Autowired
     EventRepository eventRepository;
 
-
     @Override
     public Event saveEvent(CreateEventDto eventdto) throws EventException {
         Event event = eventdtoTOEvent(eventdto);
@@ -88,7 +87,7 @@ public class EventService implements IEventService {
 
     @Override
     public List<Event> getEventsByState(StateEvent stateEvent) {
-        return eventRepository.findEventsByState(stateEvent);
+        return eventRepository.findEventsByStateEvent(stateEvent);
     }
 
     @Override
@@ -103,49 +102,48 @@ public class EventService implements IEventService {
 
     @Override
     public List<String> getStatisticalData(String id) {
-        Event event=getEventById(id);
+        Event event = getEventById(id);
         List<String> listReports = new ArrayList<>();
         listReports.add(PercentageSoldByLocation(event.getLocality()));
         listReports.add(ticketsSoldTotal(event));
         listReports.add(soldOut(event.getLocality()));
 
-
         return listReports;
     }
 
-    private String PercentageSoldByLocation(List<Locality> localityList){
-        String result="Porcentaje Vendido por localidad: \n";
-        for(Locality locality: localityList){
-            int max=locality.getCapacityMax();
-            int sold=max- locality.getCapacityActual();
-            result+= locality.getNameLocality()+" = "+sold*100/max+" % \n";
+    private String PercentageSoldByLocation(List<Locality> localityList) {
+        String result = "Porcentaje Vendido por localidad: \n";
+        for (Locality locality : localityList) {
+            int max = locality.getCapacityMax();
+            int sold = max - locality.getCapacityActual();
+            result += locality.getNameLocality() + " = " + sold * 100 / max + " % \n";
         }
         return result;
     }
 
-    private String ticketsSoldTotal(Event event){
-        int total=event.getCapacityMax()-event.getCapacity();
-        return "entradas vendidas en total del evento = "+total;
+    private String ticketsSoldTotal(Event event) {
+        int total = event.getCapacityMax() - event.getCapacity();
+        return "entradas vendidas en total del evento = " + total;
     }
 
-    private String soldOut(List<Locality> localityList){
-        int cant=0;
-        int Total= localityList.size();
-        String result="Sold Out en: \n";
-        for(Locality locality: localityList){
-            if(locality.getCapacityActual()==0){
+    private String soldOut(List<Locality> localityList) {
+        int cant = 0;
+        int Total = localityList.size();
+        String result = "Sold Out en: \n";
+        for (Locality locality : localityList) {
+            if (locality.getCapacityActual() == 0) {
                 cant++;
-                result+=locality.getNameLocality()+"\n";
+                result += locality.getNameLocality() + "\n";
             }
         }
-        result+="\n Cantidad Total de localidades soldOut = "+cant+
-                "\n Porcentaje de Localidades soldOut = "+cant*100/Total+"% ";
+        result += "\n Cantidad Total de localidades soldOut = " + cant +
+                "\n Porcentaje de Localidades soldOut = " + cant * 100 / Total + "% ";
 
         return result;
     }
 
-    private Event eventdtoTOEvent(CreateEventDto eventdto){
-        Event event=new Event();
+    private Event eventdtoTOEvent(CreateEventDto eventdto) {
+        Event event = new Event();
 
         event.setNameEvent(eventdto.nameEvent());
         event.setAdressEvent(eventdto.adressEvent());
@@ -166,7 +164,7 @@ public class EventService implements IEventService {
         return event;
     }
 
-    private Event eventdtoTOEvent(Event event,EditEventDto eventdto){
+    private Event eventdtoTOEvent(Event event, EditEventDto eventdto) {
 
         event.setNameEvent(eventdto.nameEvent());
         event.setAdressEvent(eventdto.adressEvent());
