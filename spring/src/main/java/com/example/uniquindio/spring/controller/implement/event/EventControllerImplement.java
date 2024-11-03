@@ -75,7 +75,8 @@ public class EventControllerImplement implements EventController {
         return ResponseEntity.status(200).body(events);
     }
 
-    @RequestMapping(value ="/findAllEvents", method = RequestMethod.GET)
+    @RequestMapping(value ="/findAllEvents" +
+            "", method = RequestMethod.GET)
     public ResponseEntity<String> findEventAllEvents() throws EventException {
         List<Event> e = eventService.getAllEvents();
         return ResponseEntity.status(200).body("eventos cargados: "+e.size());

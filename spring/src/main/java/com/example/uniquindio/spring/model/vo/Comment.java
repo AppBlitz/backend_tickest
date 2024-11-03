@@ -4,6 +4,7 @@ import com.example.uniquindio.spring.model.documents.User;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @Data
@@ -22,5 +23,8 @@ public class Comment {
 
     @NonNull
     private String comment;
+
+    @NonNull
+    private List<Comment> answers;
 
 }
