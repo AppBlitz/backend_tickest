@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/event/EventControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/event/EventControllerImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/model/vo/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +72,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Application.executor": "Run",
+    "Spring Boot.Application.executor": "Debug",
     "extract.method.default.visibility": "private",
     "git-widget-placeholder": "jahn",
     "kotlin-language-version-configured": "true",
@@ -175,7 +173,9 @@
       <workItem from="1729538901620" duration="31000" />
       <workItem from="1730258375042" duration="1641000" />
       <workItem from="1730608656486" duration="828000" />
-      <workItem from="1730610871262" duration="2133000" />
+      <workItem from="1730610871262" duration="2606000" />
+      <workItem from="1730647889696" duration="758000" />
+      <workItem from="1730649335082" duration="3822000" />
     </task>
     <task id="LOCAL-00007" summary="comment">
       <option name="closed" value="true" />
