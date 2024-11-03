@@ -1,4 +1,4 @@
-package com.example.uniquindio.spring.controller.implement.user;
+package com.example.uniquindio.spring.Controller.implement.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

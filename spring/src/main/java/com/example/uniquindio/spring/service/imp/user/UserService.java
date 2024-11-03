@@ -18,6 +18,7 @@ import com.example.uniquindio.spring.service.imp.email.EmailService;
 import com.example.uniquindio.spring.service.imp.event.EventService;
 import com.example.uniquindio.spring.service.imp.pay.CouponService;
 import com.example.uniquindio.spring.utils.JWTUtils;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,7 @@ public class UserService implements IUserService {
 
             // Set the user data
             user.setFullName(userdto.fullName());
-            user.setPassword(userdto.password());
+            user.setPassword(encriptarPassword(userdto.password()));
             user.setEmail(userdto.email());
             user.setAddress(userdto.address());
             user.setPhoneNumber(userdto.phoneNumber());
@@ -122,7 +123,6 @@ public class UserService implements IUserService {
 
     @Override
     public boolean validateUser(UserDto userdto) throws UserException {
-
         return userRepository.existsByEmailAndIdentificationNumber(userdto.email(), userdto.identificationNumber());
 
     }
@@ -170,6 +170,12 @@ public class UserService implements IUserService {
         return new TokenDto( jwtUtils.generarToken(cuenta.get().getEmail(), map) );
     }
 
+    private String encriptarPassword(String password){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode( password );
+    }
+
+
     public UserInformation getInformation(User user) {
         UserInformation userInformation = new UserInformation();
         userInformation.setFullName(user.getFullName());
@@ -181,13 +187,25 @@ public class UserService implements IUserService {
     }
 
     public Comment postComment(CommentDto commentdto)throws UserException {
+        Comment comment = getComment(commentdto);
+
+        Event e = eventService.getEventById(commentdto.idEvent());
+        e.getComments().add(comment);
+
+        return comment;
+    }
+
+ /*   public Comment postAnswer(CommentDto commentdto)throws UserException {
+        Comment answer = getComment(commentdto);
+
+    }*/
+
+    @NotNull
+    private Comment getComment(CommentDto commentdto) {
         Comment comment = new Comment();
         comment.setIduser(commentdto.IdUser());
         comment.setComment(commentdto.text());
         comment.setLocalData(LocalDateTime.now());
-
-        Event e = eventService.getEventById(commentdto.idEvent());
-        e.getComments().add(comment);
 
         return comment;
     }
