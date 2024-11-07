@@ -124,6 +124,16 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void deleteUser(UpdateUserDto userdto) throws Exception {
+        Optional<User> userO = userRepository.findById(userdto.id());
+        User user=userO.get();
+
+        user.setState(StateAccount.IDLE);
+
+        userRepository.save(user);
+    }
+
+    @Override
     public boolean validateUser(UserDto userdto) throws UserException {
         return userRepository.existsByEmailAndIdentificationNumber(userdto.email(), userdto.identificationNumber());
 

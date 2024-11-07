@@ -38,6 +38,12 @@ public interface IUserService {
     public void editUser(UpdateUserDto user);
 
     /**
+     *
+     * @param userdto
+     * @throws Exception
+     */
+    public void deleteUser(UpdateUserDto userdto) throws Exception;
+    /**
      * Search for the user by email
      *
      * @param email

@@ -56,6 +56,14 @@ public class UserControllerImplement implements UserController {
     }
 
     @Override
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.PUT)
+    public ResponseEntity<MensajeDto<String>> deleteUser(@RequestBody UpdateUserDto userDto) throws Exception {
+        userService.editUser(userDto);
+        return ResponseEntity.ok(new MensajeDto<>(false,"usuario deshabilitado con exito"));
+    }
+
+
+    @Override
     @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
     public ResponseEntity<Optional<User>> findByEmail(@PathVariable("email") String email)
             throws Exception {
@@ -71,7 +79,7 @@ public class UserControllerImplement implements UserController {
     }
 
     @Override
-    @RequestMapping(value = "/postComment", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/postComment", method = RequestMethod.POST)
     public ResponseEntity<Comment> postComment(@RequestBody() CommentDto commentdto) throws Exception {
         Comment comment = userService.postComment(commentdto);
         return ResponseEntity.status(200).body(comment);

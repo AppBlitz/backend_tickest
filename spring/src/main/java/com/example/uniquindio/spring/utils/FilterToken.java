@@ -51,13 +51,14 @@ public class FilterToken extends OncePerRequestFilter {
             try {
 
 
-                //Si la petición es para la ruta /api/cliente se verifica que el token sea correcto y que el rol sea CLIENTE
-                if (requestURI.startsWith("/api/cliente")) {
+                //Si la petición es para la ruta User/users se verifica que el token sea correcto y que el rol sea USER
+                //el administrador no puede acceder a estas funciones pq son solo para usuarios
+                if (requestURI.startsWith("/users/user")) {
 
 
                     if (token != null) {
                         Jws<Claims> jws = jwtUtils.parseJwt(token);
-                        if (!jws.getPayload().get("rol").equals("CLIENTE")) {
+                        if (!jws.getPayload().get("rol").equals("USER")) {
                             crearRespuestaError("No tiene permisos para acceder a este recurso", HttpServletResponse.SC_FORBIDDEN, response);
                         } else {
                             error = false;
@@ -71,7 +72,23 @@ public class FilterToken extends OncePerRequestFilter {
 
 
                 //Agregar la validación para las peticiones que sean de los administradores
+                //si no es administrador no puede acceder a los servicios del evento
+                if (requestURI.startsWith("/event")/*||requestURI.startsWith("/event")*/) {
 
+
+                    if (token != null) {
+                        Jws<Claims> jws = jwtUtils.parseJwt(token);
+                        if (!jws.getPayload().get("rol").equals("ADMINISTRADOR")) {
+                            crearRespuestaError("No tiene permisos para acceder a este recurso", HttpServletResponse.SC_FORBIDDEN, response);
+                        } else {
+                            error = false;
+                        }
+                    } else {
+                        crearRespuestaError("No tiene permisos para acceder a este recurso", HttpServletResponse.SC_FORBIDDEN, response);
+                    }
+                } else {
+                    error = false;
+                }
 
             } catch (MalformedJwtException | SignatureException e) {
                 crearRespuestaError("El token es incorrecto", HttpServletResponse.SC_INTERNAL_SERVER_ERROR, response);
