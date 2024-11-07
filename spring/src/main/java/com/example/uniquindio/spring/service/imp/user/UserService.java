@@ -47,6 +47,7 @@ public class UserService implements IUserService {
     @Autowired
     EventService eventService;
 
+    @Autowired
     JWTUtils jwtUtils;
 
     @Override
@@ -95,7 +96,7 @@ public class UserService implements IUserService {
 
             // Prepare and send the activation email
             EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta");
-            emailService.sendEmail((emaildto));
+           emailService.sendEmail((emaildto));
 
         }
         // Save the user object in the repository
