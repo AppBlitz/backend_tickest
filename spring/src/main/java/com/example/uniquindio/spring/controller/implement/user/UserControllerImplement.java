@@ -34,7 +34,7 @@ public class UserControllerImplement implements UserController {
     UserService userService;
 
     @Override
-    @RequestMapping(value = "/user/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<MensajeDto<String>> saveUser(@RequestBody UserDto userdto) throws Exception {
         userService.saveUser(userdto);
         return ResponseEntity.ok(new MensajeDto<>(false,"el usuario fue agregado con exito"));

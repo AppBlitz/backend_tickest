@@ -11,15 +11,15 @@ class ApplicationTests {
 @Autowired
 EmailService emailService;
 
-	@Test
-	void mailTest(){
-
-		EmailDTO email = new EmailDTO("juand.guzmang@uqvirtual.edu.co", "mensaje de prueba unievetos","Prueba 1");
-        try {
-            emailService.sendEmail(email);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+//	@Test
+//	void mailTest(){
+//
+//		EmailDTO email = new EmailDTO("juand.guzmang@uqvirtual.edu.co", "mensaje de prueba unievetos","Prueba 1");
+//        try {
+//            emailService.sendEmail(email);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 }

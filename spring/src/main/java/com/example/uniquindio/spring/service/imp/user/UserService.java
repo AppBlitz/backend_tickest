@@ -94,7 +94,7 @@ public class UserService implements IUserService {
             user.setCouponsCode(new ArrayList<>());
             user.getCouponsCode().add(coupon);
 
-            // Prepare and send the activation email
+            // Prepare and send the activationemail
             EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta");
            emailService.sendEmail((emaildto));
 

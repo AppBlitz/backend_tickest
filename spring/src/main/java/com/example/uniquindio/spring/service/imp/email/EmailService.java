@@ -3,13 +3,10 @@ package com.example.uniquindio.spring.service.imp.email;
 import com.example.uniquindio.spring.dto.emaildto.EmailDTO;
 import com.example.uniquindio.spring.service.interfaces.email.IEmailService;
 import com.example.uniquindio.spring.utils.PropertiesReader;
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.util.ByteArrayDataSource;
 import lombok.NonNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.simplejavamail.api.email.Email;
 import org.simplejavamail.api.mailer.Mailer;
@@ -17,15 +14,29 @@ import org.simplejavamail.api.mailer.config.TransportStrategy;
 import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
 import org.springframework.scheduling.annotation.Async;
+
 @Service
+@PropertySource("classpath:email.properties")
 public class EmailService implements IEmailService {
+
+
+    @Value("${spring.mail.username}")
+    String username;
+
+    @Value("${spring.mail.host}")
+    String host;
+
+    @Value("${spring.mail.port}")
+    int port;
+
+    @Value("${spring.mail.password}")
+    String password;
+
     @Override
     //@Async
     public void sendEmail(@NonNull EmailDTO emailDTO) throws Exception {
-        PropertiesReader reader = new PropertiesReader("resources/email.properties");
 
-        Email email = EmailBuilder.startingBlank()
-                .from(reader.getProperty("username"))
+        Email email = EmailBuilder.startingBlank().from(username)
                 .to(emailDTO.email())
                 .withSubject(emailDTO.subject())
                 .withPlainText(emailDTO.message())
@@ -33,7 +44,7 @@ public class EmailService implements IEmailService {
 
 
         try (Mailer mailer = MailerBuilder
-                .withSMTPServer(reader.getProperty("host"), Integer.valueOf(reader.getProperty("port")), reader.getProperty("username"), reader.getProperty("password"))
+                .withSMTPServer(host, Integer.valueOf(port), username, password)
                 .withTransportStrategy(TransportStrategy.SMTP_TLS)
                 .withDebugLogging(true)
                 .buildMailer()) {
@@ -70,3 +81,5 @@ public class EmailService implements IEmailService {
         }
     }
 }
+
+
