@@ -72,7 +72,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Application.executor": "Debug",
+    "Spring Boot.Application.executor": "Run",
     "extract.method.default.visibility": "private",
     "git-widget-placeholder": "jahn",
     "kotlin-language-version-configured": "true",
@@ -175,7 +175,11 @@
       <workItem from="1730608656486" duration="828000" />
       <workItem from="1730610871262" duration="2606000" />
       <workItem from="1730647889696" duration="758000" />
-      <workItem from="1730649335082" duration="3822000" />
+      <workItem from="1730649335082" duration="3932000" />
+      <workItem from="1730694605969" duration="83000" />
+      <workItem from="1730694777569" duration="174000" />
+      <workItem from="1730747321237" duration="1134000" />
+      <workItem from="1730941968314" duration="2322000" />
     </task>
     <task id="LOCAL-00007" summary="comment">
       <option name="closed" value="true" />
