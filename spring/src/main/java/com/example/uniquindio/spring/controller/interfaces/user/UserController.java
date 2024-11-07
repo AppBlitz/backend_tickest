@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.uniquindio.spring.dto.userdto.LoginUser;
 import com.example.uniquindio.spring.model.documents.User;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 public interface UserController {
     public ResponseEntity<MensajeDto<String>> saveUser(@RequestBody UserDto userDto) throws Exception;
@@ -48,6 +50,10 @@ public interface UserController {
      * @throws Exception
      */
     public ResponseEntity<MensajeDto<String>> edituser(@RequestBody UpdateUserDto userDto) throws Exception;
+
+
+
+    public ResponseEntity<MensajeDto<String>> deleteUser(@RequestBody UpdateUserDto userDto) throws Exception ;
 
     /**
      * add a comment to event
