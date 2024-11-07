@@ -41,7 +41,7 @@ public class UserControllerImplement implements UserController {
     }
 
     @Override
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<MensajeDto<TokenDto>> login(@RequestBody() LoginUser loginUser) throws Exception {
         TokenDto token = userService.verifyLogin((loginUser));
         return ResponseEntity.ok(new MensajeDto<>(false,token));
