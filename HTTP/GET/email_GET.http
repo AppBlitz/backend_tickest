@@ -1,2 +1,0 @@
-GET {{HOST}}/users/user/{{EMAIL}}
-Aceept: application/json
