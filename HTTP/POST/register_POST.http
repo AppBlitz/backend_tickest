@@ -1,0 +1,13 @@
+POST {{HOST}}/users/add
+Content-Type: application/json
+
+{
+    "password": "securePassword123",
+    "email": "carlosfabiancorraleszapata9@gmail.com",
+    "identificationNumber": "123456789",
+    "fullName": "John Doe",
+    "address": "123 Main Street, City, Country",
+    "phoneNumber": "+1234567890",
+    "state": "ASSET",
+    "rol": "USER"
+}

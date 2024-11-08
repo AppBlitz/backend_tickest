@@ -1,0 +1,2 @@
+GET {{HOST}}/users/all
+Accaept: application/json

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring
+  data:
+    mongodb:
+      # Si deseas usar una conexión local en lugar de MongoDB Atlas, puedes descomentar estas líneas y configurarlas:
+      host: localhost
+      port: 27017
+      database: EventDatabase
