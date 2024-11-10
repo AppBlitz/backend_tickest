@@ -53,6 +53,8 @@ public interface IUserService {
 
     public Optional<User> findByEmail(String email) throws EmailInvalidException;
 
+    public Optional<User> findById(String id) throws Exception;
+
     /**
      * Method to check if a user exists
      *

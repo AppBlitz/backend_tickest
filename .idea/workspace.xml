@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="579c6148-efdc-4c6e-9b92-5abfefe18417" name="Changes" comment="comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/user/UserControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/controller/implement/user/UserControllerImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/email/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/email/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/user/UserControllerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/Controller/implement/user/UserControllerImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/imp/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/resources/email.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/resources/mercado-Pago.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/test/java/com/example/uniquindio/spring/ApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/test/java/com/example/uniquindio/spring/ApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/user/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/example/uniquindio/spring/service/interfaces/user/IUserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,27 +97,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build spring.executor": "Run",
-    "Gradle.spring [build].executor": "Run",
-    "Gradle.spring [clean].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Application.executor": "Run",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "jahn",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build spring.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;jahn&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="spring [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -265,7 +261,9 @@
       <workItem from="1730694777569" duration="174000" />
       <workItem from="1730747321237" duration="1134000" />
       <workItem from="1730941968314" duration="4947000" />
-      <workItem from="1730989099857" duration="4232000" />
+      <workItem from="1730989099857" duration="5827000" />
+      <workItem from="1731213166202" duration="120000" />
+      <workItem from="1731213547667" duration="3891000" />
     </task>
     <task id="LOCAL-00007" summary="comment">
       <option name="closed" value="true" />
