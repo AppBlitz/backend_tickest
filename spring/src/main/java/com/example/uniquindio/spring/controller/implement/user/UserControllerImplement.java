@@ -72,6 +72,14 @@ public class UserControllerImplement implements UserController {
     }
 
     @Override
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Optional<User>> findByid(@PathVariable("id") String id)
+            throws Exception {
+    Optional<User> user = userService.findById(id);
+    return ResponseEntity.status(200).body(user);
+    }
+
+    @Override
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getAll() throws Exception {
         List<User> users = userService.getAllUser();

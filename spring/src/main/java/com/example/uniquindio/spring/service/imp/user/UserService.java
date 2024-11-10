@@ -56,6 +56,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public Optional<User> findById(String id) throws Exception {
+        return userRepository.findById(id);
+    }
+
+    @Override
     public User saveUser(UserDto userdto) throws Exception,UserException {
         // Create an empty user object
         User user = new User();
@@ -119,6 +124,7 @@ public class UserService implements IUserService {
         user.setEmail(userdto.password());
         user.setAddress(userdto.address());
         user.setPhoneNumber(userdto.phoneNumber());
+        user.setPassword(encriptarPassword(userdto.password()));
 
         userRepository.save(user);
     }
@@ -186,6 +192,7 @@ public class UserService implements IUserService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.encode( password );
     }
+
 
 
     public UserInformation getInformation(User user) {

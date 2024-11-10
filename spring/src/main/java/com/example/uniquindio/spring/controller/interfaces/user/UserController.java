@@ -30,6 +30,14 @@ public interface UserController {
     public ResponseEntity<Optional<User>> findByEmail(@PathVariable String email) throws Exception;
 
     /**
+     * look a user for ID
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public ResponseEntity<Optional<User>> findByid(@PathVariable String id) throws Exception;
+
+    /**
      * @return
      * @throws Exception
      */
