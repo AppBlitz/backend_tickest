@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.uniquindio.spring.dto.eventdto.AddCommentEvent;
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.dto.eventdto.SearchidEventDto;
@@ -85,7 +86,7 @@ public interface EventController {
      * @return
      * @throws EventException
      */
-    public ResponseEntity<String> findEventAllEvents() throws EventException;
+    public ResponseEntity<List<Event>> findEventAllEvents() throws EventException;
 
     /**
      * get statistical data of events
@@ -98,4 +99,7 @@ public interface EventController {
 
     public ResponseEntity<Optional<Event>> searchIEventId(@RequestBody() SearchidEventDto searchidEvent)
             throws Exception;
+
+    public ResponseEntity<Event> addCommentEvent(@RequestBody() AddCommentEvent addCommentEvent) throws Exception;
+
 }

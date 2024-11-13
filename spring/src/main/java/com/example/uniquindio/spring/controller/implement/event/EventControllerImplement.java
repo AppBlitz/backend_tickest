@@ -1,6 +1,21 @@
 package com.example.uniquindio.spring.controller.implement.event;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.uniquindio.spring.Controller.interfaces.event.EventController;
+import com.example.uniquindio.spring.dto.eventdto.AddCommentEvent;
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.dto.eventdto.SearchidEventDto;
@@ -8,16 +23,7 @@ import com.example.uniquindio.spring.exception.event.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
-import com.example.uniquindio.spring.repository.EventRepository;
 import com.example.uniquindio.spring.service.imp.event.EventService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -77,11 +83,10 @@ public class EventControllerImplement implements EventController {
         return ResponseEntity.status(200).body(events);
     }
 
-    @RequestMapping(value = "/findAllEvents" +
-            "", method = RequestMethod.GET)
-    public ResponseEntity<String> findEventAllEvents() throws EventException {
+    @RequestMapping(value = "/findAllEvents", method = RequestMethod.GET)
+    public ResponseEntity<List<Event>> findEventAllEvents() throws EventException {
         List<Event> e = eventService.getAllEvents();
-        return ResponseEntity.status(200).body("eventos cargados: " + e.size());
+        return ResponseEntity.status(200).body(e);
     }
 
     @RequestMapping(value = "/findByState/{stateEvent}", method = RequestMethod.GET)
@@ -107,6 +112,13 @@ public class EventControllerImplement implements EventController {
         } else {
             return ResponseEntity.status(200).body(event);
         }
+    }
+
+    @Override
+    @RequestMapping(value = "/add/comment", method = RequestMethod.POST)
+    public ResponseEntity<Event> addCommentEvent(@RequestBody() AddCommentEvent addCommentEvent) throws Exception {
+        Event event = eventService.addComment(addCommentEvent);
+        return ResponseEntity.status(200).body(event);
     }
 
 }

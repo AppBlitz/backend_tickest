@@ -1,5 +1,6 @@
 package com.example.uniquindio.spring.service.imp.event;
 
+import com.example.uniquindio.spring.dto.eventdto.AddCommentEvent;
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.dto.eventdto.SearchidEventDto;
@@ -188,7 +189,19 @@ public class EventService implements IEventService {
 
     @Override
     public Optional<Event> searchEvendID(SearchidEventDto searchEvendID) {
-         return eventRepository.findById(searchEvendID.id());
+        return eventRepository.findById(searchEvendID.id());
+    }
+
+    @Override
+    public Event addComment(AddCommentEvent addCommentEvent) throws Exception {
+        Optional<Event> event = eventRepository.findById(addCommentEvent.idEvent());
+        if (event.isEmpty())
+            throw new RuntimeException("event not found");
+        Event addCommentEvents = event.get();
+
+        addCommentEvents.getComments().add(addCommentEvent.comment());
+        eventRepository.save(addCommentEvents);
+        return addCommentEvents;
     }
 
 }

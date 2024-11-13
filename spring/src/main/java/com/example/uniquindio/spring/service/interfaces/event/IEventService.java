@@ -6,11 +6,11 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.uniquindio.spring.dto.eventdto.AddCommentEvent;
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
 import com.example.uniquindio.spring.dto.eventdto.SearchidEventDto;
 import com.example.uniquindio.spring.exception.event.EventException;
-import com.example.uniquindio.spring.exception.event.EventSearchId;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
@@ -105,5 +105,8 @@ public interface IEventService {
      */
     public List<String> getStatisticalData(String id);
 
-    public Optional<Event> searchEvendID(@RequestBody() SearchidEventDto searchEvendID) throws EventSearchId;
+    public Event addComment(AddCommentEvent addCommentEvent) throws Exception;
+
+    public Optional<Event> searchEvendID(@RequestBody() SearchidEventDto searchEvendID) throws Exception;
+
 }
