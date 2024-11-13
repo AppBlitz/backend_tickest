@@ -1,10 +1,16 @@
 package com.example.uniquindio.spring.model.vo;
 
-import com.example.uniquindio.spring.model.documents.User;
-import lombok.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
+import jakarta.validation.constraints.Null;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @Data
@@ -24,7 +30,7 @@ public class Comment {
     @NonNull
     private String comment;
 
-    @NonNull
+    @Null
     private List<Comment> answers;
 
 }
