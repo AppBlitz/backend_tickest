@@ -55,6 +55,10 @@ public class UserService implements IUserService {
         return userRepository.findByEmail(email);
     }
 
+    public Optional<User> findById(String id) throws Exception {
+        return userRepository.findById(id);
+    }
+
     @Override
     public User saveUser(UserDto userdto) throws Exception, UserException {
         // Create an empty user object
@@ -117,6 +121,7 @@ public class UserService implements IUserService {
         user.setEmail(userdto.password());
         user.setAddress(userdto.address());
         user.setPhoneNumber(userdto.phoneNumber());
+        user.setPassword(encriptarPassword(userdto.password()));
 
         userRepository.save(user);
     }
