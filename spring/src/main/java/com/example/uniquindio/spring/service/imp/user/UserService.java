@@ -56,12 +56,11 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User saveUser(UserDto userdto) throws Exception,UserException {
+    public User saveUser(UserDto userdto) throws Exception, UserException {
         // Create an empty user object
         User user = new User();
 
-        if (!validateUser(userdto))
-        {
+        if (!validateUser(userdto)) {
 
             // Set the user data
             user.setFullName(userdto.fullName());
@@ -84,10 +83,10 @@ public class UserService implements IUserService {
             user.setIdentificationNumber(userdto.identificationNumber());
 
             // Generate activation code
-            //String code = couponService.getActivateAccount(20);
+            // String code = couponService.getActivateAccount(20);
             user.setCodeValidator("prueba");
             Coupon coupon = new Coupon();
-            //coupon.setCode("BIENVENIDA");
+            // coupon.setCode("BIENVENIDA");
             coupon.setType(CouponType.UNIQUE_CODE);
             coupon.setDiscount_percentage(0.1F);
             coupon.setName("Bienvenida");
@@ -96,13 +95,12 @@ public class UserService implements IUserService {
 
             // Prepare and send the activationemail
             EmailDTO emaildto = new EmailDTO(userdto.email(), "Código para activar la cuenta", "Activación de cuenta");
-           emailService.sendEmail((emaildto));
+            emailService.sendEmail((emaildto));
 
         }
         // Save the user object in the repository
         return userRepository.save(user);
     }
-
 
     @Override
     public List<User> getAllUser() {
@@ -113,7 +111,7 @@ public class UserService implements IUserService {
     public void editUser(UpdateUserDto userdto) {
 
         Optional<User> userO = userRepository.findById(userdto.id());
-        User user=userO.get();
+        User user = userO.get();
 
         user.setFullName(userdto.fullName());
         user.setEmail(userdto.password());
@@ -126,7 +124,7 @@ public class UserService implements IUserService {
     @Override
     public void deleteUser(UpdateUserDto userdto) throws Exception {
         Optional<User> userO = userRepository.findById(userdto.id());
-        User user=userO.get();
+        User user = userO.get();
 
         user.setState(StateAccount.IDLE);
 
@@ -156,7 +154,7 @@ public class UserService implements IUserService {
             EmailDTO emaildto = new EmailDTO(user.getEmail(),
                     "Código de descuento \n el código solo es aplicable para un compra \n descuento del 15 % \n",
                     "Código de descuento");
-            //emailService.sendDescountCode(emaildto);
+            // emailService.sendDescountCode(emaildto);
             return user;
         }
 
@@ -172,21 +170,18 @@ public class UserService implements IUserService {
         Optional<User> cuenta = userRepository.findByEmail(loginUser.email());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-
-        if( !passwordEncoder.matches(loginUser.password(), cuenta.get().getPassword()) ) {
+        if (!passwordEncoder.matches(loginUser.password(), cuenta.get().getPassword())) {
             throw new Exception("La contraseña es incorrecta");
         }
 
-
         Map<String, Object> map = construirClaims(cuenta.get());
-        return new TokenDto( jwtUtils.generarToken(cuenta.get().getEmail(), map) );
+        return new TokenDto(jwtUtils.generarToken(cuenta.get().getEmail(), map));
     }
 
-    private String encriptarPassword(String password){
+    private String encriptarPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.encode( password );
+        return passwordEncoder.encode(password);
     }
-
 
     public UserInformation getInformation(User user) {
         UserInformation userInformation = new UserInformation();
@@ -198,7 +193,7 @@ public class UserService implements IUserService {
         return userInformation;
     }
 
-    public Comment postComment(CommentDto commentdto)throws UserException {
+    public Comment postComment(CommentDto commentdto) throws UserException {
         Comment comment = getComment(commentdto);
 
         Event e = eventService.getEventById(commentdto.idEvent());
@@ -207,10 +202,12 @@ public class UserService implements IUserService {
         return comment;
     }
 
- /*   public Comment postAnswer(CommentDto commentdto)throws UserException {
-        Comment answer = getComment(commentdto);
-
-    }*/
+    /*
+     * public Comment postAnswer(CommentDto commentdto)throws UserException {
+     * Comment answer = getComment(commentdto);
+     * 
+     * }
+     */
 
     @NotNull
     private Comment getComment(CommentDto commentdto) {
@@ -228,8 +225,8 @@ public class UserService implements IUserService {
                 "nombre", cuenta.getFullName(),
                 "id", cuenta.getIdentificationNumber(),
                 "address", cuenta.getAddress(),
-                "phone",cuenta.getPhoneNumber()
-        );
+                "phone", cuenta.getPhoneNumber(),
+                "stateAccount", cuenta.getState());
     }
 
 }

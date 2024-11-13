@@ -10,6 +10,7 @@ import com.example.uniquindio.spring.model.documents.Event;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EventRepository extends MongoRepository<Event, String> {
@@ -30,4 +31,5 @@ public interface EventRepository extends MongoRepository<Event, String> {
 
     List<Event> findEventsByStateEvent(StateEvent stateEvent);
 
+    Optional<Event> findById(String id);
 }

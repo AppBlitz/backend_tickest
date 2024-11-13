@@ -1,14 +1,19 @@
 package com.example.uniquindio.spring.service.interfaces.event;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.RequestBody;
+
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
+import com.example.uniquindio.spring.dto.eventdto.SearchidEventDto;
 import com.example.uniquindio.spring.exception.event.EventException;
+import com.example.uniquindio.spring.exception.event.EventSearchId;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
-
-import java.time.LocalDate;
-import java.util.List;
 
 public interface IEventService {
     /**
@@ -38,6 +43,7 @@ public interface IEventService {
 
     /**
      * look for a event by city
+     * 
      * @param city
      * @return
      */
@@ -54,12 +60,15 @@ public interface IEventService {
 
     /**
      * look for a event by type
+     * 
      * @param eventType
      * @return
      */
     public List<Event> getAllEventsByType(EventType eventType);
+
     /**
      * look for a event by date
+     * 
      * @param dateEvent
      * @return
      */
@@ -67,6 +76,7 @@ public interface IEventService {
 
     /**
      * look for a event by date
+     * 
      * @param saleStartDate
      * @return
      */
@@ -74,12 +84,14 @@ public interface IEventService {
 
     /**
      * get all events in database
+     * 
      * @return
      */
     public List<Event> getAllEvents();
 
     /**
      * look for a event by state
+     * 
      * @param stateEvent
      * @return
      */
@@ -91,6 +103,7 @@ public interface IEventService {
      * @param id
      * @return
      */
-    public List<String> getStatisticalData(String id) ;
+    public List<String> getStatisticalData(String id);
 
+    public Optional<Event> searchEvendID(@RequestBody() SearchidEventDto searchEvendID) throws EventSearchId;
 }

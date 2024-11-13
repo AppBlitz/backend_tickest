@@ -3,6 +3,7 @@ spring:
     name: spring
   data:
     mongodb:
+      # uri: mongodb+srv://Luffy:p8eGWohPlqwpyAv7@cluster1.q6wqe.mongodb.net/EventDatabase?retryWrites=true&w=majority&appName=Cluster1
       # Si deseas usar una conexión local en lugar de MongoDB Atlas, puedes descomentar estas líneas y configurarlas:
       host: localhost
       port: 27017

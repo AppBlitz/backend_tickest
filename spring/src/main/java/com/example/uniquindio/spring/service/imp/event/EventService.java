@@ -2,6 +2,7 @@ package com.example.uniquindio.spring.service.imp.event;
 
 import com.example.uniquindio.spring.dto.eventdto.CreateEventDto;
 import com.example.uniquindio.spring.dto.eventdto.EditEventDto;
+import com.example.uniquindio.spring.dto.eventdto.SearchidEventDto;
 import com.example.uniquindio.spring.exception.event.EventException;
 import com.example.uniquindio.spring.model.documents.Event;
 import com.example.uniquindio.spring.model.enums.EventType;
@@ -183,6 +184,11 @@ public class EventService implements IEventService {
         event.setStateEvent(eventdto.stateEvent());
 
         return event;
+    }
+
+    @Override
+    public Optional<Event> searchEvendID(SearchidEventDto searchEvendID) {
+         return eventRepository.findById(searchEvendID.id());
     }
 
 }

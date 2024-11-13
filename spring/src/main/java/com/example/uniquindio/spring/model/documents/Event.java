@@ -1,26 +1,25 @@
 package com.example.uniquindio.spring.model.documents;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-import com.example.uniquindio.spring.model.vo.Comment;
-import com.example.uniquindio.spring.model.vo.items.Ticket;
-import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.uniquindio.spring.model.enums.EventType;
 import com.example.uniquindio.spring.model.enums.StateEvent;
-
-
+import com.example.uniquindio.spring.model.vo.Comment;
 import com.example.uniquindio.spring.model.vo.items.Locality;
+
+import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.index.TextIndexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -34,7 +33,6 @@ public class Event {
 
     @Id
     private String id;
-
 
     @NonNull
     private String nameEvent;
@@ -51,7 +49,7 @@ public class Event {
     @NonNull
     private EventType eventType;
 
-    @NonNull
+    @Null
     private String[] imageEvent;
 
     @NonNull
@@ -66,7 +64,7 @@ public class Event {
     @NonNull
     private LocalTime saleStartTime;
 
-    @NonNull
+    @Null
     private List<Locality> locality;
 
     @NonNull
@@ -75,13 +73,13 @@ public class Event {
     @NonNull
     private Integer capacity;
 
-    @NonNull
+    @Null
     private List<Comment> comments;
 
     @NonNull
     private StateEvent stateEvent;
 
-    @NonNull
+    @Null
     private List<String> userList;
 
 }
